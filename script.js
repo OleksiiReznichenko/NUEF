@@ -1,22 +1,35 @@
+const musicDisc = document.querySelector('.circleBlock');
+const phoneImg = document.querySelector('.phone_image');
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // IPHONE ADDAPTIVE
-// function isIOSDevice() {
-//     return !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
-// }
 
-// function iphoneAdaptive(iphoneIndicator) {
 
-// }
 
-// iphoneAdaptive(isIOSDevice());
+function isIOSDevice() {
+    return !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+}
+
+function iphoneAdaptive(iphoneIndicator) {
+  if (!iphoneIndicator) return;
+  if (window.outerWidth < 600) {
+    musicDisc.classList.add('circleBlock_iphone_adaptive');
+  }
+  if (window.outerWidth < 450) {
+    phoneImg.classList.add('phone_image_iphone_adaptive');
+  }
+}
+
+iphoneAdaptive(isIOSDevice());
 
 function linksPreventDefault() {
-    const links = Array.from(document.querySelectorAll('a[href="#"]'));
-    links.forEach(function (el) {
-      el.addEventListener('click', function (e) {
-        e.preventDefault();
-      });
+  const links = Array.from(document.querySelectorAll('a[href="#"]'));
+  links.forEach(function (el) {
+    el.addEventListener("click", function (e) {
+      e.preventDefault();
     });
+  });
 }
 linksPreventDefault();
 
@@ -24,18 +37,21 @@ linksPreventDefault();
 // SMOTH SCROLL
 
 SmoothScroll({
-    animationTime: 600,
-    stepSize: 75,
-    accelerationDelta: 30,
-    accelerationMax: 2,
-    keyboardSupport: true,
-    arrowScroll: 50,
-    pulseAlgorithm: true,
-    pulseScale: 4,
-    pulseNormalize: 1,
-    touchpadSupport: true,
+  animationTime: 600,
+  stepSize: 75,
+  accelerationDelta: 30,
+  accelerationMax: 2,
+  keyboardSupport: true,
+  arrowScroll: 50,
+  pulseAlgorithm: true,
+  pulseScale: 4,
+  pulseNormalize: 1,
+  touchpadSupport: true,
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ANIMATIONS
+
+
+
 

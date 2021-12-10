@@ -10,7 +10,8 @@ body {
   line-height: 1.2;
 }
 
-html {
+html,
+body {
   overflow-x: hidden;
 }
 
@@ -355,7 +356,7 @@ input {
 @media only screen and (max-width: 500px) {
   .block.one .title .line {
     z-index: 10;
-    text-shadow: 1rem 0 0 rgba(0, 0, 0, 0.2);
+    /* text-shadow: 1rem 0 0 rgba(0, 0, 0, 0.2); */
   }
 }
 
@@ -1485,6 +1486,19 @@ input {
   padding: 1px; */
 }
 
+@media only screen and (max-width: 600px) {
+  .registration-form {
+    padding: 3.5rem 5rem 6rem;
+    width: 40rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .registration-form {
+    width: 60%;
+  }
+}
+
 .registration-form::after {
   content: "";
   position: absolute;
@@ -1702,4 +1716,12 @@ input {
   display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;
+}
+
+.circleBlock_iphone_adaptive {
+  transform: scale(0.7);
+}
+
+.phone_image_iphone_adaptive {
+  width: 36rem;
 }
