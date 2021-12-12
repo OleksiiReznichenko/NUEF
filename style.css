@@ -1609,11 +1609,15 @@ input {
   font-size: 1.2rem;
 }
 
-.registration-form__form__input::placeholder {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
+@media only screen and (max-width: 450px) {
+  .registration-form__form__input::placeholder,
+  .registration-form__form__textarea::placeholder {
+    font-size: 1.4rem;
+  }
+
+  .registration-form__form__input::placeholder {
+    transform: translateY(1px);
+  }
 }
 
 .registration-form__form__button {
