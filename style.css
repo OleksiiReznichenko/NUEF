@@ -144,6 +144,12 @@ input {
   margin-bottom: 6.15rem;
 }
 
+@media only screen and (max-height: 500px) {
+  .block {
+    height: 500px;
+  }
+}
+
 /* navigation */
 
 .fixedNav {
@@ -1291,6 +1297,12 @@ input {
   -webkit-text-fill-color: transparent;
 }
 
+@media only screen and (max-width: 600px) {
+  .block.six .content {
+    width: 90%;
+  }
+}
+
 .block.six .content span {
   background: linear-gradient(
     180deg,
@@ -1487,12 +1499,13 @@ input {
   padding: 4.5rem 7rem 7.5rem;
   z-index: 1000000;
   border: 1px solid #a40cea;
-  /* background: linear-gradient(
-    to right,
-    rgba(4, 0, 254, 1),
-    rgba(232, 16, 132, 1)
-  );
-  padding: 1px; */
+}
+
+@media only screen and (max-height: 500px) {
+  .registration-form {
+    transform: translate(-50%, 0);
+    top: 20%;
+  }
 }
 
 @media only screen and (max-width: 600px) {
