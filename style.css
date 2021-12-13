@@ -149,6 +149,11 @@ input {
     height: 500px;
   }
 }
+/*  */
+/*  */
+/* SEARCH ""ANIMATION GSAP"" TO FIND GSAP INITIAL CONDITIONS */
+/*  */
+/*  */
 
 /* navigation */
 
@@ -156,13 +161,19 @@ input {
   position: fixed;
 
   left: 6.15rem;
-  bottom: 4.3rem;
+  bottom: 22.5%;
 
   font-family: Bebas Neue;
   font-size: 1.6rem;
   line-height: 1.92rem;
 
   z-index: 3;
+}
+
+@media only screen and (max-width: 1050px) {
+  .fixedNav {
+    bottom: 17.5%;
+  }
 }
 
 .fixedNav .line {
@@ -188,12 +199,56 @@ input {
   justify-content: center;
 }
 
+.navigation-top {
+  font-family: Bebas Neue;
+}
+
+.navigation-top__button {
+  /* font-weight: 600; */
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  background-color: #9b2146;
+  border-radius: 5rem;
+  padding: 0.4rem 3rem;
+}
+
+.navigation-top__list {
+  /* font-weight: 600; */
+  font-size: 1.6rem;
+  list-style: none;
+  text-transform: uppercase;
+  display: flex;
+  padding-left: 0 !important;
+}
+
+.navigation-top__list .list__item:not(:last-of-type) {
+  margin-right: 3rem !important;
+}
+
+.socials-bottom {
+  font-family: Bebas Neue;
+  /* font-weight: 600; */
+  font-size: 1.6rem;
+  list-style: none;
+  text-transform: uppercase;
+  display: flex;
+  padding-left: 0 !important;
+  position: relative;
+}
+
+.socials-bottom .social:not(:last-of-type) {
+  margin-right: 3rem !important;
+}
+
 .block.one .spotlightsB {
   position: absolute;
   width: 50%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  /* ANIMATION GSAP */
+  opacity: 0;
 }
 
 .block.one .spotlightsB .l {
@@ -217,6 +272,15 @@ input {
   justify-content: space-between;
 
   overflow: hidden;
+}
+
+.spotlight-pink {
+  /* ANIMATION GSAP */
+  opacity: 0;
+}
+
+.spotlight-white {
+  width: 100%;
 }
 
 .block.one .spotlights .sec {
@@ -243,20 +307,25 @@ input {
 
 .block.one .spotlights .sec.l .w {
   top: -20%;
-  transform: translateX(-82%) rotate(40deg);
+  /* transform: translateX(-82%) rotate(40deg); */
+  transform: translateX(-82%) translateY(-30%) rotate(90deg);
+  transform-origin: right;
 }
 
 .block.one .spotlights .sec.cl .w {
-  transform: translateX(-45%) rotate(20deg);
+  /* transform: translateX(-45%) rotate(20deg); */
+  transform: translateX(-45%) translateY(-50%) rotate(90deg);
 }
 
 .block.one .spotlights .sec.cr .w {
-  transform: translateX(45%) rotate(-20deg);
+  /* transform: translateX(45%) rotate(-20deg); */
+  transform: translateX(45%) translateY(-50%) rotate(-90deg);
 }
 
 .block.one .spotlights .sec.r .w {
   top: -20%;
-  transform: translateX(82%) rotate(-40deg);
+  /* transform: translateX(82%) rotate(-40deg); */
+  transform: translateX(82%) translateY(-40%) rotate(-90deg);
 }
 
 .block.one .spotlight.c {
@@ -278,7 +347,8 @@ input {
   z-index: 2;
 }
 
-.block.one .uix .line {
+.block.one .uix .line,
+.navigation-top {
   padding: 0 6.15rem;
   display: flex;
   align-items: center;
@@ -286,11 +356,11 @@ input {
 }
 
 .block.one .uix .line:first-child {
-  margin-top: 4.3rem;
+  margin-top: 2.3rem;
 }
 
 .block.one .uix .line:last-child {
-  margin-bottom: 4.3rem;
+  margin-bottom: 2.3rem;
 }
 
 .block.one .uix .line .e img {
@@ -308,6 +378,15 @@ input {
 
 .block.one .uix .line .e.v {
   transform: translateX(44%) rotate(90deg) translateX(41%);
+  position: absolute;
+  top: 20%;
+  right: 6.15rem;
+}
+
+@media only screen and (max-width: 450px) {
+  .block.one .uix .line .e.v {
+    top: 10%;
+  }
 }
 
 .block.one .title {
@@ -366,8 +445,19 @@ input {
   }
 }
 
+.header__two-lines {
+  /* ANIMATION GSAP */
+  transform: scale(1.1) translateY(40%);
+}
+
 .block.one .title .line.z {
   z-index: 2;
+}
+
+.header__famous-line {
+  /* ANIMATION GSAP */
+  transform: translateY(300%);
+  opacity: 0;
 }
 
 .block.one .title .singer {
@@ -375,6 +465,8 @@ input {
   margin-top: 14.5rem;
   z-index: 1;
   height: 60rem;
+  /* ANIMATION GSAP */
+  transform: scale(1) translateY(17%);
 }
 
 @media only screen and (max-width: 1300px) and (min-height: 600px) {
@@ -422,12 +514,22 @@ input {
   z-index: 0;
 
   background: url("assets/media/smoke.png") center / cover;
+  /* ANIMATION GSAP */
+  opacity: 0;
+}
+
+.spotlight-center {
+  /* ANIMATION GSAP */
+  opacity: 1 !important;
 }
 
 .block.one .crowd {
   position: absolute;
 
   bottom: -22%;
+  /* ANIMATION GSAP */
+  transform: translateY(100%);
+  opacity: 0;
   left: 0;
   width: 100%;
 
@@ -1158,10 +1260,39 @@ input {
   margin-left: 1.4rem;
 }
 
+.waving-text-line {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  bottom: 10%;
+  white-space: nowrap;
+}
+
+.waving-text-line-back {
+  opacity: 0.35;
+  left: 0;
+  bottom: 10%;
+  z-index: -1;
+}
+
+.waving-text-line-front {
+  left: -40%;
+  bottom: 0%;
+}
+
+@media only screen and (max-width: 1300px) {
+  .waving-text-line-front {
+    left: -100rem;
+  }
+}
+
 /* block five */
 
 .block.five {
   overflow: hidden;
+  height: 70rem !important;
 }
 
 .block.five .footer {
@@ -1206,14 +1337,14 @@ input {
 .block.five .footer .text.back {
   -webkit-text-stroke: 1px #515151;
   top: -50%;
-  left: -10%;
+  left: -90%;
   z-index: -1;
 }
 
 .block.five .footer .text.front {
   -webkit-text-stroke: 1px #ffffff;
   top: 50%;
-  left: -90%;
+  right: -90%;
 }
 
 .block.five .footer .text.front .name.a {
@@ -1227,7 +1358,7 @@ input {
 .block.five .content {
   padding: 1.55rem 0 1.55rem 2.1rem;
   /* margin: 20rem 0 0 15.4rem; */
-  margin: 34vh 0 0 15.4rem;
+  margin: 25rem 0 0 15.4rem;
 
   border-left: 0.55rem solid #9b2146;
 
@@ -1258,6 +1389,7 @@ input {
   justify-content: center;
   overflow: hidden;
   z-index: 1;
+  margin-bottom: 0;
 }
 
 .block.six .studio,
@@ -1320,10 +1452,12 @@ input {
   display: flex;
   justify-content: center;
   margin-bottom: 0;
+  margin-top: 0;
+  height: auto !important;
 }
 
 .block.footer .content {
-  position: absolute;
+  /* position: absolute; */
 
   width: 100%;
 
@@ -1331,8 +1465,8 @@ input {
   flex-direction: column;
   align-items: center;
 
-  bottom: 1.7rem;
-  left: 0;
+  /* bottom: 1.7rem;
+  left: 0; */
 }
 
 .block.footer .div {
@@ -1499,6 +1633,10 @@ input {
   padding: 4.5rem 7rem 7.5rem;
   z-index: 1000000;
   border: 1px solid #a40cea;
+
+  /* ANIMATION GSAP */
+  opacity: 0;
+  visibility: hidden;
 }
 
 @media only screen and (max-height: 500px) {
@@ -1533,7 +1671,7 @@ input {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(5px);
+  /* backdrop-filter: blur(5px); */
   /* border: 2px solid transparent; 2
   background: linear-gradient(55deg, #0400ff, #a40cea); 3
   -webkit-mask: 4 linear-gradient(#fff 0 0) content-box,

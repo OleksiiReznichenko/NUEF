@@ -1,6 +1,7 @@
 const musicDisc = document.querySelector('.circleBlock');
 const phoneImg = document.querySelector('.phone_image');
 const sectionThreeColR = document.querySelector('.section__three__col__r');
+const headerBlock = document.querySelector('.uix')
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,3 +77,68 @@ var rule = CSSRulePlugin.getRule('span:after');
 // .to(rule, {duration: 1, cssRule: {scaleY: 0}}, '-=2.2')
 // .from('aside', {backgroundPosition: '200px 0px', opacity: 0}, '-=1.5')
 // .from('img', {y: 50, opacity: 0}, '-=0.5')
+
+headerBlock.addEventListener('click', (e) => {
+  if (e.target.classList.contains('trigger-button')) {
+    headerAnimation()
+  }
+})
+
+function headerAnimation() {
+  gsap.to('.navigation-top__list', {duration: 2.1, x:'-150%'})
+  gsap.to('.navigation-top__button', {duration: 3.25, x:'250%'})
+  gsap.to('.socials-bottom', {duration: 1.2, autoAlpha: 0})
+  gsap.to('.crowd', {duration: 2.5, y: 0, opacity: 1})
+  gsap.to('.header__famous-line', {duration: 2.5, y: 0, opacity: 1})
+  gsap.to('.registration-form', {duration: 3.25, autoAlpha: 1})
+  gsap.to('.nuef-collaborations', {duration: 2.5, y: '-160%'})
+  gsap.to('.singer', {duration: 2.5, y: 0, scale: 1})
+  gsap.to('.header__two-lines', {duration: 2.5, y: 0, scale: 1})
+  gsap.to('.smoke', {duration: 2.5, opacity: 1})
+  gsap.to('.spotlight-pink', {duration: 3.25, opacity: 1})
+  gsap.to('.spotlight-white-left', {duration: 2.5, y: 0, x: '-82%', rotate: 40})
+  gsap.to('.spotlight-white-center-left', {duration: 2.5, y: '40%', x: '-45%', rotate: 20})
+  gsap.to('.spotlight-white-center-right', {duration: 2.5, y: '40%', x: '45%', rotate: -20})
+  gsap.to('.spotlight-white-right', {duration: 2.5, y: 0, x: '82%', rotate: -40})
+}
+// let left_imgs = gsap.utils.toArray(".phone-line");
+
+
+gsap.to('.moving-text-back', {duration: 60, x: '-55%', repeat: -1, yoyo: true, ease: 'linear'})
+gsap.to('.moving-text-front', {duration: 60, x: '55%', repeat: -1, yoyo: true, ease: 'linear'})
+gsap.to('.musicCircle-big', {duration: 5, rotate: 220, ease: 'linear', scrollTrigger: {
+  trigger: ".one",
+  start: "top 0%",
+  end: "bottom -100%",
+  // markers: true,
+  scrub: 1,
+  // pin: ".banana_header_blocks",
+}})
+
+
+const phoneTimeline = gsap.timeline({defaults: {duration: 1},
+  scrollTrigger: {
+    trigger: ".four",
+    start: "top 0%",
+    scrub: 1,
+    pin: true,
+  }
+});
+phoneTimeline
+.to('.phone-line', {duration: 1, color: '#232323', textDecorationLine: 'line-through', ease: 'linear', stagger: 1}, 0)
+.to('.waving-text-line-back', {duration: 10, x: '-15%', ease: 'linear'}, 0)
+.to('.waving-text-line-front', {duration: 10, x: '15%', ease: 'linear'}, 0)
+
+
+const studioTimeline = gsap.timeline({defaults: {duration: 1},
+  scrollTrigger: {
+    trigger: ".six",
+    start: "top 0%",
+    scrub: 1,
+    pin: true,
+  }
+});
+studioTimeline
+.to('.studio', {scale: 4, opacity: 0, ease: 'linear'})
+.to('.studio', {scale: 1, opacity: 1, ease: 'linear'})
+
