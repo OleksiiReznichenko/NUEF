@@ -177,6 +177,7 @@ function connectAnimation() {
     scrollTrigger: {
       trigger: ".one",
       start: "top 0%",
+      end: '+=100px',
       scrub: 1,
       pin: true,
     }
@@ -216,6 +217,7 @@ const connectAnimationTimeline = gsap.timeline({
   scrollTrigger: {
     trigger: ".three",
     start: "top 0%",
+    end: '+=1000px',
     scrub: 1,
     pin: true,
   }
@@ -252,15 +254,23 @@ phoneTimeline
 .to('.waving-text-line-front', {duration: 10, x: '15%', ease: 'linear'}, 0)
 
 
-const studioTimeline = gsap.timeline({defaults: {duration: 1},
+const studioTimeline = gsap.timeline({defaults: {duration: 1.5},
   scrollTrigger: {
-    trigger: ".six",
+    trigger: ".five",
     start: "top 0%",
+    end: '+=2000px',
     scrub: 1,
     pin: true,
   }
 });
 studioTimeline
-.to('.studio', {scale: 4, opacity: 0, ease: 'linear'})
-.to('.studio', {scale: 1, opacity: 1, ease: 'linear'})
+.to('.studioGlass-block-five', {duration: 10, opacity: 1, ease: 'linear'}, 0)
+.to('.content-block-five', {duration: 10, opacity: 0, ease: 'linear'}, 0)
+.to('.footer-block-five', {duration: 10, opacity: 0, ease: 'linear'}, 0)
+.to('.studio-content', {duration: 10, y: '-50%'})
+.to('.studio-block-five', {duration: 10, scale: 1, opacity: 1, ease: 'linear'})
+.to('.studio-block-five', {duration: 10, opacity: 0, ease: 'linear'})
+.to('.studio-content', {duration: 10, autoAlpha: 0, ease: 'linear'})
+.to('.studioGlass-block-five', {duration: 10, autoAlpha: 0, ease: 'linear'})
+.to('.block-contacts', {duration: 10, autoAlpha: 1, ease: 'linear'})
 
