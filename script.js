@@ -3,7 +3,7 @@ const formClosingButtons = Array.from(document.querySelectorAll('.trigger-close-
 const fixedNavLinks = Array.from(document.querySelectorAll('.fixedNavLink'));
 const musicDisc = document.querySelector('.circleBlock');
 const phoneImg = document.querySelector('.phone_image');
-const sectionThreeColR = document.querySelector('.section__three__col__r');
+const blockThreeDisc = document.querySelector('.section__three__col__r');
 const headerBlock = document.querySelector('.uix');
 const connectAnimationButton = document.querySelector('.connect-animation-button');
 const circleBlock = document.querySelector('.circleBlock');
@@ -35,7 +35,8 @@ function iphoneAdaptive(iphoneIndicator) {
   if (window.outerWidth < 600) {
     musicDisc.classList.add('circleBlock_iphone_adaptive');
     phoneImg.classList.add('phone_image_iphone_adaptive');
-    sectionThreeColR.classList.add('section__three__col__r_iphone_adaptive');
+    // sectionThreeColR.classList.add('section__three__col__r_iphone_adaptive');
+    // blockThreeDisc.classList.add()
   }
 }
 

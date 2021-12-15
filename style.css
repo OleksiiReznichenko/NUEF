@@ -1012,6 +1012,12 @@ body {
   z-index: 1;
 }
 
+@media only screen and (max-width: 800px) {
+  .block.two .musicCircle.right {
+    right: -12rem;
+  }
+}
+
 /* block three */
 
 .block.three {
