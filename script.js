@@ -289,7 +289,7 @@ class AppAnimations {
       discRight = '-25%'
 
       if (isIOSDevice()) {
-        discRight = '-45%'
+        discRight = '-50%'
       }
     }
 

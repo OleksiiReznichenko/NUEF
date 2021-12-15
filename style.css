@@ -191,10 +191,22 @@ body {
   }
 }
 
+@media only screen and (max-width: 500px) {
+  .fixedNav {
+    font-size: 1.8rem;
+  }
+}
+
 .fixedNav .line {
   display: block;
   margin-bottom: 1.75rem;
   opacity: 0.25;
+}
+
+@media only screen and (max-width: 500px) {
+  .fixedNav .line {
+    opacity: 0.2;
+  }
 }
 
 .fixedNav .line.a {
@@ -2320,8 +2332,10 @@ body {
 
 .block-contacts__image-container_iphone_adaptive {
   transform: scale(0.8) !important;
+  left: -2% !important;
+  top: 10% !important;
 }
 
 .block-contacts__text_iphone_adaptive {
-  top: 70% !important;
+  top: 75% !important;
 }
