@@ -2318,5 +2318,10 @@ body {
   top: -5% !important;
 }
 
-.section__three__col__r_iphone_adaptive {
+.block-contacts__image-container_iphone_adaptive {
+  transform: scale(0.8) !important;
+}
+
+.block-contacts__text_iphone_adaptive {
+  top: 70% !important;
 }

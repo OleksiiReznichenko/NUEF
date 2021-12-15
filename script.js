@@ -1,12 +1,6 @@
 const formCallingButtons = Array.from(document.querySelectorAll('.trigger-button'));
 const formClosingButtons = Array.from(document.querySelectorAll('.trigger-close-button'));
 const fixedNavLinks = Array.from(document.querySelectorAll('.fixedNavLink'));
-const musicDisc = document.querySelector('.circleBlock');
-const phoneImg = document.querySelector('.phone_image');
-const blockThreeDisc = document.querySelector('.section__three__col__r');
-const headerBlock = document.querySelector('.uix');
-const connectAnimationButton = document.querySelector('.connect-animation-button');
-const circleBlock = document.querySelector('.circleBlock');
 const rightArm = document.querySelector('.right-arm');
 const leftArm = document.querySelector('.left-arm');
 const registrationFormWrapper = document.querySelector('.registration-form__wrapper');
@@ -19,6 +13,14 @@ const blockTwo = document.querySelector('.two');
 const blockThree = document.querySelector('.three');
 const blockFour = document.querySelector('.four');
 const blockFive = document.querySelector('.five');
+const musicDisc = document.querySelector('.circleBlock');
+const phoneImg = document.querySelector('.phone_image');
+const blockThreeDisc = document.querySelector('.section__three__col__r');
+const headerBlock = document.querySelector('.uix');
+const connectAnimationButton = document.querySelector('.connect-animation-button');
+const circleBlock = document.querySelector('.circleBlock');
+const blockContactImageContainer = document.querySelector('.block-contacts__image-container');
+const blockContactText = document.querySelector('.block-contacts__text');
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,8 +37,8 @@ function iphoneAdaptive(iphoneIndicator) {
   if (window.outerWidth < 600) {
     musicDisc.classList.add('circleBlock_iphone_adaptive');
     phoneImg.classList.add('phone_image_iphone_adaptive');
-    // sectionThreeColR.classList.add('section__three__col__r_iphone_adaptive');
-    // blockThreeDisc.classList.add()
+    blockContactImageContainer.classList.add('block-contacts__image-container_iphone_adaptive')
+    blockContactText.classList.add('block-contacts__text_iphone_adaptive')
   }
 }
 
@@ -285,6 +287,10 @@ class AppAnimations {
     }
     if (window.outerWidth < 450) {
       discRight = '-25%'
+
+      if (isIOSDevice()) {
+        discRight = '-45%'
+      }
     }
 
     function connectAnimation() {
