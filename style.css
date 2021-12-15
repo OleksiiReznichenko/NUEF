@@ -558,7 +558,7 @@ body {
 
   z-index: 1;
 
-  background: url("assets/media/crowd.png") center / cover;
+  background: url("assets/media/crowd.webp") center / cover;
 }
 
 /* @media only screen and (max-width: 700px) and (max-height: 750px) {
@@ -1637,7 +1637,7 @@ body {
 }
 
 .studio {
-  background: url("assets/media/studio.png") center / cover;
+  background: url("assets/media/studio.webp") center / cover;
   z-index: 2;
   transform: scale(3);
   z-index: 10;
@@ -2242,19 +2242,6 @@ body {
   visibility: hidden !important;
 }
 
-.circleBlock_iphone_adaptive {
-  transform: scale(0.7) !important;
-}
-
-.phone_image_iphone_adaptive {
-  width: 30rem !important;
-}
-
-.section__three__col__r_iphone_adaptive {
-  right: -55% !important;
-  top: -5% !important;
-}
-
 .preloader {
   background-image: linear-gradient(#000, #111);
   /* background-color: rgba(0, 0, 0, 0.75); */
@@ -2310,4 +2297,20 @@ body {
 
 .preloader__text:hover::before {
   width: 100%;
+}
+
+.circleBlock_iphone_adaptive {
+  transform: scale(0.7) !important;
+}
+
+.phone_image_iphone_adaptive {
+  width: 30rem !important;
+}
+
+.section__three__col__r_iphone_adaptive {
+  right: -55% !important;
+  top: -5% !important;
+}
+
+.section__three__col__r_iphone_adaptive {
 }
