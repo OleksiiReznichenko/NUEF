@@ -342,6 +342,7 @@ class AppAnimations {
     .to('.disc-block-three', {duration: 1.5, x: 0, y: 0, top: discTop, right: discRight }, 1)
     .to(leftArm, {duration: 2, y: '-350%', rotate: 45, opacity: 0 }, 1)
     .to(rightArm, {duration: 2, y: '550%', rotate: 55, opacity: 0 }, 1)
+    .to('.span-right', {duration: 2, x: 0 }, 1)
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////

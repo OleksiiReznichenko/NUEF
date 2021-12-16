@@ -1212,7 +1212,7 @@ body {
   line-height: 100%;
 }
 
-.block.three .content .col.l .title span {
+.block.three .content .col.l .title .span-colorful {
   position: relative;
 
   background: linear-gradient(90deg, #0400ff 0%, #a40cea 53.13%, #ec0a7a 100%);
@@ -1221,7 +1221,7 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-.block.three .content .col.l .title span::before {
+.block.three .content .col.l .title .span-colorful::before {
   position: absolute;
 
   content: "";
@@ -1237,6 +1237,11 @@ body {
   opacity: 0.4;
 
   z-index: 0;
+}
+
+.span-right {
+  display: inline-block;
+  transform: translateX(7rem);
 }
 
 .block.three .content .col.l .desc {
