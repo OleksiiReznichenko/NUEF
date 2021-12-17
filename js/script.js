@@ -213,9 +213,9 @@ class AppAnimations {
     preloaderTimeline
     // .to('html', {duration: 0, overflowY: 'hidden'}, 0)
     .to('.preloader__image', {duration: 10, rotate: -1080, ease: 'linear'}, 0)
-    .to(preloaderTextFilling, {duration: 2.5, width: '100%', ease: 'linear'}, 0)
-    .to('.preloader', {duration: 1.5, autoAlpha: 0, ease: 'linear', delay: 2}, 0)
-    .to('html', {duration: 0, overflowY: 'visible', delay: 3.5}, 0)
+    .to(preloaderTextFilling, {duration: 3.5, width: '100%', ease: 'linear'}, 0)
+    .to('.preloader', {duration: 1, autoAlpha: 0, ease: 'linear', delay: 4}, 0)
+    .to('html', {duration: 0, overflowY: 'visible', delay: 5}, 0)
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -243,13 +243,13 @@ class AppAnimations {
     .to('.navigation-top__list', {duration: 2.1, x:'-150%'}, 0)
     .to('.navigation-top__button', {duration: 3.25, x:'250%'}, 0)
     .to('.socials-bottom', {duration: 1.2, autoAlpha: 0}, 0)
-    .to('.crowd', {duration: 2.5, y: 0, opacity: 1}, 0)
+    .to('.crowd', {duration: 2.5, bottom: 0, opacity: 1}, 0)
     .to('.header__famous-line', {duration: 2.5, y: 0, opacity: 1}, 0)
     .to('.nuef-collaborations', {duration: 2.5, y: '-160%'}, 0)
     .to('.singer', {duration: 2.5, y: 0, scale: 1}, 0)
     .to('.header__two-lines', {duration: 2.5, y: 0, scale: 1}, 0)
     .to('.smoke', {duration: 2.5, opacity: 1}, 0)
-    .to('.spotlight-center', {duration: 3.25, opacity: .5}, 0)
+    .to('.spotlight-center', {duration: 3.25, opacity: .35}, 0)
     .to('.spotlight-pink', {duration: 3.25, opacity: 1}, 0)
     .to('.spotlight-white', {duration: 2.5, opacity: 1}, 0)
     .to('.spotlight-white-center-bottom', {duration: 2.5, opacity: 1}, 0)
@@ -330,7 +330,7 @@ class AppAnimations {
 
     connectAnimationTimeline
     .to(connectAnimationButton, {duration: .75, rotate: -180, background: 'linear-gradient(90deg, #0400ff 0%, #a40cea 53.13%, #ec0a7a 100%' }, 0)
-    .to(circleBlockBorder, {duration: 1, opacity: 1, border: '0.1rem solid #ffffff' }, 0)
+    .to(circleBlockBorder, {duration: 1, opacity: .2, border: '0.1rem solid #ffffff' }, 0)
     .to(leftArm, {duration: 1, opacity: 1, x: '40%', y: '-20%' }, 0)
     .to(rightArm, {duration: 1, opacity: 1, x: '-40%', y: '20%' }, 0)
     .to('.text-block-three', {duration: 1, autoAlpha: 1 }, 1)
@@ -338,7 +338,7 @@ class AppAnimations {
     .to('.circleBlock__image', {duration: 1, opacity: 1 }, 1)
     .to(connectAnimationButton, {duration: 1.25, rotate: 360, scale: 1, }, 1)
     .to(circleBlock, {duration: 1, scale: 1, opacity: 1 }, 1)
-    .to(circleBlockBorder, {duration: 1, border: '0.75rem solid #ffffff' }, 1)
+    .to(circleBlockBorder, {duration: 1, opacity: 1, border: '0.75rem solid #ffffff' }, 1)
     .to('.disc-block-three', {duration: 1.5, x: 0, y: 0, top: discTop, right: discRight }, 1)
     .to(leftArm, {duration: 2, y: '-350%', rotate: 45, opacity: 0 }, 1)
     .to(rightArm, {duration: 2, y: '550%', rotate: 55, opacity: 0 }, 1)
@@ -361,8 +361,8 @@ class AppAnimations {
     phoneTimeline
     .to('.phone-line', {duration: 2, color: '#232323', ease: 'linear', stagger: 1}, 0)
     .to('.phone-line-line', {duration: 2, width: '110%', ease: 'linear', stagger: 1}, 0)
-    .to('.curved-text--back', {duration: 10, x: '-15%', ease: 'linear'}, 0)
-    .to('.curved-text--front', {duration: 10, x: '15%', ease: 'linear'}, 0)
+    // .to('.curved-text--back', {duration: 10, x: '-15%', ease: 'linear'}, 0)
+    // .to('.curved-text--front', {duration: 10, x: '15%', ease: 'linear'}, 0)
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -383,22 +383,31 @@ class AppAnimations {
 
     studioTimeline
     // .to('.content-block-five', {duration: 10, opacity: 0, ease: 'linear'}, 0)
-    .to('.content-block-five', {duration: 5, filter: 'blur(10px)', ease: 'linear'}, 0)
+    .to('.content-block-five', {duration: 10, filter: 'blur(10px)', opacity: 0, ease: 'linear'}, 0)
     .to('.footer-block-five', {duration: 5, filter: 'blur(10px)', ease: 'linear'}, 0)
     // .add('studioAppear')
     .to('.studio-block-five', {duration: 20, scale: 1, opacity: 1, ease: 'linear'}, 0)
     .to('.studioGlass-block-five', {duration: 20, opacity: 1, ease: 'linear'}, 0)
     .add('contentToTop')
-    .to('.content-block-five', {duration: 10, y: '-100vh', ease: 'linear'}, 'contentToTop')
-    .to('.footer-block-five', {duration: 10, y: '-100vh', ease: 'linear'}, 'contentToTop')
-    .to('.studio-content', {duration: 10, y: '-50%'})
+    .to('.content-block-five', {duration: 10, y: '-40vh', ease: 'linear'}, 'contentToTop')
+    .to('.footer-block-five', {duration: 10, y: '-40vh', ease: 'linear'}, 'contentToTop')
+    .to('.studio-content', {duration: 10, y: '-30vh'})
+    .add('studioContentDisappear')
+    .to('.footer-block-five', {duration: 10, autoAlpha: 0, ease: 'linear'}, 'studioContentDisappear')
+    .to('.studio-content', {duration: 10, autoAlpha: 0, ease: 'linear'}, 'studioContentDisappear')
+    .add('blockContactsAppear')
+    .to('.block-contacts', {duration: 15, autoAlpha: 1, ease: 'linear'}, 'blockContactsAppear')
     .add('studioDisappear')
-    .to('.studio-block-five', {duration: 10, autoAlpha: 0, ease: 'linear'}, 'studioDisappear')
+    .to('.studio-block-five', {duration: 10, scale: 4, autoAlpha: 0, ease: 'linear'}, 'studioDisappear')
     .to('.studioGlass-block-five', {duration: 10, autoAlpha: 0, ease: 'linear'}, 'studioDisappear')
-    .to('.studio-content', {duration: 10, autoAlpha: 0, ease: 'linear'}, 'studioDisappear')
-    .to('.block-contacts', {duration: 15, autoAlpha: 1, ease: 'linear'}, 'studioDisappear')
+    .to('.block-contacts', {duration: 15, filter: 'blur(0px)', ease: 'linear'}, 'studioDisappear')
     .to('.block-contacts__image-disc', {duration: 10, x: '20%', rotate: 360, ease: 'linear'})
+    
   }
 }
 
 new AppAnimations();
+
+Splitting({
+	whitespace: true
+})

@@ -182,7 +182,7 @@ body {
   font-size: 1.6rem;
   line-height: 1.92rem;
 
-  z-index: 3;
+  z-index: 100000;
 }
 
 @media only screen and (max-width: 1050px) {
@@ -433,6 +433,8 @@ body {
   position: absolute;
   top: 0;
   width: 83.75rem;
+  height: 100vh;
+  /* z-index: 2000; */
 }
 
 .block.one .uix {
@@ -445,7 +447,7 @@ body {
   font-family: Bebas Neue;
   font-size: 1.6rem;
   line-height: 1.92rem;
-  z-index: 2;
+  z-index: 200000;
 }
 
 .block.one .uix .line,
@@ -492,6 +494,7 @@ body {
 
 .block.one .title {
   position: relative;
+  z-index: 1000;
 
   display: flex;
   flex-direction: column;
@@ -536,7 +539,7 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  z-index: 1;
+  z-index: 2000;
 }
 
 @media only screen and (max-width: 500px) {
@@ -612,9 +615,9 @@ body {
   height: 100vh;
   width: 100%;
 
-  z-index: 0;
+  z-index: 1100;
 
-  background: url("assets/media/smoke.png") center / cover;
+  background: url("../assets/media/smoke.png") center / cover;
   /* ANIMATION GSAP */
   opacity: 0;
 }
@@ -622,16 +625,16 @@ body {
 .block.one .crowd {
   position: absolute;
 
-  bottom: 0%;
+  bottom: -100vh;
   /* ANIMATION GSAP */
-  transform: translateY(100%);
+  /* transform: translateY(100vh); */
   opacity: 0;
   left: 0;
   width: 100%;
 
   z-index: 15000;
 
-  background: url("assets/media/crowd.webp") center / cover;
+  background: url("../assets/media/crowd.webp") center / cover;
 }
 
 /* @media only screen and (max-width: 700px) and (max-height: 750px) {
@@ -1298,7 +1301,7 @@ body {
   bottom: 0.15rem;
   left: 0.15rem;
 
-  border: 0.1rem solid #ffffff;
+  border: 0.1rem solid #fff;
   border-radius: 50%;
 
   z-index: 1;
@@ -1334,6 +1337,7 @@ body {
 
   font-size: 1.75rem;
   line-height: 100%;
+  font-weight: 400;
 
   background: linear-gradient(90deg, #0400ff 0%, #a40cea 53.13%, #ec0a7a 100%);
   box-shadow: 0 0 2.3rem rgba(0, 0, 0, 0.75);
@@ -1587,13 +1591,12 @@ body {
   font-size: 1rem;
 } */
 
-.curved-text--path {
+/* .curved-text--path {
   fill: white;
   font-size: 12px;
 }
 
 .waving-text-line {
-  /* font-size: 1rem !important; */
   text-transform: uppercase;
   font-weight: 200;
   position: absolute;
@@ -1620,7 +1623,6 @@ body {
 
 @media only screen and (max-width: 1300px) {
   .waving-text-line {
-    /* left: -100rem; */
     font-size: 15px;
     height: 650px;
     width: 2000px;
@@ -1674,7 +1676,7 @@ body {
   .waving-text-line-back {
     left: -150%;
   }
-}
+} */
 
 /* block five */
 
@@ -1683,6 +1685,7 @@ body {
   position: relative;
   /* height: 70rem !important; */
   margin-bottom: 0;
+  z-index: 10000;
 }
 
 .block.five .footer {
@@ -1704,7 +1707,7 @@ body {
 .block.five .footer .image .img {
   height: 100%;
   width: 100%;
-  background: url("assets/media/fiveBlockImage.png") center / cover;
+  background: url("../assets/media/fiveBlockImage.png") center / cover;
   mix-blend-mode: multiply;
 }
 
@@ -1794,16 +1797,16 @@ body {
 }
 
 .studio {
-  background: url("assets/media/studio.webp") center / cover;
+  background: url("../assets/media/studio.webp") center / cover;
   z-index: 2;
   transform: scale(3);
-  z-index: 10;
+  z-index: 5500;
 }
 
 .studioGlass {
-  background: url("assets/media/studioGlass.png") center / cover;
+  background: url("../assets/media/studioGlass.png") center / cover;
   mix-blend-mode: screen;
-  z-index: 1;
+  z-index: 5000;
 }
 
 .block.five .studio-content {
@@ -1811,7 +1814,7 @@ body {
   top: 50%;
   left: 51%;
   transform: translate(-50%, 300%);
-  z-index: 5;
+  z-index: 5100;
   width: 75rem;
 
   font-weight: 900;
@@ -1865,6 +1868,7 @@ body {
 
   opacity: 0;
   visibility: hidden;
+  filter: blur(10px);
 }
 
 /* .block-contacts__content {
@@ -1964,7 +1968,10 @@ body {
   border: 1px solid white;
   border-radius: 5rem;
   padding: 0.6rem 9rem;
-  transform: translateY(5rem);
+}
+
+.block-contacts__button:hover {
+  font-weight: inherit !important;
 }
 
 /* block footer */
@@ -2299,9 +2306,9 @@ body {
   border: 1px solid #ffffff;
   box-sizing: border-box;
   border-radius: 100rem;
-  background-color: transparent;
   padding: 0.75rem 7rem;
   margin-top: 5rem;
+  /* background-color: transparent;
   display: inline-block;
   position: relative;
   transition: all 0.3s ease;
@@ -2311,10 +2318,11 @@ body {
     transparent 50%,
     #fff 50%
   );
-  background-size: 250%;
+  background-size: 250%; */
 }
-
-.registration-form__form__button::after {
+/* 
+.registration-form__form__button::after,
+.block-contacts__button::after {
   content: "";
   display: inline-block;
   height: 100%;
@@ -2343,7 +2351,7 @@ body {
   background-position: 100%;
   color: #000;
   box-shadow: 0 1rem 2rem rgba(255, 255, 255, 0.1);
-}
+} */
 
 .registration-form__form__input-img-group {
   position: relative;
@@ -2427,7 +2435,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100000;
+  z-index: 1000000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2476,6 +2484,51 @@ body {
   width: 100%;
 }
 
+.button-background-animated {
+  background-color: transparent;
+  display: inline-block;
+  position: relative;
+  transition: all 0.3s ease;
+  background-image: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 50%,
+    #fff 50%
+  );
+  background-size: 250%;
+}
+
+.button-background-animated::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.button-background-animated:hover {
+  transform: scale(1.05) translateY(-3px);
+  background-position: 100%;
+  color: #000;
+  box-shadow: 0 1rem 2rem rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+}
+.button-background-animated:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+.button-background-animated:active {
+  transform: translateY(-1px);
+  background-position: 100%;
+  color: #000;
+  box-shadow: 0 1rem 2rem rgba(255, 255, 255, 0.1);
+}
+
 .circleBlock_iphone_adaptive {
   transform: scale(0.7) !important;
 }
@@ -2497,4 +2550,56 @@ body {
 
 .block-contacts__text_iphone_adaptive {
   top: 75% !important;
+}
+
+/* .main {
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000000000000;
+  color: white;
+} */
+
+.main-h2 {
+  /* font-size: 10px; */
+  text-transform: uppercase;
+  /* width: 100%; */
+  height: 20rem;
+  position: absolute;
+  /* right: 60rem; */
+  white-space: nowrap;
+}
+
+.main-h2--front {
+  bottom: 0;
+  left: 10%;
+}
+
+.main-h2--back {
+  bottom: 10%;
+  /* color: aquamarine; */
+  left: 10%;
+  opacity: 0.35;
+}
+
+.char {
+  --offset: calc(var(--char-index) * 2rem);
+  offset-path: path("M.4 84.1s127.4 188 267.7 0 247.3 0 247.3 0");
+  offset-distance: var(--offset);
+  position: absolute;
+  animation: move 1500ms infinite alternate forwards var(--delay, 0ms);
+}
+
+.main-h2--back .char {
+  --delay: calc(var(--char-index) * 50ms);
+}
+
+@keyframes move {
+  100% {
+    offset-distance: calc(var(--offset) + 12rem);
+  }
 }
