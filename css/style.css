@@ -278,27 +278,25 @@ body {
   margin-right: 3rem !important;
 }
 
-.spotlights__container {
+/* .spotlights__container {
   position: absolute;
   top: 0;
   left: 0;
   height: 100vh;
   width: 100%;
-
-  opacity: 0;
-}
+} */
 
 .block.one .spotlights-white-center {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
   z-index: 10000;
   width: 60rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  /* opacity: 0; */
+  opacity: 0;
 }
 
 .block.one .spotlights-white-center .l {
@@ -321,7 +319,7 @@ body {
   justify-content: space-between;
   z-index: 10000;
 
-  /* opacity: 0; */
+  opacity: 0;
 }
 
 .spotlight-white {
@@ -367,7 +365,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
 
-  /* opacity: 0; */
+  opacity: 0;
 }
 
 .spotlight-pink {
@@ -398,59 +396,6 @@ body {
   .spotlights-pink {
     left: 46%;
   }
-}
-
-.block.one .spotlights .sec {
-  position: relative;
-
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.block.one .spotlights .sec:first-child {
-  margin-left: 9%;
-}
-
-.block.one .spotlights .sec:last-child {
-  margin-right: 9%;
-}
-
-.block.one .spotlights .sec .w {
-  position: absolute;
-
-  top: -10%;
-}
-
-.block.one .spotlights .sec.l .w {
-  /* ANIMATION GSAP */
-  top: -20%;
-  /* transform: translateX(-82%) rotate(40deg); */
-  /* transform: translateX(-82%) translateY(-30%) rotate(90deg); */
-  transform-origin: right;
-  opacity: 0;
-}
-
-.block.one .spotlights .sec.cl .w {
-  /* ANIMATION GSAP */
-  /* transform: translateX(-45%) rotate(20deg); */
-  /* transform: translateX(-45%) translateY(-50%) rotate(90deg); */
-  opacity: 0;
-}
-
-.block.one .spotlights .sec.cr .w {
-  /* ANIMATION GSAP */
-  /* transform: translateX(45%) rotate(-20deg); */
-  /* transform: translateX(45%) translateY(-50%) rotate(-90deg); */
-  opacity: 0;
-}
-
-.block.one .spotlights .sec.r .w {
-  /* ANIMATION GSAP */
-  top: -20%;
-  /* transform: translateX(82%) rotate(-40deg); */
-  /* transform: translateX(82%) translateY(-40%) rotate(-90deg); */
-  opacity: 0;
 }
 
 .block.one .spotlight.c {
@@ -650,10 +595,10 @@ body {
   position: absolute;
 
   bottom: 0;
-  transform: translateY(100vh);
+  transform: translateY(70vh);
   /* ANIMATION GSAP */
   /* transform: translateY(100vh); */
-  opacity: 0;
+  /* opacity: 0; */
   left: 0;
   width: 100%;
 

@@ -244,23 +244,22 @@ class AppAnimations {
     .to('.navigation-top__list', {duration: 2.1, x:'-150%'}, 0)
     .to('.navigation-top__button', {duration: 3.25, x:'250%'}, 0)
     .to('.socials-bottom', {duration: 1.2, autoAlpha: 0}, 0)
-    .to('.crowd', {duration: 2.5, y: '25vh', opacity: 1}, 0)
+    // .to('.crowd', {duration: 2.5, y: '25vh', opacity: 1}, 0)
+    .to('.crowd', {duration: 2.5, y: '25vh'}, 0)
     .to('.header__famous-line', {duration: 2.5, y: 0, opacity: 1}, 0)
     .to('.nuef-collaborations', {duration: 2.5, y: '-160%'}, 0)
     .to('.singer', {duration: 2.5, y: 0, scale: 1}, 0)
     .to('.header__two-lines', {duration: 2.5, y: 0, scale: 1}, 0)
     .to('.smoke', {duration: 2.5, opacity: 1}, 0)
     .to('.spotlight-center', {duration: 3.25, opacity: .35}, 0)
-    .to('.spotlights__container', {duration: 2.5, opacity: 1}, 0)
-    // .to('.spotlights-pink', {duration: 3.25, opacity: 1}, 0)
-    // .to('.spotlights-white', {duration: 2.5, opacity: 1}, 0)
-    // .to('.spotlights-white-center', {duration: 2.5, opacity: 1}, 0)
+
+    .to('.spotlights-pink', {duration: 3.25, opacity: 1}, 0)
+    .to('.spotlights-white', {duration: 2.5, opacity: 1}, 0)
+    .to('.spotlights-white-center', {duration: 2.5, opacity: 1}, 0)
     .to('.spotlight-white-left', {duration: 2.5, y: 0, x: '-82%', rotate: rotateSides }, 0)
     .to('.spotlight-white-center-left', {duration: 2.5, x: '-45%', rotate: rotateCenter }, 0)
     .to('.spotlight-white-center-right', {duration: 2.5, x: '45%', rotate: -rotateCenter }, 0)
     .to('.spotlight-white-right', {duration: 2.5, y: 0, x: '82%', rotate: -rotateSides }, 0)
-    // .to('.spotlight-white-center-bottom-left', {duration: 2.5, rotate: -rotateCenterBottom }, 0)
-    // .to('.spotlight-white-center-bottom-right', {duration: 2.5, rotate: rotateCenterBottom }, 0)
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -289,7 +288,8 @@ class AppAnimations {
 
     let connectAnimationIndicator = 3;
     // let discTop = '50%', discRight = '0%';
-    let discTop = '0%', discRight = '100%';
+    // let discTop = '0%', discRight = '100%';
+    let discTop = '0%', discRight = '40vw';
 
     if (window.outerWidth < 900) {
       // discRight = '-10%';
