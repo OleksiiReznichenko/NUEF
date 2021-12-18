@@ -17,27 +17,20 @@
             @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Pragati+Narrow:wght@400;700&display=swap');
             @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
         </style>
-        <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script>
+        <!-- <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script> -->
 
-        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.5.0.js"></script> -->
     </head> 
 
     <body>
-        <!-- <main class="main">
-            <h2 class="main-h2 main-h2--front" data-splitting>
-                Nuef // Nuef // Nuef // Nuef
-            </h2>
-            <h2 class="main-h2 main-h2--back" data-splitting>
-                Nuef // Nuef // Nuef // Nuef
-            </h2>
-        </main> -->
-
-
-
-
         <div class="preloader">
             <div class="preloader__center">
                 <img src="assets/media/colorfulDisc.png" alt="" class="preloader__image">
+                <!-- <picture class="preloader__image">
+                    <source srcset="assets/media/colorfulDisc.webp" type="image/webp">
+                    <source srcset="assets/media/colorfulDisc.png" type="image/png">
+                    <img src="assets/media/colorfulDisc.png">
+                </picture> -->
                 <span class="preloader__text">NUEF</span>
             </div>
         </div>
@@ -118,31 +111,44 @@
                 <div class="line header__two-lines">MAKING</div>
                 <div class="line header__two-lines">BRANDS</div>
                 <div class="header__famous-line line z">FAMOUS</div>
-                <img src="assets/media/singer.png" class="singer">
+                <!-- <img src="assets/media/singer.png" class="singer"> -->
+                <picture class="singer">
+                    <source srcset="assets/media/singer.webp" type="image/webp">
+                    <source srcset="assets/media/singer.png" type="image/png">
+                    <img src="assets/media/singer.png">
+                </picture>
+                
                 <div class="circle"></div>
             </div>
-            <div class="spotlights-white">
-                <img src="assets/media/spotlightSmallW.png" class="w spotlight-white spotlight-white-left">
-                <img src="assets/media/spotlightSmallW.png" class="w spotlight-white spotlight-white-center-left">
-                <img src="assets/media/spotlightSmallW.png" class="w spotlight-white spotlight-white-center-right">
-                <img src="assets/media/spotlightSmallW.png" class="w spotlight-white spotlight-white-right">
-            </div>
-
-            <div class="spotlights-pink">
-                <img src="assets/media/spotlightSmallP.png" class="p spotlight-pink">
-                <img src="assets/media/spotlightSmallP.png" class="p spotlight-pink">
-                <img src="assets/media/spotlightSmallP.png" class="p spotlight-pink">
-                <img src="assets/media/spotlightSmallP.png" class="p spotlight-pink">
-            </div>
-
-            <div class="spotlights-white-center">
-                <img src="assets/media/spotlightSmallW.png" class="l spotlight-white-center-bottom spotlight-white-center-bottom-left">
-                <img src="assets/media/spotlightSmallW.png" class="r spotlight-white-center-bottom spotlight-white-center-bottom-right">
+            <div class="spotlights__container">
+                <div class="spotlights-white">
+                    <img src="assets/media/spotlightSmallW.png" class="w spotlight-white spotlight-white-left">
+                    <img src="assets/media/spotlightSmallW.png" class="w spotlight-white spotlight-white-center-left">
+                    <img src="assets/media/spotlightSmallW.png" class="w spotlight-white spotlight-white-center-right">
+                    <img src="assets/media/spotlightSmallW.png" class="w spotlight-white spotlight-white-right">
+                </div>
+    
+                <div class="spotlights-pink">
+                    <img src="assets/media/spotlightSmallP.png" class="p spotlight-pink">
+                    <img src="assets/media/spotlightSmallP.png" class="p spotlight-pink">
+                    <img src="assets/media/spotlightSmallP.png" class="p spotlight-pink">
+                    <img src="assets/media/spotlightSmallP.png" class="p spotlight-pink">
+                </div>
+    
+                <div class="spotlights-white-center">
+                    <img src="assets/media/spotlightSmallW.png" class="l spotlight-white-center-bottom spotlight-white-center-bottom-left">
+                    <img src="assets/media/spotlightSmallW.png" class="r spotlight-white-center-bottom spotlight-white-center-bottom-right">
+                </div>
             </div>
 
             <img src="assets/media/spotlightTopCenter.png" class="spotlight c spotlight-center">
 
-            <img src="assets/media/crowd.png" class="crowd">
+            <!-- <img src="assets/media/crowd.png" class="crowd"> -->
+            <picture class="crowd">
+                <source srcset="assets/media/crowd.webp" type="image/webp">
+                <source srcset="assets/media/crowd.png" type="image/png">
+                <img src="assets/media/crowd.png">
+            </picture>
             <div class="smoke"></div>
         </div>
 
@@ -194,10 +200,20 @@
             </div>
             <div class="musicCircle left">
                 <img class="musicCircle-big" src="assets/media/musicCircle.png">
+                <!-- <picture class="musicCircle-big">
+                    <source srcset="assets/media/musicCircle.webp" type="image/webp">
+                    <source srcset="assets/media/musicCircle.png" type="image/png">
+                    <img src="assets/media/musicCircle.png">
+                </picture> -->
                 <div class="bg"></div>
             </div>
             
             <img src="assets/media/musicCircleBottomRight.png" class="musicCircle-small musicCircle right">
+            <!-- <picture class="musicCircle-small musicCircle right">
+                <source srcset="assets/media/musicCircleBottomRight.webp" type="image/webp">
+                <source srcset="assets/media/musicCircleBottomRight.png" type="image/png">
+                <img src="assets/media/musicCircleBottomRight.png">
+            </picture> -->
             <img src="assets/media/spotlightTopRight.png" class="spotlight">
         </div>
 
@@ -214,13 +230,28 @@
                 <div class="col r section__three__col__r disc-block-three">
                     <div class="circleBlock">
                         <img class="circleBlock__image" src="assets/media/musicRecord.png">
+                        <!-- <picture class="circleBlock__image">
+                            <source srcset="assets/media/musicRecord.webp" type="image/webp">
+                            <source srcset="assets/media/musicRecord.png" type="image/png">
+                            <img src="assets/media/musicRecord.png">
+                        </picture> -->
                         <div class="connect-animation-button center">CONNECT</div>
                     </div>
                 </div>
                 <img src="assets/media/spotlightTopLeft.png" class="spotlight spotlight-block-three">
             </div>
-            <img src="assets/media/leftArm.png" alt="" class="arm left-arm">
-            <img src="assets/media/rightArm.png" alt="" class="arm right-arm">
+            <!-- <img src="assets/media/leftArm.png" alt="" class="arm left-arm"> -->
+            <picture class="arm left-arm">
+                <source srcset="assets/media/leftArm.webp" type="image/webp">
+                <source srcset="assets/media/leftArm.png" type="image/png">
+                <img src="assets/media/leftArm.png">
+            </picture>
+            <!-- <img src="assets/media/rightArm.png" alt="" class="arm right-arm"> -->
+            <picture class="arm right-arm">
+                <source srcset="assets/media/rightArm.webp" type="image/webp">
+                <source srcset="assets/media/rightArm.png" type="image/png">
+                <img src="assets/media/rightArm.png">
+            </picture>
         </div>
 
         <div class="block four">
@@ -236,7 +267,12 @@
                         <div class="phone-line line"><span class="phone-line-line"></span>CHECK MAIL</div>
                     </div>
                     
-                    <img class="phone_image" src="assets/media/phone.png">               
+                    <!-- <img class="phone_image" src="assets/media/phone.png"> -->
+                    <picture class="phone_image">
+                        <source srcset="assets/media/phone.webp" type="image/webp">
+                        <source srcset="assets/media/phone.png" type="image/png">
+                        <img src="assets/media/phone.png">
+                    </picture>
                 </div>
                 <div class="col r">
                     <div class="title">FORGET ABOUT ROUTINE.<br>LEAVE IT TO <span>NUEF</span></div>
@@ -376,6 +412,11 @@
                             <span class="">Nuef</span>
                         </div>
                         <img src="assets/media/discWithText.png" alt="" class="block-contacts__image-disc">
+                        <!-- <picture class="block-contacts__image-disc">
+                            <source srcset="assets/media/discWithText.webp" type="image/webp">
+                            <source srcset="assets/media/discWithText.png" type="image/png">
+                            <img src="assets/media/discWithText.png">
+                        </picture> -->
                     </div>
                     <div class="block-contacts__text">
                         <h1 class="block-contacts__heading">Contact Us</h1>

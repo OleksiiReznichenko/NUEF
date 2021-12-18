@@ -251,9 +251,10 @@ class AppAnimations {
     .to('.header__two-lines', {duration: 2.5, y: 0, scale: 1}, 0)
     .to('.smoke', {duration: 2.5, opacity: 1}, 0)
     .to('.spotlight-center', {duration: 3.25, opacity: .35}, 0)
-    .to('.spotlight-pink', {duration: 3.25, opacity: 1}, 0)
-    .to('.spotlight-white', {duration: 2.5, opacity: 1}, 0)
-    .to('.spotlight-white-center-bottom', {duration: 2.5, opacity: 1}, 0)
+    .to('.spotlights__container', {duration: 2.5, opacity: 1}, 0)
+    // .to('.spotlights-pink', {duration: 3.25, opacity: 1}, 0)
+    // .to('.spotlights-white', {duration: 2.5, opacity: 1}, 0)
+    // .to('.spotlights-white-center', {duration: 2.5, opacity: 1}, 0)
     .to('.spotlight-white-left', {duration: 2.5, y: 0, x: '-82%', rotate: rotateSides }, 0)
     .to('.spotlight-white-center-left', {duration: 2.5, x: '-45%', rotate: rotateCenter }, 0)
     .to('.spotlight-white-center-right', {duration: 2.5, x: '45%', rotate: -rotateCenter }, 0)
@@ -312,7 +313,7 @@ class AppAnimations {
 
       if (isIOSDevice()) {
         // discRight = '-50%'
-          discRight = '50%'
+          discRight = '65%'
       }
     }
 
@@ -419,6 +420,6 @@ class AppAnimations {
 
 new AppAnimations();
 
-Splitting({
-	whitespace: true
-})
+// Splitting({
+// 	whitespace: true
+// })
