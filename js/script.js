@@ -83,7 +83,8 @@ const preloaderTextFilling = CSSRulePlugin.getRule('.preloader__text:before');
 class AppAnimations {
   constructor() {
 
-
+    // gsap.ticker.lagSmoothing(1000, 16);
+    // gsap.ticker.fps(30);
     this.fixedNav();
     this.preloaderAnimation();
     this.headerAnimation();
@@ -227,7 +228,7 @@ class AppAnimations {
         start: "top 0%",
         end: '+=1000px',
         scrub: 1,
-        pin: true,
+        pin: ".one",
       }
     });
 
@@ -243,7 +244,7 @@ class AppAnimations {
     .to('.navigation-top__list', {duration: 2.1, x:'-150%'}, 0)
     .to('.navigation-top__button', {duration: 3.25, x:'250%'}, 0)
     .to('.socials-bottom', {duration: 1.2, autoAlpha: 0}, 0)
-    .to('.crowd', {duration: 2.5, bottom: '-25vh', opacity: 1}, 0)
+    .to('.crowd', {duration: 2.5, y: '25vh', opacity: 1}, 0)
     .to('.header__famous-line', {duration: 2.5, y: 0, opacity: 1}, 0)
     .to('.nuef-collaborations', {duration: 2.5, y: '-160%'}, 0)
     .to('.singer', {duration: 2.5, y: 0, scale: 1}, 0)
@@ -286,25 +287,32 @@ class AppAnimations {
     })
 
     let connectAnimationIndicator = 3;
-    let discTop = '50%', discRight = '0%';
+    // let discTop = '50%', discRight = '0%';
+    let discTop = '0%', discRight = '100%';
 
     if (window.outerWidth < 900) {
-      discRight = '-10%';
+      // discRight = '-10%';
+      discRight = '90%';
     }
     if (window.outerWidth < 700) {
-      discTop = '70%'
+      // discTop = '70%'
+      discTop = '25%'
     }
     if (window.outerWidth < 600) {
-      discRight = '-20%'
+      // discRight = '-20%'
+      discRight = '80%'
     }
     if (window.outerWidth < 500) {
-      discRight = '-33%'
+      // discRight = '-33%'
+      discRight = '75%'
     }
     if (window.outerWidth < 450) {
-      discRight = '-25%'
+      // discRight = '-25%'
+      discRight = '75%'
 
       if (isIOSDevice()) {
-        discRight = '-50%'
+        // discRight = '-50%'
+          discRight = '50%'
       }
     }
 
@@ -324,7 +332,7 @@ class AppAnimations {
         start: "top 0%",
         end: '+=1500px',
         scrub: 1,
-        pin: true,
+        pin: ".three",
       }
     })
 
@@ -339,7 +347,8 @@ class AppAnimations {
     .to(connectAnimationButton, {duration: 1.25, rotate: 360, scale: 1, }, 1)
     .to(circleBlock, {duration: 1, scale: 1, opacity: 1 }, 1)
     .to(circleBlockBorder, {duration: 1, opacity: 1, border: '0.75rem solid #ffffff' }, 1)
-    .to('.disc-block-three', {duration: 1.5, x: 0, y: 0, top: discTop, right: discRight }, 1)
+    // .to('.disc-block-three', {duration: 1.5, x: 0, y: 0, top: discTop, right: discRight }, 1)
+    .to('.disc-block-three', {duration: 1.5, x: discRight, y: discTop }, 1)
     .to(leftArm, {duration: 2, y: '-350%', rotate: 45, opacity: 0 }, 1)
     .to(rightArm, {duration: 2, y: '550%', rotate: 55, opacity: 0 }, 1)
     .to('.span-right', {duration: 2, x: 0 }, 1)
@@ -354,7 +363,7 @@ class AppAnimations {
         start: "top 0%",
         end: '+=1000px',
         scrub: 1,
-        pin: true,
+        pin: ".four",
       }
     });
 
@@ -377,14 +386,15 @@ class AppAnimations {
         start: "top 0%",
         end: '+=4000px',
         scrub: 1,
-        pin: true,
+        pin: ".five",
       }
     });
 
     studioTimeline
-    // .to('.content-block-five', {duration: 10, opacity: 0, ease: 'linear'}, 0)
     .to('.content-block-five', {duration: 10, filter: 'blur(10px)', opacity: 0, ease: 'linear'}, 0)
+    // .to('.content-block-five', {duration: 10, opacity: 0, ease: 'linear'}, 0)
     .to('.footer-block-five', {duration: 5, filter: 'blur(10px)', ease: 'linear'}, 0)
+    // .to('.footer-block-five', {duration: 5, ease: 'linear'}, 0)
     .to('.footer-block-five', {duration: 10, y: '-40vh', ease: 'linear'}, 0)
     // .add('studioAppear')
     .to('.studio-block-five', {duration: 20, scale: 1, opacity: 1, ease: 'linear'}, 0)
@@ -401,6 +411,7 @@ class AppAnimations {
     .to('.studio-block-five', {duration: 10, scale: 4, autoAlpha: 0, ease: 'linear'}, 'studioDisappear')
     .to('.studioGlass-block-five', {duration: 10, autoAlpha: 0, ease: 'linear'}, 'studioDisappear')
     .to('.block-contacts', {duration: 15, filter: 'blur(0px)', ease: 'linear'}, 'studioDisappear')
+    // .to('.block-contacts', {duration: 15, ease: 'linear'}, 'studioDisappear')
     .to('.block-contacts__image-disc', {duration: 10, x: '20%', rotate: 360, ease: 'linear'})
     
   }
