@@ -109,7 +109,11 @@ class AppAnimations {
   }
 
   fixedNav() {
+    let clickIndicator = false;
     aboutLink.addEventListener('click', () => {
+      if (clickIndicator) return;
+      clickIndicator = true;
+
       blockTwo.scrollIntoView({
         behavior: 'smooth'
       });
@@ -117,8 +121,16 @@ class AppAnimations {
         el.classList.remove('a')
       })
       aboutLink.classList.add('a')
+
+      if (!aboutLink.classList.contains('a')) return;
+      setTimeout(() => {
+        clickIndicator = false;
+      }, 1500);
     })
     artistsLink.addEventListener('click', () => {
+      if (clickIndicator) return;
+      clickIndicator = true;
+
       blockThree.scrollIntoView({
         behavior: 'smooth'
       });
@@ -126,8 +138,16 @@ class AppAnimations {
         el.classList.remove('a')
       })
       artistsLink.classList.add('a')
+
+      if (!artistsLink.classList.contains('a')) return;
+      setTimeout(() => {
+        clickIndicator = false;
+      }, 1500);
     })
     recordsLink.addEventListener('click', () => {
+      if (clickIndicator) return;
+      clickIndicator = true;
+
       blockFour.scrollIntoView({
         behavior: 'smooth'
       });
@@ -135,8 +155,16 @@ class AppAnimations {
         el.classList.remove('a')
       })
       recordsLink.classList.add('a')
+
+      if (!recordsLink.classList.contains('a')) return;
+      setTimeout(() => {
+        clickIndicator = false;
+      }, 1500);
     })
     dailyLink.addEventListener('click', () => {
+      if (clickIndicator) return;
+      clickIndicator = true;
+
       blockFive.scrollIntoView({
         behavior: 'smooth'
       });
@@ -144,6 +172,11 @@ class AppAnimations {
         el.classList.remove('a')
       })
       dailyLink.classList.add('a')
+
+      if (!dailyLink.classList.contains('a')) return;
+      setTimeout(() => {
+        clickIndicator = false;
+      }, 1500);
     })
 
     const observerOptions = {
@@ -235,17 +268,18 @@ class AppAnimations {
     let rotateSides = 40;
     let rotateCenter = 20;
     let rotateCenterBottom = 140;
+    let crowdY = '25vh';
 
-    // if (window.outerWidth < 800) {
-    //   rotateSides = 30;
-    // }
+    if (window.outerWidth > 2600) {
+      crowdY = '15vh';
+    }
     
     headerTimeline
     .to('.navigation-top__list', {duration: 2.1, x:'-150%'}, 0)
     .to('.navigation-top__button', {duration: 3.25, x:'250%'}, 0)
     .to('.socials-bottom', {duration: 1.2, autoAlpha: 0}, 0)
     // .to('.crowd', {duration: 2.5, y: '25vh', opacity: 1}, 0)
-    .to('.crowd', {duration: 2.5, y: '25vh'}, 0)
+    .to('.crowd__container', {duration: 2.5, y: crowdY}, 0)
     .to('.header__famous-line', {duration: 2.5, y: 0, opacity: 1}, 0)
     .to('.nuef-collaborations', {duration: 2.5, y: '-160%'}, 0)
     .to('.singer', {duration: 2.5, y: 0, scale: 1}, 0)
@@ -297,7 +331,8 @@ class AppAnimations {
     }
     if (window.outerWidth < 700) {
       // discTop = '70%'
-      discTop = '25%'
+      // discTop = '25%'
+      discTop = '70%'
     }
     if (window.outerWidth < 600) {
       // discRight = '-20%'
@@ -313,8 +348,13 @@ class AppAnimations {
 
       if (isIOSDevice()) {
         // discRight = '-50%'
-          discRight = '65%'
+        discRight = '65%'
       }
+    }
+    if (window.outerWidth > 2500) {
+      // discRight = '-25%'
+      discRight = '60vw'
+      discTop = '20%'
     }
 
     function connectAnimation() {
@@ -394,7 +434,7 @@ class AppAnimations {
     studioTimeline
     .to('.content-block-five', {duration: 10, filter: 'blur(10px)', opacity: 0, ease: 'linear'}, 0)
     // .to('.content-block-five', {duration: 10, opacity: 0, ease: 'linear'}, 0)
-    .to('.footer-block-five', {duration: 5, filter: 'blur(10px)', ease: 'linear'}, 0)
+    .to('.footer-block-five', {duration: 5, filter: 'blur(15px)', ease: 'linear'}, 0)
     // .to('.footer-block-five', {duration: 5, ease: 'linear'}, 0)
     .to('.footer-block-five', {duration: 10, y: '-40vh', ease: 'linear'}, 0)
     // .add('studioAppear')
