@@ -411,8 +411,8 @@ class AppAnimations {
     phoneTimeline
     .to('.phone-line', {duration: 2, color: '#232323', ease: 'linear', stagger: 1}, 0)
     .to('.phone-line-line', {duration: 2, width: '110%', ease: 'linear', stagger: 1}, 0)
-    // .to('.curved-text--back', {duration: 10, x: '-15%', ease: 'linear'}, 0)
-    // .to('.curved-text--front', {duration: 10, x: '15%', ease: 'linear'}, 0)
+    .to('.waving-text-line-back', {duration: 10, x: '-15%', ease: 'linear'}, 0)
+    .to('.waving-text-line-front', {duration: 10, x: '15%', ease: 'linear'}, 0)
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -459,7 +459,3 @@ class AppAnimations {
 }
 
 new AppAnimations();
-
-// Splitting({
-// 	whitespace: true
-// })
