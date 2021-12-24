@@ -26,8 +26,6 @@ const blockContactText = document.querySelector('.block-contacts__text');
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // IPHONE ADDAPTIVE
 
-
-
 function isIOSDevice() {
     return !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 }
@@ -44,6 +42,9 @@ function iphoneAdaptive(iphoneIndicator) {
 
 iphoneAdaptive(isIOSDevice());
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// DISABLE EMPTY LINKS CLICK
+
 function linksPreventDefault() {
   const links = Array.from(document.querySelectorAll('a[href="#"]'));
   links.forEach(function (el) {
@@ -53,6 +54,29 @@ function linksPreventDefault() {
   });
 }
 linksPreventDefault();
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// DISABLE HOVER EVENT ON SCROLL
+
+const ENABLE_HOVER_DELAY = 500;  
+let timer;
+
+window.addEventListener('scroll', function() {
+  const bodyClassList = document.body.classList;
+  // clear previous timeout function
+  clearTimeout(timer);
+    
+  if (!bodyClassList.contains('disable-hover')) {
+    // add the disable-hover class to the body element
+    bodyClassList.add('disable-hover');
+  }
+        
+  timer = setTimeout(function() {
+    // remove the disable-hover class after a timeout of 500 millis
+    bodyClassList.remove('disable-hover');
+  }, ENABLE_HOVER_DELAY);
+  
+}, false);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // SMOTH SCROLL

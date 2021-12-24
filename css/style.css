@@ -164,6 +164,11 @@ body {
   position: relative;
 }
 
+.disable-hover,
+.disable-hover * {
+  pointer-events: none !important;
+}
+
 .block {
   position: relative;
   height: 100vh;
