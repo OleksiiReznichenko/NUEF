@@ -595,7 +595,7 @@ body {
 
   z-index: 1100;
 
-  background: url("../assets/media/smoke.png") center / cover;
+  background: url("../assets/media/smoke1500.png") center / cover;
   /* ANIMATION GSAP */
   opacity: 0;
 }
