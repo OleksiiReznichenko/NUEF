@@ -97,6 +97,25 @@ SmoothScroll({
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ANIMATIONS
 
+// const textPaths = Array.from(document.querySelectorAll(".curved-text--path"));
+
+// const h = document.documentElement, 
+//       b = document.body,
+//       st = 'scrollTop',
+//       sh = 'scrollHeight';
+
+// document.addEventListener("scroll", e => {
+//   let percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+//   textPaths.forEach((el, i) => {
+//     if (i === 0) {
+//       el.setAttribute("startOffset", (-percent * 40) + 1200)
+//     }
+//     if (i === 1) {
+//       el.setAttribute("startOffset", (-percent * 35) + 1100)
+//     }
+//   })
+// });
+
 gsap.registerPlugin(ScrollTrigger);
 
 gsap.registerPlugin(CSSRulePlugin);
@@ -435,8 +454,8 @@ class AppAnimations {
     phoneTimeline
     .to('.phone-line', {duration: 2, color: '#232323', ease: 'linear', stagger: 1}, 0)
     .to('.phone-line-line', {duration: 2, width: '110%', ease: 'linear', stagger: 1}, 0)
-    .to('.waving-text-line-back', {duration: 10, x: '-15%', ease: 'linear'}, 0)
-    .to('.waving-text-line-front', {duration: 10, x: '15%', ease: 'linear'}, 0)
+    // .to('.waving-text-line-back', {duration: 10, x: '-15%', ease: 'linear'}, 0)
+    // .to('.waving-text-line-front', {duration: 10, x: '15%', ease: 'linear'}, 0)
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
