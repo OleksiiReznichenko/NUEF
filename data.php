@@ -1,16 +1,24 @@
 <?php
-$email = $_POST['email'];
-$social = $_POST['social'];
-$message = $_POST['message'];
+if(isset($_POST['submit'])){
+    $to = "raleksey2005@gmail.com";
+    $subject = "Form to email message";
 
-$to = 'raleksey2005@gmail.com';
-$subject = 'Mail from Website';
-$txt = "Email = ". $email ."\r\n Social = ". $social ."\r\n Message = ". $message;
 
-$headers = 'From: NUEF';
+    $email = $_POST['email'];
+    $social = $_POST['social'];
+    $message = $_POST['message'];
+    $headers = 'From: '.$email . "\r\n";
 
-if ($email != NULL) {
-    mail($to, $subject, $txt, $headers)
+
+    $body = "Email : ".$email. "\r\n" .
+    		"Social : ".$social. "\r\n" .
+    		"Message : " . $message;
+    if(mail($to, $subject, $body, $headers)){
+        echo "Mail Sent!";
+    }else{
+         echo "Failed To Send Mail";
+    }
+    header('location:index.html');
 }
 
 ?>
