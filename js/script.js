@@ -25,51 +25,41 @@ const blockContactImageContainer = document.querySelector('.block-contacts__imag
 const blockContactText = document.querySelector('.block-contacts__text');
 
 
-// setInterval(() => {
-//   // let indicator = false;
-  wavingTextBackSpans.forEach((el, i) => {
-    el.style.animationDelay = `${0.075 * i}s`
-  })
-  wavingTextFrontSpans.forEach((el, i) => {
-    el.style.animationDelay = `${0.075 * i}s`
-  })
-// }, 8000);
-
-const observerLinesOptions = {
-  root: null,
-  rootMargin: '200px',
-  threshold: 0,
-};
-
-function observerLinesCallback(entries, observer) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      console.log('ADD')
-      wavingTextBackSpans.forEach((el, i) => {
-        el.style.animation = 'jumbBottom 1.5s infinite';
-        el.style.animationDelay = `${0.05 * i}s`
-      })
-      wavingTextFrontSpans.forEach((el, i) => {
-        el.style.animation = 'jumb 1.5s infinite';
-        el.style.animationDelay = `${0.05 * i}s`
-      })
-    } else {
-      console.log('REMOVE')
-      wavingTextBackSpans.forEach((el, i) => {
-        el.style.animation = 'none';
-      })
-      wavingTextFrontSpans.forEach((el, i) => {
-        el.style.animation = 'none';
-      })
-    }
-  })
-};
-
-const observerLines = new IntersectionObserver(observerLinesCallback, observerLinesOptions);
-
-// observerLines.observe(blockThree);
-observerLines.observe(blockFour);
-// observerLines.observe(blockFive);
+if (window.outerWidth > 600) {
+  const observerLinesOptions = {
+    root: null,
+    rootMargin: '200px',
+    threshold: 0,
+  };
+  
+  function observerLinesCallback(entries, observer) {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        console.log('ADD')
+        wavingTextBackSpans.forEach((el, i) => {
+          el.style.animation = 'jumbBottom 1.5s infinite';
+          el.style.animationDelay = `${0.05 * i}s`
+        })
+        wavingTextFrontSpans.forEach((el, i) => {
+          el.style.animation = 'jumb 1.5s infinite';
+          el.style.animationDelay = `${0.05 * i}s`
+        })
+      } else {
+        console.log('REMOVE')
+        wavingTextBackSpans.forEach((el, i) => {
+          el.style.animation = 'none';
+        })
+        wavingTextFrontSpans.forEach((el, i) => {
+          el.style.animation = 'none';
+        })
+      }
+    })
+  };
+  
+  const observerLines = new IntersectionObserver(observerLinesCallback, observerLinesOptions);
+  
+  observerLines.observe(blockFour);
+}
 
 
 
