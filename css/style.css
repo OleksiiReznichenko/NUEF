@@ -1646,12 +1646,12 @@ body {
 .waving-text-line {
   text-transform: uppercase;
   /* font-weight: 200; */
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 600;
   position: absolute;
   left: 0;
   white-space: nowrap;
-  height: 25rem;
+  /* height: 25rem;  */
   width: 135%;
   min-width: 2000px;
 
@@ -1661,13 +1661,13 @@ body {
 .waving-text-line-back {
   opacity: 0.25;
   left: 0;
-  bottom: -10%;
+  bottom: 10%;
   z-index: -1;
 }
 
 .waving-text-line-front {
   left: -25%;
-  bottom: 10%;
+  bottom: 0%;
   opacity: 0.9;
   /* transform: scaleY(-1); */
 }
@@ -1730,8 +1730,38 @@ body {
   }
 }
 
-.waving-text-line span {
+.waving-text-line span,
+.waving-text-line p {
   display: inline-block;
+  transition: all 0.05s ease;
+}
+
+/* .waving-text-line span {
+  animation: jumb 2s infinite;
+} */
+
+@keyframes jumb {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4.5rem);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes jumbBottom {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(4.5rem);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .waving-text-line .span-1 {
@@ -1918,9 +1948,14 @@ body {
   transform: translateX(-5rem) translateY(18.2rem) rotate(6deg);
 }
 
-@media only screen and (max-width: 1200px) {
+/* @media only screen and (max-width: 1200px) { */
+@media only screen and (max-width: 1500px) {
+  .waving-text-line {
+    font-size: 16px;
+  }
+
   .waving-text-line .span-1 {
-    transform: rotate(22deg);
+    transform: translateY(-1.4rem) rotate(22deg);
   }
 
   .waving-text-line .span-2 {
@@ -1946,6 +1981,32 @@ body {
   .waving-text-line .span-7 {
     transform: translateY(9.5rem) rotate(4deg);
   }
+
+  /*  */
+  .waving-text-line .span-8 {
+    transform: translateY(9.7rem) rotate(0deg);
+  }
+
+  .waving-text-line .span-9 {
+    transform: translateY(9.3rem) rotate(-3deg);
+  }
+
+  .waving-text-line .span-10 {
+    transform: translateY(8.7rem) rotate(-6deg);
+  }
+
+  .waving-text-line .span-11 {
+    transform: translateY(7.7rem) rotate(-9deg);
+  }
+
+  .waving-text-line .span-12 {
+    transform: translateY(6.4rem) rotate(-12deg);
+  }
+
+  .waving-text-line .span-13 {
+    transform: translateY(4.6rem) rotate(-15deg);
+  }
+  /*  */
 
   .waving-text-line .span-14 {
     transform: translateY(2.3rem) rotate(-18deg);

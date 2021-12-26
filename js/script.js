@@ -1,5 +1,7 @@
 const formCallingButtons = Array.from(document.querySelectorAll('.trigger-button'));
 const formClosingButtons = Array.from(document.querySelectorAll('.trigger-close-button'));
+const wavingTextFrontSpans = Array.from(document.querySelectorAll('.waving-text-line-front span'));
+const wavingTextBackSpans = Array.from(document.querySelectorAll('.waving-text-line-back span'));
 const fixedNavLinks = Array.from(document.querySelectorAll('.fixedNavLink'));
 const rightArm = document.querySelector('.right-arm');
 const leftArm = document.querySelector('.left-arm');
@@ -21,6 +23,54 @@ const connectAnimationButton = document.querySelector('.connect-animation-button
 const circleBlock = document.querySelector('.circleBlock');
 const blockContactImageContainer = document.querySelector('.block-contacts__image-container');
 const blockContactText = document.querySelector('.block-contacts__text');
+
+
+// setInterval(() => {
+//   // let indicator = false;
+  wavingTextBackSpans.forEach((el, i) => {
+    el.style.animationDelay = `${0.075 * i}s`
+  })
+  wavingTextFrontSpans.forEach((el, i) => {
+    el.style.animationDelay = `${0.075 * i}s`
+  })
+// }, 8000);
+
+const observerLinesOptions = {
+  root: null,
+  rootMargin: '200px',
+  threshold: 0,
+};
+
+function observerLinesCallback(entries, observer) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      console.log('ADD')
+      wavingTextBackSpans.forEach((el, i) => {
+        el.style.animation = 'jumbBottom 1.5s infinite';
+        el.style.animationDelay = `${0.05 * i}s`
+      })
+      wavingTextFrontSpans.forEach((el, i) => {
+        el.style.animation = 'jumb 1.5s infinite';
+        el.style.animationDelay = `${0.05 * i}s`
+      })
+    } else {
+      console.log('REMOVE')
+      wavingTextBackSpans.forEach((el, i) => {
+        el.style.animation = 'none';
+      })
+      wavingTextFrontSpans.forEach((el, i) => {
+        el.style.animation = 'none';
+      })
+    }
+  })
+};
+
+const observerLines = new IntersectionObserver(observerLinesCallback, observerLinesOptions);
+
+// observerLines.observe(blockThree);
+observerLines.observe(blockFour);
+// observerLines.observe(blockFive);
+
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -454,8 +504,8 @@ class AppAnimations {
     phoneTimeline
     .to('.phone-line', {duration: 2, color: '#232323', ease: 'linear', stagger: 1}, 0)
     .to('.phone-line-line', {duration: 2, width: '110%', ease: 'linear', stagger: 1}, 0)
-    // .to('.waving-text-line-back', {duration: 10, x: '-15%', ease: 'linear'}, 0)
-    // .to('.waving-text-line-front', {duration: 10, x: '15%', ease: 'linear'}, 0)
+    .to('.waving-text-line-back', {duration: 10, x: '-15%', ease: 'linear'}, 0)
+    .to('.waving-text-line-front', {duration: 10, x: '15%', ease: 'linear'}, 0)
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -502,3 +552,4 @@ class AppAnimations {
 }
 
 new AppAnimations();
+
