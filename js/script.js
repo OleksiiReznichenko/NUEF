@@ -6,6 +6,7 @@ const fixedNavLinks = Array.from(document.querySelectorAll('.fixedNavLink'));
 const rightArm = document.querySelector('.right-arm');
 const leftArm = document.querySelector('.left-arm');
 const registrationFormWrapper = document.querySelector('.registration-form__wrapper');
+const registrationForm = document.querySelector('.registration-form');
 const aboutLink = document.querySelector('.about-link');
 const artistsLink = document.querySelector('.artists-link');
 const recordsLink = document.querySelector('.records-link');
@@ -25,41 +26,32 @@ const blockContactImageContainer = document.querySelector('.block-contacts__imag
 const blockContactText = document.querySelector('.block-contacts__text');
 
 
-if (window.outerWidth > 600) {
-  const observerLinesOptions = {
-    root: null,
-    rootMargin: '200px',
-    threshold: 0,
-  };
-  
-  function observerLinesCallback(entries, observer) {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        console.log('ADD')
-        wavingTextBackSpans.forEach((el, i) => {
-          el.style.animation = 'jumbBottom 1.5s infinite';
-          el.style.animationDelay = `${0.05 * i}s`
-        })
-        wavingTextFrontSpans.forEach((el, i) => {
-          el.style.animation = 'jumb 1.5s infinite';
-          el.style.animationDelay = `${0.05 * i}s`
-        })
-      } else {
-        console.log('REMOVE')
-        wavingTextBackSpans.forEach((el, i) => {
-          el.style.animation = 'none';
-        })
-        wavingTextFrontSpans.forEach((el, i) => {
-          el.style.animation = 'none';
-        })
-      }
-    })
-  };
-  
-  const observerLines = new IntersectionObserver(observerLinesCallback, observerLinesOptions);
-  
-  observerLines.observe(blockFour);
+
+// document.querySelector('.registration-form__form__clip-link').addEventListener('click', () => {
+//   console.log('CLIcked')
+// })
+
+document.getElementById('file').addEventListener('change', (e) => {
+  const stringValue = e.target.value;
+  alert(`Selected file: ${stringValue.substr(12, stringValue.length)}`)
+})
+
+
+const tx = document.querySelector("textarea");
+tx.setAttribute("style", "height:" + (tx.scrollHeight) + "px;");
+tx.addEventListener("input", OnInput, false);
+
+function OnInput() {
+  const heightUnit = window.innerHeight / 100;
+  const heightLimit = registrationForm.offsetHeight / heightUnit;
+  if (heightLimit >= 90) {
+  } else {
+    this.style.height = "auto";
+    this.style.height = (this.scrollHeight) + "px";
+  }
 }
+
+
 
 
 
@@ -481,6 +473,43 @@ class AppAnimations {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // PHONE ANIMATION
   phoneAnimation() {
+    if (window.outerWidth > 600) {
+      const observerLinesOptions = {
+        root: null,
+        rootMargin: '200px',
+        threshold: 0,
+      };
+      
+      function observerLinesCallback(entries, observer) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            wavingTextBackSpans.forEach((el, i) => {
+              if (i > 46 && window.outerWidth < 2500) return;
+              el.style.animation = 'jumbBottom 1.5s infinite';
+              el.style.animationDelay = `${0.05 * i}s`
+            })
+            wavingTextFrontSpans.forEach((el, i) => {
+              if (i > 46 && window.outerWidth < 2500) return;
+              el.style.animation = 'jumb 1.5s infinite';
+              el.style.animationDelay = `${0.05 * i}s`
+            })
+          } else {
+            wavingTextBackSpans.forEach((el, i) => {
+              el.style.animation = 'none';
+            })
+            wavingTextFrontSpans.forEach((el, i) => {
+              el.style.animation = 'none';
+            })
+          }
+        })
+      };
+      
+      const observerLines = new IntersectionObserver(observerLinesCallback, observerLinesOptions);
+      
+      observerLines.observe(blockFour);
+    }
+
+
     const phoneTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".four",
@@ -494,8 +523,8 @@ class AppAnimations {
     phoneTimeline
     .to('.phone-line', {duration: 2, color: '#232323', ease: 'linear', stagger: 1}, 0)
     .to('.phone-line-line', {duration: 2, width: '110%', ease: 'linear', stagger: 1}, 0)
-    .to('.waving-text-line-back', {duration: 10, x: '-15%', ease: 'linear'}, 0)
-    .to('.waving-text-line-front', {duration: 10, x: '15%', ease: 'linear'}, 0)
+    .to('.waving-text-line-back', {duration: 10, x: '45%', ease: 'linear'}, 0)
+    .to('.waving-text-line-front', {duration: 10, x: '-45%', ease: 'linear'}, 0)
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
