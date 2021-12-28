@@ -473,41 +473,41 @@ class AppAnimations {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // PHONE ANIMATION
   phoneAnimation() {
-    if (window.outerWidth > 600) {
-      const observerLinesOptions = {
-        root: null,
-        rootMargin: '200px',
-        threshold: 0,
-      };
+    // if (window.outerWidth > 600) {
+    //   const observerLinesOptions = {
+    //     root: null,
+    //     rootMargin: '200px',
+    //     threshold: 0,
+    //   };
       
-      function observerLinesCallback(entries, observer) {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            wavingTextBackSpans.forEach((el, i) => {
-              if (i > 46 && window.outerWidth < 2500) return;
-              el.style.animation = 'jumbBottom 1.5s infinite';
-              el.style.animationDelay = `${0.05 * i}s`
-            })
-            wavingTextFrontSpans.forEach((el, i) => {
-              if (i > 46 && window.outerWidth < 2500) return;
-              el.style.animation = 'jumb 1.5s infinite';
-              el.style.animationDelay = `${0.05 * i}s`
-            })
-          } else {
-            wavingTextBackSpans.forEach((el, i) => {
-              el.style.animation = 'none';
-            })
-            wavingTextFrontSpans.forEach((el, i) => {
-              el.style.animation = 'none';
-            })
-          }
-        })
-      };
+    //   function observerLinesCallback(entries, observer) {
+    //     entries.forEach((entry) => {
+    //       if (entry.isIntersecting) {
+    //         wavingTextBackSpans.forEach((el, i) => {
+    //           if (i > 46 && window.outerWidth < 2500) return;
+    //           el.style.animation = 'jumbBottom 1.5s infinite';
+    //           el.style.animationDelay = `${0.05 * i}s`
+    //         })
+    //         wavingTextFrontSpans.forEach((el, i) => {
+    //           if (i > 46 && window.outerWidth < 2500) return;
+    //           el.style.animation = 'jumb 1.5s infinite';
+    //           el.style.animationDelay = `${0.05 * i}s`
+    //         })
+    //       } else {
+    //         wavingTextBackSpans.forEach((el, i) => {
+    //           el.style.animation = 'none';
+    //         })
+    //         wavingTextFrontSpans.forEach((el, i) => {
+    //           el.style.animation = 'none';
+    //         })
+    //       }
+    //     })
+    //   };
       
-      const observerLines = new IntersectionObserver(observerLinesCallback, observerLinesOptions);
+    //   const observerLines = new IntersectionObserver(observerLinesCallback, observerLinesOptions);
       
-      observerLines.observe(blockFour);
-    }
+    //   observerLines.observe(blockFour);
+    // }
 
 
     const phoneTimeline = gsap.timeline({
@@ -520,11 +520,23 @@ class AppAnimations {
       }
     });
 
+    const phoneLinesTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".four",
+        start: "top 50%",
+        end: '+=1500px',
+        scrub: 1,
+        // pin: ".four",
+      }
+    });
+
     phoneTimeline
     .to('.phone-line', {duration: 2, color: '#232323', ease: 'linear', stagger: 1}, 0)
     .to('.phone-line-line', {duration: 2, width: '110%', ease: 'linear', stagger: 1}, 0)
-    .to('.waving-text-line-back', {duration: 10, x: '45%', ease: 'linear'}, 0)
-    .to('.waving-text-line-front', {duration: 10, x: '-45%', ease: 'linear'}, 0)
+
+    phoneLinesTimeline
+    .to('.waving-text-line-back', {duration: 10, x: '50%', ease: 'linear'}, 0)
+    .to('.waving-text-line-front', {duration: 10, x: '-50%', ease: 'linear'}, 0)
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
