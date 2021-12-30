@@ -2815,6 +2815,9 @@ body {
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  /* background-image: url(../assets/media/BackgroundWaves.gif);
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
 
 .block-contacts__video {
