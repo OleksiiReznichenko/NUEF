@@ -149,7 +149,8 @@ textarea {
 
 img,
 picture,
-source {
+source,
+video {
   pointer-events: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
@@ -1661,7 +1662,7 @@ body {
 .waving-text-line-back {
   opacity: 0.25;
   /* left: 0; */
-  left: -75%;
+  left: -25%;
   bottom: 10%;
   z-index: -1;
   /* transform: scaleX(-1); */
@@ -1747,41 +1748,10 @@ body {
 .waving-text-line span,
 .waving-text-line p {
   display: inline-block;
-  transition: all 0.05s ease;
+  /* transition: all 0.1s; */
 }
 
-/* .waving-text-line span {
-  animation: jumb 2s infinite;
-} */
-
-@keyframes jumb {
-  0% {
-    transform: translateY(0px);
-    /* color: white; */
-  }
-  50% {
-    transform: translateY(-4.5rem);
-    /* color: rgb(179, 179, 255); */
-  }
-  100% {
-    transform: translateY(0px);
-    /* color: white; */
-  }
-}
-
-@keyframes jumbBottom {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(4.5rem);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-.waving-text-line .span-1 {
+/* .waving-text-line .span-1 {
   transform: rotate(22deg);
 }
 
@@ -1843,9 +1813,7 @@ body {
 
 .waving-text-line .span-16 {
   transform: translateX(-0.5rem) translateY(-4.4rem) rotate(-35deg);
-}
-
-.waving-text-line .span-17 {
+}.waving-text-line .span-17 {
   transform: translateX(-1.6rem) translateY(-9rem) rotate(-42deg);
 }
 
@@ -1871,6 +1839,145 @@ body {
 
 .waving-text-line .span-23 {
   transform: translateX(-5.9rem) translateY(-30rem) rotate(-7deg);
+}
+
+.waving-text-line .span-24 {
+  transform: translateX(-5.9rem) translateY(-30.45rem) rotate(0deg);
+}
+
+.waving-text-line .span-25 {
+  transform: translateX(-5.9rem) translateY(-30.35rem) rotate(3deg);
+}
+
+.waving-text-line .span-26 {
+  transform: translateX(-5.8rem) translateY(-29.8rem) rotate(6deg);
+}
+
+.waving-text-line .span-27 {
+  transform: translateX(-5.8rem) translateY(-28.9rem) rotate(9deg);
+} 
+
+*/
+
+.waving-text-line .span-1 {
+  transform: translateX(-5rem) translateY(17.3rem) rotate(8deg);
+}
+
+.waving-text-line .span-2 {
+  transform: translateX(-4.4rem) translateY(18rem) rotate(4deg);
+}
+
+.waving-text-line .span-3 {
+  transform: translateX(-4rem) translateY(18.1rem) rotate(0deg);
+}
+
+.waving-text-line .span-4 {
+  transform: translateX(-3.6rem) translateY(17.7rem) rotate(-5deg);
+}
+
+.waving-text-line .span-5 {
+  transform: translateX(-3.2rem) translateY(16.7rem) rotate(-9deg);
+}
+
+.waving-text-line .span-6 {
+  transform: translateX(-2.8rem) translateY(15.3rem) rotate(-12deg);
+}
+
+.waving-text-line .span-7 {
+  transform: translateX(-2.4rem) translateY(13.5rem) rotate(-15deg);
+}
+
+.waving-text-line .span-8 {
+  transform: translateX(-2rem) translateY(11.4rem) rotate(-18deg);
+}
+
+.waving-text-line .span-9 {
+  transform: translateX(-1.7rem) translateY(8.9rem) rotate(-21deg);
+}
+
+.waving-text-line .span-10 {
+  transform: translateX(-1.4rem) translateY(6.1rem) rotate(-24deg);
+}
+
+.waving-text-line .span-11 {
+  transform: translateX(-1.1rem) translateY(3rem) rotate(-27deg);
+}
+
+.waving-text-line .span-12 {
+  transform: translateX(-1.2rem) translateY(-0.5rem) rotate(-30deg);
+}
+
+.waving-text-line .span-13 {
+  transform: translateX(-1.4rem) translateY(-4.2rem) rotate(-29deg);
+}
+
+.waving-text-line .span-14 {
+  transform: translateX(-1.4rem) translateY(-7.7rem) rotate(-29deg);
+}
+
+.waving-text-line .span-15 {
+  transform: translateX(-1.4rem) translateY(-11rem) rotate(-29deg);
+}
+
+.waving-text-line .span-16 {
+  transform: translateX(-1.4rem) translateY(-14.5rem) rotate(-29deg);
+}
+
+.waving-text-line .span-17 {
+  transform: translateX(-1.4rem) translateY(-17.7rem) rotate(-28deg);
+}
+
+.waving-text-line .span-18 {
+  transform: translateX(-1.3rem) translateY(-21rem) rotate(-27deg);
+}
+
+.waving-text-line .span-19 {
+  transform: translateX(-1.4rem) translateY(-4.4rem) rotate(-29deg);
+  opacity: 0;
+}
+
+/* .waving-text-line .span-13 {
+  transform: translateX(-1.4rem) translateY(-4.4rem) rotate(-33deg);
+}
+
+.waving-text-line .span-14 {
+  transform: translateX(-1.7rem) translateY(-8.5rem) rotate(-36deg);
+}
+
+.waving-text-line .span-15 {
+  transform: translateX(-2.2rem) translateY(-13rem) rotate(-39deg);
+}
+
+.waving-text-line .span-16 {
+  transform: translateX(-3.2rem) translateY(-18rem) rotate(-42deg);
+}
+
+.waving-text-line .span-17 {
+  transform: translateX(-4.4rem) translateY(-22.6rem) rotate(-40deg);
+}
+
+.waving-text-line .span-18 {
+  transform: translateX(-5.1rem) translateY(-27rem) rotate(-37deg);
+}
+
+.waving-text-line .span-19 {
+  transform: translateX(-5.1rem) translateY(-31rem) rotate(-35deg);
+} */
+
+.waving-text-line .span-20 {
+  transform: translateX(-7rem) translateY(-24.3rem) rotate(-25deg);
+}
+
+.waving-text-line .span-21 {
+  transform: translateX(-6.4rem) translateY(-27.2rem) rotate(-22deg);
+}
+
+.waving-text-line .span-22 {
+  transform: translateX(-5.9rem) translateY(-29.2rem) rotate(-12deg);
+}
+
+.waving-text-line .span-23 {
+  transform: translateX(-5.9rem) translateY(-30.2rem) rotate(-7deg);
 }
 
 .waving-text-line .span-24 {
@@ -1957,7 +2064,7 @@ body {
   transform: translateX(-5.6rem) translateY(16.1rem) rotate(12deg);
 }
 
-.waving-text-line .span-45 {
+/* .waving-text-line .span-45 {
   transform: translateX(-5.2rem) translateY(17.4rem) rotate(9deg);
 }
 
@@ -2027,14 +2134,14 @@ body {
 
 .waving-text-line .span-62 {
   transform: translateX(-10.7rem) translateY(-24rem) rotate(-34deg);
-}
+} */
 
 .waving-text-line .span-63 {
   transform: translateX(-11.3rem) translateY(-27.5rem) rotate(-31deg);
 }
 
 /* @media only screen and (max-width: 1200px) { */
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 1300px) {
   .waving-text-line {
     font-size: 16px;
   }
@@ -2566,11 +2673,11 @@ body {
 
 /* block contacts */
 .block-contacts {
-  background: radial-gradient(
+  /* background: radial-gradient(
     86.55% 110.64% at 39.19% 0%,
     #222127 0%,
     rgba(0, 0, 0, 0) 100%
-  );
+  ); */
   display: flex;
   justify-content: center;
   align-items: center;
