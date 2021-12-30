@@ -4,11 +4,11 @@ const formCallingButtons = Array.from(
 const formClosingButtons = Array.from(
   document.querySelectorAll(".trigger-close-button")
 );
-const wavingTextFrontP = Array.from(
-  document.querySelectorAll(".waving-text-line-front p")
+const wavingTextFrontSpans = Array.from(
+  document.querySelectorAll(".waving-text-line-front span")
 );
-const wavingTextBackP = Array.from(
-  document.querySelectorAll(".waving-text-line-back p")
+const wavingTextBackSpans = Array.from(
+  document.querySelectorAll(".waving-text-line-back span")
 );
 const fixedNavLinks = Array.from(document.querySelectorAll(".fixedNavLink"));
 const rightArm = document.querySelector(".right-arm");
@@ -547,7 +547,7 @@ class AppAnimations {
     if (window.outerWidth > 600) {
       const observerLinesOptions = {
         root: null,
-        rootMargin: '200px',
+        rootMargin: '600px',
         threshold: 0,
       };
 
@@ -578,7 +578,7 @@ class AppAnimations {
 
             setInterval(() => {
               // if (!entry.isIntersecting) return;
-              wavingTextFrontP.forEach((el, i) => {
+              wavingTextFrontSpans.forEach((el, i) => {
                 setTimeout(() => {
                   // if (i > lastIndex) return;
 
@@ -602,7 +602,7 @@ class AppAnimations {
               })
 
               // setTimeout(() => {
-                wavingTextBackP.forEach((el2, i2) => {
+                wavingTextBackSpans.forEach((el2, i2) => {
                   setTimeout(() => {
                     // if (i2 < 15) return;
 
@@ -624,7 +624,7 @@ class AppAnimations {
                   }, i2 * 1);
                 })
               // }, 90);
-            }, 80);
+            }, 100);
 
           // } else 
 
@@ -679,9 +679,11 @@ class AppAnimations {
         0
       );
 
-    // phoneLinesTimeline
-    // .to('.waving-text-line-back', {duration: 10, x: '50%', ease: 'linear'}, 0)
-    // .to('.waving-text-line-front', {duration: 10, x: '-50%', ease: 'linear'}, 0)
+    if (window.outerWidth < 600) {
+      phoneLinesTimeline
+      .to('.waving-text-line-back', {duration: 10, x: '50%', ease: 'linear'}, 0)
+      .to('.waving-text-line-front', {duration: 10, x: '-50%', ease: 'linear'}, 0)
+    }
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////

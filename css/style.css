@@ -1719,35 +1719,35 @@ body {
 }
 
 @media only screen and (max-width: 550px) {
-  .waving-text-line-front {
-    /* left: -120%; */
-  }
+  /* .waving-text-line-front {
+    left: -120%;
+  } */
   .waving-text-line-back {
     left: -225%;
   }
 }
 
 @media only screen and (max-width: 450px) {
-  .waving-text-line-front {
-    /* left: -150%; */
-  }
+  /* .waving-text-line-front {
+    left: -150%;
+  } */
   .waving-text-line-back {
     left: -245%;
   }
 }
 
 @media only screen and (max-width: 400px) {
-  .waving-text-line-front {
-    /* left: -180%; */
-  }
+  /* .waving-text-line-front {
+    left: -180%;
+  } */
   .waving-text-line-back {
     left: -295%;
   }
 }
 
-.waving-text-line span,
-.waving-text-line p {
+.waving-text-line span {
   display: inline-block;
+  will-change: transform;
   /* transition: all 0.1s; */
 }
 
@@ -2222,6 +2222,7 @@ body {
 
   .waving-text-line .span-19 {
     transform: translateX(-4.8rem) translateY(-18.85rem) rotate(-36deg);
+    opacity: 1;
   }
 
   .waving-text-line .span-20 {
