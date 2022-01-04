@@ -38,7 +38,7 @@ const blockContactImageContainer = document.querySelector(
   ".block-contacts__image-container"
 );
 const blockContactText = document.querySelector(".block-contacts__text");
-const blockContactVideo = document.querySelector(".block-contacts__video");
+const blockContactVideoContainer = document.querySelector(".block-contacts__video-container");
 
 // document.querySelector('.registration-form__form__clip-link').addEventListener('click', () => {
 //   console.log('CLIcked')
@@ -645,7 +645,7 @@ class AppAnimations {
 
       const observerLines = new IntersectionObserver(observerLinesCallback, observerLinesOptions);
 
-      observerLines.observe(blockFour);
+      // observerLines.observe(blockFour);
     }
 
     const phoneTimeline = gsap.timeline({
@@ -789,5 +789,7 @@ class AppAnimations {
 
 new AppAnimations();
 
-blockContactVideo.load()
-blockContactVideo.play()
+blockContactVideoContainer.insertAdjacentHTML('afterbegin', 
+'<video autoplay loop muted playsinline preload="yes" class="block-contacts__video" > <source src="assets/media/BackgroundWaves.mov" type="video/mp4" /> </video>')
+// blockContactVideo.load()
+// blockContactVideo.play()
