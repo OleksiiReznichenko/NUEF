@@ -38,6 +38,7 @@ const blockContactImageContainer = document.querySelector(
   ".block-contacts__image-container"
 );
 const blockContactText = document.querySelector(".block-contacts__text");
+const blockContactVideo = document.querySelector(".block-contacts__video");
 
 // document.querySelector('.registration-form__form__clip-link').addEventListener('click', () => {
 //   console.log('CLIcked')
@@ -787,3 +788,6 @@ class AppAnimations {
 }
 
 new AppAnimations();
+
+blockContactVideo.load()
+blockContactVideo.play()
