@@ -7,8 +7,14 @@ const formClosingButtons = Array.from(
 const wavingTextFrontSpans = Array.from(
   document.querySelectorAll(".waving-text-line-front span")
 );
+const wavingTextFrontP = Array.from(
+  document.querySelectorAll(".waving-text-line-front p")
+);
 const wavingTextBackSpans = Array.from(
   document.querySelectorAll(".waving-text-line-back span")
+);
+const wavingTextBackP = Array.from(
+  document.querySelectorAll(".waving-text-line-back p")
 );
 const fixedNavLinks = Array.from(document.querySelectorAll(".fixedNavLink"));
 const rightArm = document.querySelector(".right-arm");
@@ -554,7 +560,8 @@ class AppAnimations {
 
       let step = 1;
       let step2 = 1;
-      let lastIndex = 44;
+      // let lastIndex = 44;
+      let lastIndex = 63;
 
       function observerLinesCallback(entries, observer) {
         entries.forEach((entry) => {
@@ -668,6 +675,25 @@ class AppAnimations {
       },
     });
 
+    // let indicatorLines = true;
+
+    const phoneLinesTimeline2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".four",
+        start: "top 50%",
+        end: "+=1500px",
+        scrub: 1,
+        // onUpdate: self => {
+        //     if (self.progress > 0.5 && indicatorLines) {
+        //     console.log(self.progress)
+        //     phoneLinesTimeline2.pause();
+        //     phoneLinesTimeline2.reverse();
+        //     indicatorLines = false;
+        //   }
+        // }
+      },
+    });
+
     phoneTimeline
       .to(
         ".phone-line",
@@ -678,13 +704,34 @@ class AppAnimations {
         ".phone-line-line",
         { duration: 2, width: "110%", ease: "linear", stagger: 1 },
         0
-      );
+      )
 
-    if (window.outerWidth < 600) {
+      phoneLinesTimeline2
+      .to(wavingTextFrontP, {duration: 10, y: '6rem', ease: 'linear'}, 0)
+      .to(wavingTextBackP, {duration: 10, y: '-6rem', ease: 'linear'}, 0)
+      .to(wavingTextFrontP, {duration: 10, y: '0rem', ease: 'linear', delay: 10}, 0)
+      .to(wavingTextBackP, {duration: 10, y: '0rem', ease: 'linear', delay: 10}, 0)
+      .to(wavingTextFrontP, {duration: 10, y: '6rem', ease: 'linear', delay: 20}, 0)
+      .to(wavingTextBackP, {duration: 10, y: '-6rem', ease: 'linear', delay: 20}, 0)
+      .to(wavingTextFrontP, {duration: 10, y: '0rem', ease: 'linear', delay: 30}, 0)
+      .to(wavingTextBackP, {duration: 10, y: '0rem', ease: 'linear', delay: 30}, 0)
+
       phoneLinesTimeline
       .to('.waving-text-line-back', {duration: 10, x: '50%', ease: 'linear'}, 0)
       .to('.waving-text-line-front', {duration: 10, x: '-50%', ease: 'linear'}, 0)
-    }
+      // .to(wavingTextFrontP, {duration: 10, y: '0rem', ease: 'linear', stagger: 0.1}, 1)
+      // .to(wavingTextBackP, {duration: 10, y: '0rem', ease: 'linear', stagger: 0.1}, 1)
+      // .to('.waving-text-line-back__container', {duration: 10, y: '-15rem', ease: 'linear'}, 0)
+      // .to('.waving-text-line-front__container', {duration: 10, y: '15rem', ease: 'linear'}, 0)
+      // .to('.waving-text-line-back__container', {duration: 10, y: '-15rem', ease: 'linear'}, 1)
+      // .to('.waving-text-line-front__container', {duration: 10, y: '15rem', ease: 'linear'}, 1)
+      // .to(wavingTextFrontP, {duration: 5, x: '0%', y: '0%', ease: 'linear', stagger: 0.1}, 1)
+
+    // if (window.outerWidth < 600) {
+    //   phoneLinesTimeline
+    //   .to('.waving-text-line-back', {duration: 10, x: '50%', ease: 'linear'}, 0)
+    //   .to('.waving-text-line-front', {duration: 10, x: '-50%', ease: 'linear'}, 0)
+    // }
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -789,7 +836,7 @@ class AppAnimations {
 
 new AppAnimations();
 
-blockContactVideoContainer.insertAdjacentHTML('afterbegin', 
-'<video autoplay loop muted playsinline preload="yes" class="block-contacts__video" > <source src="assets/media/BackgroundWaves.mov" type="video/mp4" /> </video>')
+// blockContactVideoContainer.insertAdjacentHTML('afterbegin', 
+// '<video autoplay loop muted playsinline preload="yes" class="block-contacts__video" > <source src="assets/media/BackgroundWaves.mov" type="video/mp4" /> </video>')
 // blockContactVideo.load()
 // blockContactVideo.play()
