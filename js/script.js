@@ -707,12 +707,12 @@ class AppAnimations {
       )
 
       phoneLinesTimeline2
-      .to(wavingTextFrontP, {duration: 10, y: '6rem', ease: 'linear'}, 0)
-      .to(wavingTextBackP, {duration: 10, y: '-6rem', ease: 'linear'}, 0)
+      .to(wavingTextFrontP, {duration: 10, y: '8rem', ease: 'linear'}, 0)
+      .to(wavingTextBackP, {duration: 10, y: '-8rem', ease: 'linear'}, 0)
       .to(wavingTextFrontP, {duration: 10, y: '0rem', ease: 'linear', delay: 10}, 0)
       .to(wavingTextBackP, {duration: 10, y: '0rem', ease: 'linear', delay: 10}, 0)
-      .to(wavingTextFrontP, {duration: 10, y: '6rem', ease: 'linear', delay: 20}, 0)
-      .to(wavingTextBackP, {duration: 10, y: '-6rem', ease: 'linear', delay: 20}, 0)
+      .to(wavingTextFrontP, {duration: 10, y: '8rem', ease: 'linear', delay: 20}, 0)
+      .to(wavingTextBackP, {duration: 10, y: '-8rem', ease: 'linear', delay: 20}, 0)
       .to(wavingTextFrontP, {duration: 10, y: '0rem', ease: 'linear', delay: 30}, 0)
       .to(wavingTextBackP, {duration: 10, y: '0rem', ease: 'linear', delay: 30}, 0)
 
