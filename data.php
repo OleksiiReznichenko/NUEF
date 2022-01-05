@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     // $headers = "MIME-Version: 1.0\r\n".
     //            "Content-type: text/html; charset=iso-8859-1\r\n";
 
@@ -12,21 +12,20 @@ if(isset($_POST['submit'])){
     $message = $_POST['message'];
 
 
-    $headers =  'MIME-Version: 1.0' . "\r\n"; 
-    $headers .= 'From: Email'.$email. "\r\n";
-    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
+    $headers =  'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'From: ' . $email . "\r\n";
+    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 
-    $body = "Email : ".$email. "\r\n" .
-    		"Social : ".$social. "\r\n" .
-    		"Message : " . $message;
+    $body = "Email : " . $email . "\r\n" .
+        "Social : " . $social . "\r\n" .
+        "Message : " . $message;
 
-    if(mail($to, $subject, $body, $headers)){
+    // mail($to, $subject, $body, $headers);
+    if (mail($to, $subject, $body, $headers)) {
         echo "Mail Sent!";
-    }else{
+    } else {
         echo "Failed To Send Mail";
     };
-    // header('location:index.html');
+    header('location:index.html');
 };
-
-?>

@@ -1754,6 +1754,7 @@ body {
 .waving-text-line span,
 .waving-text-line p {
   display: inline-block;
+  pointer-events: none;
   /* will-change: transform; */
   /* transition: all 0.1s; */
 }
