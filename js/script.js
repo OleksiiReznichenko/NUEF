@@ -668,12 +668,12 @@ class AppAnimations {
       // observerLines.observe(blockFour);
     }
 
-    let phoneTimelineEnd = "+=1000px";
-    let phoneLinesTimelineEnd = "+=1500px";
-    let phoneLinesTimeline2End = "+=1500px";
+    let phoneTimelineEnd = "+=1300px";
+    let phoneLinesTimelineEnd = "+=1700px";
+    let phoneLinesTimeline2End = "+=1700px";
 
     if (window.outerWidth < 600) {
-      phoneTimelineEnd = "+=600px";
+      phoneTimelineEnd = "+=900px";
       phoneLinesTimelineEnd = "+=1000px";
       phoneLinesTimeline2End = "+=1000px";
     }
@@ -730,14 +730,27 @@ class AppAnimations {
       )
 
       phoneLinesTimeline2
-      .to(wavingTextFrontP, {duration: 10, y: '8rem', ease: 'linear'}, 0)
-      .to(wavingTextBackP, {duration: 10, y: '-8rem', ease: 'linear'}, 0)
-      .to(wavingTextFrontP, {duration: 10, y: '0rem', ease: 'linear', delay: 10}, 0)
-      .to(wavingTextBackP, {duration: 10, y: '0rem', ease: 'linear', delay: 10}, 0)
-      .to(wavingTextFrontP, {duration: 10, y: '8rem', ease: 'linear', delay: 20}, 0)
-      .to(wavingTextBackP, {duration: 10, y: '-8rem', ease: 'linear', delay: 20}, 0)
-      .to(wavingTextFrontP, {duration: 10, y: '0rem', ease: 'linear', delay: 30}, 0)
-      .to(wavingTextBackP, {duration: 10, y: '0rem', ease: 'linear', delay: 30}, 0)
+      .to('.waving-text-line-front', {duration: 15, y: '6rem', ease: 'linear'}, 0)
+      .to('.waving-text-line-back', {duration: 15, y: '-6rem', ease: 'linear'}, 0)
+      .to('.waving-text-line-front', {duration: 15, y: '0rem', ease: 'linear', delay: 15}, 0)
+      .to('.waving-text-line-back', {duration: 15, y: '0rem', ease: 'linear', delay: 15}, 0)
+      .to('.waving-text-line-front', {duration: 15, y: '6rem', ease: 'linear', delay: 30}, 0)
+      .to('.waving-text-line-back', {duration: 15, y: '-6rem', ease: 'linear', delay: 30}, 0)
+      .to('.waving-text-line-front', {duration: 15, y: '0rem', ease: 'linear', delay: 45}, 0)
+      .to('.waving-text-line-back', {duration: 15, y: '0rem', ease: 'linear', delay: 45}, 0)
+      // .to('.waving-text-line-front', {duration: 15, y: '6rem', ease: 'linear', delay: 60}, 0)
+      // .to('.waving-text-line-back', {duration: 15, y: '-6rem', ease: 'linear', delay: 60}, 0)
+      // .to('.waving-text-line-front', {duration: 15, y: '0rem', ease: 'linear', delay: 75}, 0)
+      // .to('.waving-text-line-back', {duration: 15, y: '0rem', ease: 'linear', delay: 75}, 0)
+
+      // .to(wavingTextFrontP, {duration: 5, y: '4rem', ease: 'linear', delay: 20}, 0)
+      // .to(wavingTextBackP, {duration: 5, y: '-4rem', ease: 'linear', delay: 20}, 0)
+      // .to(wavingTextFrontP, {duration: 5, y: '0rem', ease: 'linear', delay: 25}, 0)
+      // .to(wavingTextBackP, {duration: 5, y: '0rem', ease: 'linear', delay: 25}, 0)
+      // .to(wavingTextFrontP, {duration: 5, y: '4rem', ease: 'linear', delay: 30}, 0)
+      // .to(wavingTextBackP, {duration: 5, y: '-4rem', ease: 'linear', delay: 30}, 0)
+      // .to(wavingTextFrontP, {duration: 5, y: '0rem', ease: 'linear', delay: 35}, 0)
+      // .to(wavingTextBackP, {duration: 5, y: '0rem', ease: 'linear', delay: 35}, 0)
 
       phoneLinesTimeline
       .to('.waving-text-line-back', {duration: 10, x: '50%', ease: 'linear'}, 0)
