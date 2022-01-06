@@ -370,11 +370,18 @@ class AppAnimations {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // HEADER ANIMATION
   headerAnimation() {
+
+    let headerTimelineEnd = "+=1000px";
+
+    if (window.outerWidth < 600) {
+      headerTimelineEnd = "+=500px";
+    }
+
     const headerTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".one",
         start: "top 0%",
-        end: "+=1000px",
+        end: headerTimelineEnd,
         scrub: 1,
         pin: ".one",
       },
@@ -503,11 +510,17 @@ class AppAnimations {
       }
     }
 
+    let connectAnimationTimelineEnd = "+=1500px";
+
+    if (window.outerWidth < 600) {
+      connectAnimationTimelineEnd = "+=900px";
+    }
+
     const connectAnimationTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".three",
         start: "top 0%",
-        end: "+=1500px",
+        end: connectAnimationTimelineEnd,
         scrub: 1,
         pin: ".three",
       },
@@ -655,11 +668,21 @@ class AppAnimations {
       // observerLines.observe(blockFour);
     }
 
+    let phoneTimelineEnd = "+=1000px";
+    let phoneLinesTimelineEnd = "+=1500px";
+    let phoneLinesTimeline2End = "+=1500px";
+
+    if (window.outerWidth < 600) {
+      phoneTimelineEnd = "+=600px";
+      phoneLinesTimelineEnd = "+=1000px";
+      phoneLinesTimeline2End = "+=1000px";
+    }
+
     const phoneTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".four",
         start: "top 0%",
-        end: "+=1000px",
+        end: phoneTimelineEnd,
         scrub: 1,
         pin: ".four",
       },
@@ -669,7 +692,7 @@ class AppAnimations {
       scrollTrigger: {
         trigger: ".four",
         start: "top 50%",
-        end: "+=1500px",
+        end: phoneLinesTimelineEnd,
         scrub: 1,
         // pin: ".four",
       },
@@ -681,7 +704,7 @@ class AppAnimations {
       scrollTrigger: {
         trigger: ".four",
         start: "top 50%",
-        end: "+=1500px",
+        end: phoneLinesTimeline2End,
         scrub: 1,
         // onUpdate: self => {
         //     if (self.progress > 0.5 && indicatorLines) {
@@ -752,12 +775,18 @@ class AppAnimations {
       ease: "linear",
     });
 
+    let studioTimelineEnd = "+=4000px";
+
+    if (window.outerWidth < 600) {
+      studioTimelineEnd = "+=2000px";
+    }
+
     const studioTimeline = gsap.timeline({
       defaults: { duration: 1.5 },
       scrollTrigger: {
         trigger: ".five",
         start: "top 0%",
-        end: "+=4000px",
+        end: studioTimelineEnd,
         scrub: 1,
         pin: ".five",
       },
