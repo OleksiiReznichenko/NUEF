@@ -801,7 +801,7 @@ class AppAnimations {
         { duration: 20, opacity: 1, ease: "linear", delay: 10 },
         1
       )
-      .to(".footer-block-five", { duration: 10, y: "-40vh", ease: "linear" }, 1)
+      .to(".footer-block-five", { duration: 25, y: "-40vh", ease: "linear" }, 1)
       // .add('contentToTop')
       .to(".studio-content", { duration: 10, y: "-27vh" })
       .add("studioContentDisappear")
