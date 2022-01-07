@@ -730,18 +730,18 @@ class AppAnimations {
       )
 
       phoneLinesTimeline2
-      .to('.waving-text-line-front', {duration: 15, y: '6rem', ease: 'linear'}, 0)
-      .to('.waving-text-line-back', {duration: 15, y: '-6rem', ease: 'linear'}, 0)
-      .to('.waving-text-line-front', {duration: 15, y: '0rem', ease: 'linear', delay: 15}, 0)
-      .to('.waving-text-line-back', {duration: 15, y: '0rem', ease: 'linear', delay: 15}, 0)
-      .to('.waving-text-line-front', {duration: 15, y: '8rem', ease: 'linear', delay: 30}, 0)
-      .to('.waving-text-line-back', {duration: 15, y: '-8rem', ease: 'linear', delay: 30}, 0)
-      .to('.waving-text-line-front', {duration: 15, y: '0rem', ease: 'linear', delay: 45}, 0)
-      .to('.waving-text-line-back', {duration: 15, y: '0rem', ease: 'linear', delay: 45}, 0)
+      .to('.waving-text-line-front-1', {duration: 15, y: '6rem', ease: 'linear'}, 0)
+      .to('.waving-text-line-back-1', {duration: 15, y: '-6rem', ease: 'linear'}, 0)
+      .to('.waving-text-line-front-1', {duration: 15, y: '0rem', ease: 'linear', delay: 15}, 0)
+      .to('.waving-text-line-back-1', {duration: 15, y: '0rem', ease: 'linear', delay: 15}, 0)
+      .to('.waving-text-line-front-1', {duration: 15, y: '8rem', ease: 'linear', delay: 30}, 0)
+      .to('.waving-text-line-back-1', {duration: 15, y: '-8rem', ease: 'linear', delay: 30}, 0)
+      .to('.waving-text-line-front-1', {duration: 15, y: '0rem', ease: 'linear', delay: 45}, 0)
+      .to('.waving-text-line-back-1', {duration: 15, y: '0rem', ease: 'linear', delay: 45}, 0)
 
       phoneLinesTimeline
-      .to('.waving-text-line-back', {duration: 10, x: '50%', ease: 'linear'}, 0)
-      .to('.waving-text-line-front', {duration: 10, x: '-50%', ease: 'linear'}, 0)
+      .to('.waving-text-line-back-1', {duration: 10, x: '50%', ease: 'linear'}, 0)
+      .to('.waving-text-line-front-1', {duration: 10, x: '-50%', ease: 'linear'}, 0)
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -780,11 +780,6 @@ class AppAnimations {
     });
     
     studioTimeline
-      // .to(
-      //   ".footer-block-five",
-      //   { duration: 5, filter: "blur(15px)", ease: "linear" },
-      //   0
-      // )
       .to(
         ".block-five__container",
         { duration: 10, filter: "blur(13px)", ease: "linear" },
@@ -807,7 +802,6 @@ class AppAnimations {
         { duration: 20, opacity: 1, ease: "linear", delay: 10 },
         1
       )
-      // .to('.content-block-five', {duration: 10, y: '-40vh', ease: 'linear'}, 0)
       // .add('contentToTop')
       .to(".studio-content", { duration: 10, y: "-27vh" })
       .add("studioContentDisappear")
@@ -843,19 +837,59 @@ class AppAnimations {
         { duration: 15, filter: "blur(0px)", ease: "linear" },
         "studioDisappear"
       )
-      // .to('.block-contacts', {duration: 15, ease: 'linear'}, 'studioDisappear')
       .to(".block-contacts__image-disc", {
         duration: 10,
         x: "20%",
         rotate: 360,
         ease: "linear",
-      });
+      })
+
+      
+
+    // let phoneTimelineEnd = "+=1300px";
+    // let phoneLinesTimelineEnd = "+=1700px";
+    // let phoneLinesTimeline2End = "+=1700px";
+
+    // if (window.outerWidth < 600) {
+    //   phoneTimelineEnd = "+=900px";
+    //   phoneLinesTimelineEnd = "+=1000px";
+    //   phoneLinesTimeline2End = "+=1000px";
+    // }
+
+    // const phoneLinesTimeline = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: ".block-contacts",
+    //     start: "top 50%",
+    //     end: phoneLinesTimelineEnd,
+    //     scrub: 1,
+    //     pin: ".block-contacts",
+    //   },
+    // });
+
+
+    // const phoneLinesTimeline2 = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: ".block-contacts",
+    //     start: "top 50%",
+    //     end: phoneLinesTimeline2End,
+    //     scrub: 1,
+    //   },
+    // });
+      
+    // phoneLinesTimeline2
+    // .to('.waving-text-line-front-2', {duration: 15, y: '6rem', ease: 'linear'}, 0)
+    // .to('.waving-text-line-back-2', {duration: 15, y: '-6rem', ease: 'linear'}, 0)
+    // .to('.waving-text-line-front-2', {duration: 15, y: '0rem', ease: 'linear', delay: 15}, 0)
+    // .to('.waving-text-line-back-2', {duration: 15, y: '0rem', ease: 'linear', delay: 15}, 0)
+    // .to('.waving-text-line-front-2', {duration: 15, y: '8rem', ease: 'linear', delay: 30}, 0)
+    // .to('.waving-text-line-back-2', {duration: 15, y: '-8rem', ease: 'linear', delay: 30}, 0)
+    // .to('.waving-text-line-front-2', {duration: 15, y: '0rem', ease: 'linear', delay: 45}, 0)
+    // .to('.waving-text-line-back-2', {duration: 15, y: '0rem', ease: 'linear', delay: 45}, 0)
+
+    // phoneLinesTimeline
+    // .to('.waving-text-line-back-2', {duration: 10, x: '50%', ease: 'linear'}, 0)
+    // .to('.waving-text-line-front-2', {duration: 10, x: '-50%', ease: 'linear'}, 0)
   }
 }
 
 new AppAnimations();
-
-// blockContactVideoContainer.insertAdjacentHTML('afterbegin', 
-// '<video autoplay loop muted playsinline preload="yes" class="block-contacts__video" > <source src="assets/media/BackgroundWaves.mov" type="video/mp4" /> </video>')
-// blockContactVideo.load()
-// blockContactVideo.play()
