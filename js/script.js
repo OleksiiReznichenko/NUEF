@@ -738,36 +738,10 @@ class AppAnimations {
       .to('.waving-text-line-back', {duration: 15, y: '-8rem', ease: 'linear', delay: 30}, 0)
       .to('.waving-text-line-front', {duration: 15, y: '0rem', ease: 'linear', delay: 45}, 0)
       .to('.waving-text-line-back', {duration: 15, y: '0rem', ease: 'linear', delay: 45}, 0)
-      // .to('.waving-text-line-front', {duration: 15, y: '6rem', ease: 'linear', delay: 60}, 0)
-      // .to('.waving-text-line-back', {duration: 15, y: '-6rem', ease: 'linear', delay: 60}, 0)
-      // .to('.waving-text-line-front', {duration: 15, y: '0rem', ease: 'linear', delay: 75}, 0)
-      // .to('.waving-text-line-back', {duration: 15, y: '0rem', ease: 'linear', delay: 75}, 0)
-
-      // .to(wavingTextFrontP, {duration: 5, y: '4rem', ease: 'linear', delay: 20}, 0)
-      // .to(wavingTextBackP, {duration: 5, y: '-4rem', ease: 'linear', delay: 20}, 0)
-      // .to(wavingTextFrontP, {duration: 5, y: '0rem', ease: 'linear', delay: 25}, 0)
-      // .to(wavingTextBackP, {duration: 5, y: '0rem', ease: 'linear', delay: 25}, 0)
-      // .to(wavingTextFrontP, {duration: 5, y: '4rem', ease: 'linear', delay: 30}, 0)
-      // .to(wavingTextBackP, {duration: 5, y: '-4rem', ease: 'linear', delay: 30}, 0)
-      // .to(wavingTextFrontP, {duration: 5, y: '0rem', ease: 'linear', delay: 35}, 0)
-      // .to(wavingTextBackP, {duration: 5, y: '0rem', ease: 'linear', delay: 35}, 0)
 
       phoneLinesTimeline
       .to('.waving-text-line-back', {duration: 10, x: '50%', ease: 'linear'}, 0)
       .to('.waving-text-line-front', {duration: 10, x: '-50%', ease: 'linear'}, 0)
-      // .to(wavingTextFrontP, {duration: 10, y: '0rem', ease: 'linear', stagger: 0.1}, 1)
-      // .to(wavingTextBackP, {duration: 10, y: '0rem', ease: 'linear', stagger: 0.1}, 1)
-      // .to('.waving-text-line-back__container', {duration: 10, y: '-15rem', ease: 'linear'}, 0)
-      // .to('.waving-text-line-front__container', {duration: 10, y: '15rem', ease: 'linear'}, 0)
-      // .to('.waving-text-line-back__container', {duration: 10, y: '-15rem', ease: 'linear'}, 1)
-      // .to('.waving-text-line-front__container', {duration: 10, y: '15rem', ease: 'linear'}, 1)
-      // .to(wavingTextFrontP, {duration: 5, x: '0%', y: '0%', ease: 'linear', stagger: 0.1}, 1)
-
-    // if (window.outerWidth < 600) {
-    //   phoneLinesTimeline
-    //   .to('.waving-text-line-back', {duration: 10, x: '50%', ease: 'linear'}, 0)
-    //   .to('.waving-text-line-front', {duration: 10, x: '-50%', ease: 'linear'}, 0)
-    // }
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -804,38 +778,41 @@ class AppAnimations {
         pin: ".five",
       },
     });
-
+    
     studioTimeline
+      // .to(
+      //   ".footer-block-five",
+      //   { duration: 5, filter: "blur(15px)", ease: "linear" },
+      //   0
+      // )
+      .to(
+        ".block-five__container",
+        { duration: 10, filter: "blur(13px)", ease: "linear" },
+        0
+      )
       .to(
         ".content-block-five",
         { duration: 10, filter: "blur(10px)", opacity: 0, ease: "linear" },
         0
       )
-      // .to('.content-block-five', {duration: 10, opacity: 0, ease: 'linear'}, 0)
-      .to(
-        ".footer-block-five",
-        { duration: 5, filter: "blur(15px)", ease: "linear" },
-        0
-      )
-      // .to('.footer-block-five', {duration: 5, ease: 'linear'}, 0)
       .to(".footer-block-five", { duration: 10, y: "-40vh", ease: "linear" }, 0)
       // .add('studioAppear')
       .to(
         ".studio-block-five",
         { duration: 20, scale: 1, opacity: 1, ease: "linear" },
-        0
+        1
       )
       .to(
         ".studioGlass-block-five",
-        { duration: 20, opacity: 1, ease: "linear" },
-        0
+        { duration: 20, opacity: 1, ease: "linear", delay: 10 },
+        1
       )
       // .to('.content-block-five', {duration: 10, y: '-40vh', ease: 'linear'}, 0)
       // .add('contentToTop')
       .to(".studio-content", { duration: 10, y: "-27vh" })
       .add("studioContentDisappear")
       .to(
-        ".footer-block-five",
+        ".block-five__container",
         { duration: 10, autoAlpha: 0, ease: "linear" },
         "studioContentDisappear"
       )
