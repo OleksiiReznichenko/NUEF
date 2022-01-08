@@ -38,7 +38,7 @@ html {
     font-size: 48%;
   }
 }
-@media only screen and (max-width: 110rem) and (min-height: 1200) {
+@media only screen and (max-width: 110rem) and (min-height: 1200px) {
   html {
     font-size: 51%;
   }
@@ -2282,7 +2282,23 @@ body {
   }
 
   .waving-text-line .span-46 {
-    transform: translateX(-5rem) translateY(18.2rem) rotate(6deg);
+    transform: translateX(-6.2rem) translateY(20.8rem) rotate(6deg);
+  }
+
+  .waving-text-line .span-47 {
+    transform: translateX(-5.6rem) translateY(21.2rem) rotate(3deg);
+  }
+
+  .waving-text-line .span-48 {
+    transform: translateX(-5rem) translateY(21.3rem) rotate(0deg);
+  }
+
+  .waving-text-line .span-49 {
+    transform: translateX(-4.5rem) translateY(20.9rem) rotate(-4deg);
+  }
+
+  .waving-text-line .span-50 {
+    transform: translateX(-4rem) translateY(20rem) rotate(-8deg);
   }
 }
 
