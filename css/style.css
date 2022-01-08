@@ -1614,19 +1614,25 @@ body {
 }
 
 .block.four .content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* margin: 0 29.5rem 0 20.5rem; */
   display: flex;
   justify-content: center;
 
   width: 100%;
 }
 
+@media only screen and (max-width: 1440px) and (min-height: 750px) {
+  .block.four .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
 @media only screen and (max-width: 610px) {
   .block.four .content {
+    position: static;
+    transform: none;
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
@@ -1660,6 +1666,12 @@ body {
   line-height: 250%;
 
   margin-right: 14rem;
+}
+
+@media only screen and (max-width: 1440px) and (min-height: 750px) {
+  .block.four .content .col.l {
+    margin-right: 14rem;
+  }
 }
 
 @media only screen and (max-width: 750px) {
@@ -1715,6 +1727,7 @@ body {
 .phone_image {
   z-index: 0;
   width: 45rem;
+  /* height: 70rem; */
   /* height: 120vh; */
 }
 
