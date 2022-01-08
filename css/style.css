@@ -1568,7 +1568,7 @@ body {
   display: flex;
   justify-content: center;
 
-  padding: 0 29.5rem 0 20.5rem;
+  /* padding: 0 29.5rem 0 20.5rem; */
 }
 
 @media only screen and (max-width: 1150px) {
@@ -1614,8 +1614,13 @@ body {
 }
 
 .block.four .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* margin: 0 29.5rem 0 20.5rem; */
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 
   width: 100%;
 }
@@ -1635,6 +1640,9 @@ body {
   }
   .block.four .content {
     /* margin-left: 25vw !important; */
+    justify-content: space-between;
+    position: static;
+    transform: none;
     margin-left: 23vw !important;
     width: calc(1700px);
   }
@@ -1650,6 +1658,20 @@ body {
   font-weight: 900;
   font-size: 2.77rem;
   line-height: 250%;
+
+  margin-right: 14rem;
+}
+
+@media only screen and (max-width: 750px) {
+  .block.four .content .col.l {
+    margin-right: 5rem;
+  }
+}
+
+@media only screen and (max-width: 610px), only screen and (min-width: 2500px) {
+  .block.four .content .col.l {
+    margin-right: 0;
+  }
 }
 
 .block.four .content .col.l .text {
@@ -2602,13 +2624,13 @@ body {
   }
 }
 
-@media only screen and (min-width: 1500px) and (max-width: 2000px) {
+@media only screen and (min-width: 1500px) {
   .studio {
     background: url("../assets/media/studio2k.png") center / cover;
   }
 }
 
-@media only screen and (min-width: 2000px) and (max-width: 2500px) {
+/* @media only screen and (min-width: 2000px) and (max-width: 2500px) {
   .studio {
     background: url("../assets/media/studio2.5k.png") center / cover;
   }
@@ -2618,7 +2640,7 @@ body {
   .studio {
     background: url("../assets/media/studio3k.png") center / cover;
   }
-}
+} */
 
 /* @media only screen and (min-width: 3000px) {
   .studio {
