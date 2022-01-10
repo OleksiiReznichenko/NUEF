@@ -886,7 +886,7 @@ class AppAnimations {
       .add("studioDisappear")
       .to(
         ".studio-block-five",
-        { duration: 20, scale: 4, autoAlpha: 0, ease: "linear" },
+        { duration: 20, scale: 3, autoAlpha: 0, ease: "linear" },
         "studioDisappear"
       )
       .to(
