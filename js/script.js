@@ -844,7 +844,7 @@ class AppAnimations {
     studioTimeline
       .to(
         ".block-five__container",
-        { duration: 20, filter: "blur(13px)", ease: "linear" },
+        { duration: 20, filter: "blur(1rem)", ease: "linear" },
         0
       )
       .to(
