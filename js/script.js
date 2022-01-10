@@ -842,11 +842,11 @@ class AppAnimations {
     }, 0)
 
     studioTimeline
-      .to(
-        ".block-five__container",
-        { duration: 20, filter: "blur(1rem)", ease: "linear" },
-        0
-      )
+      // .to(
+      //   ".block-five__container",
+      //   { duration: 20, filter: "blur(1rem)", ease: "linear" },
+      //   0
+      // )
       .to(
         ".content-block-five",
         { duration: 20, opacity: 0, ease: "linear" },
