@@ -44,7 +44,9 @@ const blockContactImageContainer = document.querySelector(
   ".block-contacts__image-container"
 );
 const blockContactText = document.querySelector(".block-contacts__text");
-const blockContactVideoContainer = document.querySelector(".block-contacts__video-container");
+const blockContactVideoContainer = document.querySelector(
+  ".block-contacts__video-container"
+);
 
 // document.querySelector('.registration-form__form__clip-link').addEventListener('click', () => {
 //   console.log('CLIcked')
@@ -370,7 +372,6 @@ class AppAnimations {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // HEADER ANIMATION
   headerAnimation() {
-
     let headerTimelineEnd = "+=1000px";
 
     if (window.outerWidth < 600) {
@@ -567,7 +568,7 @@ class AppAnimations {
     if (window.outerWidth > 600) {
       const observerLinesOptions = {
         root: null,
-        rootMargin: '600px',
+        rootMargin: "600px",
         threshold: 0,
       };
 
@@ -579,7 +580,6 @@ class AppAnimations {
       function observerLinesCallback(entries, observer) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-
             // wavingTextBackSpans.forEach((el, i) => {
             //   if (i > 46 && window.outerWidth < 2500) return;
             //   el.style.animation = 'jumbBottom 1.5s infinite';
@@ -611,7 +611,6 @@ class AppAnimations {
                     el.classList = `span-${i - step}`;
                   }
 
-
                   if (i === lastIndex - 1) {
                     if (step === lastIndex) {
                       // indicatorStep = true;
@@ -620,34 +619,33 @@ class AppAnimations {
                     step += 1;
                   }
                 }, i * 1);
-              })
+              });
 
               // setTimeout(() => {
-                wavingTextBackSpans.forEach((el2, i2) => {
-                  setTimeout(() => {
-                    // if (i2 < 15) return;
+              wavingTextBackSpans.forEach((el2, i2) => {
+                setTimeout(() => {
+                  // if (i2 < 15) return;
 
-                    if (i2 - step2 <= 0) {
-                      el2.classList.remove(...el2.classList);
-                      el2.classList = `span-${lastIndex + i2 - step2}`;
-                    } else {
-                      el2.classList.remove(...el2.classList);
-                      el2.classList = `span-${i2 - step2}`;
+                  if (i2 - step2 <= 0) {
+                    el2.classList.remove(...el2.classList);
+                    el2.classList = `span-${lastIndex + i2 - step2}`;
+                  } else {
+                    el2.classList.remove(...el2.classList);
+                    el2.classList = `span-${i2 - step2}`;
+                  }
+
+                  if (i2 === lastIndex - 1) {
+                    if (step2 === lastIndex) {
+                      step2 = 1;
                     }
-
-
-                    if (i2 === lastIndex - 1) {
-                      if (step2 === lastIndex) {
-                        step2 = 1;
-                      }
-                      step2 += 1;
-                    }
-                  }, i2 * 1);
-                })
+                    step2 += 1;
+                  }
+                }, i2 * 1);
+              });
               // }, 90);
             }, 100);
 
-          // } else 
+            // } else
 
             // wavingTextBackSpans.forEach((el, i) => {
             //   el.style.animation = 'none';
@@ -655,15 +653,17 @@ class AppAnimations {
             // wavingTextFrontSpans.forEach((el, i) => {
             //   el.style.animation = 'none';
             // })
-
           } else {
             step = 1;
             step2 = 1;
           }
-        })
-      };
+        });
+      }
 
-      const observerLines = new IntersectionObserver(observerLinesCallback, observerLinesOptions);
+      const observerLines = new IntersectionObserver(
+        observerLinesCallback,
+        observerLinesOptions
+      );
 
       // observerLines.observe(blockFour);
     }
@@ -727,21 +727,61 @@ class AppAnimations {
         ".phone-line-line",
         { duration: 2, width: "110%", ease: "linear", stagger: 1 },
         0
+      );
+
+    phoneLinesTimeline2
+      .to(
+        ".waving-text-line-front-1",
+        { duration: 15, y: "6rem", ease: "linear" },
+        0
       )
+      .to(
+        ".waving-text-line-back-1",
+        { duration: 15, y: "-6rem", ease: "linear" },
+        0
+      )
+      .to(
+        ".waving-text-line-front-1",
+        { duration: 15, y: "0rem", ease: "linear", delay: 15 },
+        0
+      )
+      .to(
+        ".waving-text-line-back-1",
+        { duration: 15, y: "0rem", ease: "linear", delay: 15 },
+        0
+      )
+      .to(
+        ".waving-text-line-front-1",
+        { duration: 15, y: "8rem", ease: "linear", delay: 30 },
+        0
+      )
+      .to(
+        ".waving-text-line-back-1",
+        { duration: 15, y: "-8rem", ease: "linear", delay: 30 },
+        0
+      )
+      .to(
+        ".waving-text-line-front-1",
+        { duration: 15, y: "0rem", ease: "linear", delay: 45 },
+        0
+      )
+      .to(
+        ".waving-text-line-back-1",
+        { duration: 15, y: "0rem", ease: "linear", delay: 45 },
+        0
+      );
 
-      phoneLinesTimeline2
-      .to('.waving-text-line-front-1', {duration: 15, y: '6rem', ease: 'linear'}, 0)
-      .to('.waving-text-line-back-1', {duration: 15, y: '-6rem', ease: 'linear'}, 0)
-      .to('.waving-text-line-front-1', {duration: 15, y: '0rem', ease: 'linear', delay: 15}, 0)
-      .to('.waving-text-line-back-1', {duration: 15, y: '0rem', ease: 'linear', delay: 15}, 0)
-      .to('.waving-text-line-front-1', {duration: 15, y: '8rem', ease: 'linear', delay: 30}, 0)
-      .to('.waving-text-line-back-1', {duration: 15, y: '-8rem', ease: 'linear', delay: 30}, 0)
-      .to('.waving-text-line-front-1', {duration: 15, y: '0rem', ease: 'linear', delay: 45}, 0)
-      .to('.waving-text-line-back-1', {duration: 15, y: '0rem', ease: 'linear', delay: 45}, 0)
-
-      phoneLinesTimeline
-      .to('.waving-text-line-back-1', {duration: 10, x: '50%', ease: 'linear'}, 0)
-      .to('.waving-text-line-front-1', {duration: 10, x: '-50%', ease: 'linear'}, 0)
+    phoneLinesTimeline
+      .to(
+        ".waving-text-line-back-1",
+        { duration: 10, x: "50%", ease: "linear" },
+        0
+      )
+      .to(
+        ".waving-text-line-front-1",
+        { duration: 10, x: "-50%", ease: "linear" },
+        0
+      );
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -778,16 +818,16 @@ class AppAnimations {
         pin: ".five",
       },
     });
-    
+
     studioTimeline
       .to(
         ".block-five__container",
-        { duration: 10, filter: "blur(13px)", ease: "linear" },
+        { duration: 20, filter: "blur(13px)", ease: "linear" },
         0
       )
       .to(
         ".content-block-five",
-        { duration: 10, filter: "blur(10px)", opacity: 0, ease: "linear" },
+        { duration: 20, opacity: 0, ease: "linear" },
         0
       )
       // .add('studioAppear')
@@ -842,9 +882,7 @@ class AppAnimations {
         x: "20%",
         rotate: 360,
         ease: "linear",
-      })
-
-      
+      });
 
     // let phoneTimelineEnd = "+=1300px";
     // let phoneLinesTimelineEnd = "+=1700px";
@@ -866,7 +904,6 @@ class AppAnimations {
     //   },
     // });
 
-
     // const phoneLinesTimeline2 = gsap.timeline({
     //   scrollTrigger: {
     //     trigger: ".block-contacts",
@@ -875,7 +912,7 @@ class AppAnimations {
     //     scrub: 1,
     //   },
     // });
-      
+
     // phoneLinesTimeline2
     // .to('.waving-text-line-front-2', {duration: 15, y: '6rem', ease: 'linear'}, 0)
     // .to('.waving-text-line-back-2', {duration: 15, y: '-6rem', ease: 'linear'}, 0)

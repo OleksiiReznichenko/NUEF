@@ -2590,6 +2590,20 @@ body {
   margin-bottom: 0;
 }
 
+.studio-block-five {
+  will-change: transform, opacity;
+}
+
+.studioGlass-block-five {
+  will-change: opacity;
+}
+
+.footer-block-five,
+.studio-content,
+.block-contacts__image-disc {
+  will-change: transform;
+}
+
 /* block six */
 
 .block.six {
