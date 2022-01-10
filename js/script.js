@@ -787,20 +787,20 @@ class AppAnimations {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // STUDIO ANIMATION
   studioAnimation() {
-    gsap.to(".moving-text-back", {
-      duration: 60,
-      x: "-55%",
-      repeat: -1,
-      yoyo: true,
-      ease: "linear",
-    });
-    gsap.to(".moving-text-front", {
-      duration: 60,
-      x: "55%",
-      repeat: -1,
-      yoyo: true,
-      ease: "linear",
-    });
+    // gsap.to(".moving-text-back", {
+    //   duration: 60,
+    //   x: "-55%",
+    //   repeat: -1,
+    //   yoyo: true,
+    //   ease: "linear",
+    // });
+    // gsap.to(".moving-text-front", {
+    //   duration: 60,
+    //   x: "55%",
+    //   repeat: -1,
+    //   yoyo: true,
+    //   ease: "linear",
+    // });
 
     let studioTimelineEnd = "+=4000px";
 
@@ -818,6 +818,28 @@ class AppAnimations {
         pin: ".five",
       },
     });
+
+    const studioTextLinesTimeline = gsap.timeline({
+      defaults: { duration: 1.5 },
+      scrollTrigger: {
+        trigger: ".five",
+        start: "top 80%",
+        end: studioTimelineEnd,
+        scrub: 1,
+      },
+    });
+
+    studioTextLinesTimeline
+    .to(".moving-text-back", {
+      duration: 30,
+      x: "-10%",
+      ease: "linear",
+    }, 0)
+    .to(".moving-text-front", {
+      duration: 30,
+      x: "10%",
+      ease: "linear",
+    }, 0)
 
     studioTimeline
       .to(
@@ -843,38 +865,38 @@ class AppAnimations {
       )
       .to(".footer-block-five", { duration: 25, y: "-40vh", ease: "linear" }, 1)
       // .add('contentToTop')
-      .to(".studio-content", { duration: 10, y: "-27vh" })
+      .to(".studio-content", { duration: 20, y: "-27vh" })
       .add("studioContentDisappear")
       .to(
         ".block-five__container",
-        { duration: 10, autoAlpha: 0, ease: "linear" },
+        { duration: 20, autoAlpha: 0, ease: "linear" },
         "studioContentDisappear"
       )
       .to(
         ".studio-content",
-        { duration: 10, autoAlpha: 0, ease: "linear" },
+        { duration: 20, autoAlpha: 0, ease: "linear" },
         "studioContentDisappear"
       )
       .add("blockContactsAppear")
       .to(
         ".block-contacts",
-        { duration: 15, autoAlpha: 1, ease: "linear" },
+        { duration: 25, autoAlpha: 1, ease: "linear" },
         "blockContactsAppear"
       )
       .add("studioDisappear")
       .to(
         ".studio-block-five",
-        { duration: 10, scale: 4, autoAlpha: 0, ease: "linear" },
+        { duration: 20, scale: 4, autoAlpha: 0, ease: "linear" },
         "studioDisappear"
       )
       .to(
         ".studioGlass-block-five",
-        { duration: 10, autoAlpha: 0, ease: "linear" },
+        { duration: 20, autoAlpha: 0, ease: "linear" },
         "studioDisappear"
       )
       .to(
         ".block-contacts",
-        { duration: 15, filter: "blur(0px)", ease: "linear" },
+        { duration: 25, filter: "blur(0px)", ease: "linear" },
         "studioDisappear"
       )
       .to(".block-contacts__image-disc", {
