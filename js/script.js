@@ -575,40 +575,25 @@ class AppAnimations {
       let step = 1;
       let step2 = 1;
       // let lastIndex = 44;
-      let lastIndex = 63;
+      let lastIndex = 62;
 
       function observerLinesCallback(entries, observer) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // wavingTextBackSpans.forEach((el, i) => {
-            //   if (i > 46 && window.outerWidth < 2500) return;
-            //   el.style.animation = 'jumbBottom 1.5s infinite';
-            //   el.style.animationDelay = `${0.05 * i}s`
-            // })
-            // wavingTextFrontSpans.forEach((el, i) => {
-            //   if (i > 46 && window.outerWidth < 2500) return;
-            //   el.style.animation = 'jumb 1.5s infinite';
-            //   el.style.animationDelay = `${0.05 * i}s`
-            // })
-
-            // if (window.outerWidth <= 1920) {
-            //   lastIndex = 30;
-            // } else if (window.outerWidth > 1920) {
-            //   lastIndex = 44;
-            // }
 
             setInterval(() => {
               // if (!entry.isIntersecting) return;
-              wavingTextFrontSpans.forEach((el, i) => {
+              wavingTextFrontSpans.forEach((el, i, arr) => {
                 setTimeout(() => {
                   // if (i > lastIndex) return;
 
-                  if (i - step <= 0) {
-                    el.classList.remove(...el.classList);
-                    el.classList = `span-${lastIndex + i - step}`;
+                  console.log(el, el.classList)
+                  if (i - step < 0) {
+                    // arr[lastIndex + i - step].classList.remove(...el.classList);
+                    arr[lastIndex + i - step].classList = `span-${i}`;
                   } else {
-                    el.classList.remove(...el.classList);
-                    el.classList = `span-${i - step}`;
+                    // el.classList.remove(...el.classList);
+                    arr[i - step + 1].classList = `span-${i}`;
                   }
 
                   if (i === lastIndex - 1) {
@@ -622,37 +607,29 @@ class AppAnimations {
               });
 
               // setTimeout(() => {
-              wavingTextBackSpans.forEach((el2, i2) => {
-                setTimeout(() => {
-                  // if (i2 < 15) return;
+              // wavingTextBackSpans.forEach((el2, i2) => {
+              //   setTimeout(() => {
+              //     // if (i2 < 15) return;
 
-                  if (i2 - step2 <= 0) {
-                    el2.classList.remove(...el2.classList);
-                    el2.classList = `span-${lastIndex + i2 - step2}`;
-                  } else {
-                    el2.classList.remove(...el2.classList);
-                    el2.classList = `span-${i2 - step2}`;
-                  }
+              //     if (i2 - step2 <= 0) {
+              //       el2.classList.remove(...el2.classList);
+              //       el2.classList = `span-${lastIndex + i2 - step2}`;
+              //     } else {
+              //       el2.classList.remove(...el2.classList);
+              //       el2.classList = `span-${i2 - step2}`;
+              //     }
 
-                  if (i2 === lastIndex - 1) {
-                    if (step2 === lastIndex) {
-                      step2 = 1;
-                    }
-                    step2 += 1;
-                  }
-                }, i2 * 1);
-              });
+              //     if (i2 === lastIndex - 1) {
+              //       if (step2 === lastIndex) {
+              //         step2 = 1;
+              //       }
+              //       step2 += 1;
+              //     }
+              //   }, i2 * 1);
+              // });
               // }, 90);
             }, 100);
 
-            // } else
-
-            // wavingTextBackSpans.forEach((el, i) => {
-            //   el.style.animation = 'none';
-            // })
-            // wavingTextFrontSpans.forEach((el, i) => {
-            //   el.style.animation = 'none';
-            // })
           } else {
             step = 1;
             step2 = 1;
@@ -729,7 +706,11 @@ class AppAnimations {
         0
       );
 
+      // phoneLinesTimeline2
+      // .to(wavingTextFrontP, {duration})
+
     phoneLinesTimeline2
+      // .to(wavingTextFrontP, {duration: 20, x: '500%', ease: 'linear', stagger: 0.5}, 0)
       .to(
         ".waving-text-line-front-1",
         { duration: 15, y: "6rem", ease: "linear" },
@@ -852,6 +833,11 @@ class AppAnimations {
         { duration: 20, opacity: 0, ease: "linear" },
         0
       )
+      .to(
+        ".footer-block-five",
+        { duration: 20, opacity: 0.4, ease: "linear" },
+        0
+      )
       // .add('studioAppear')
       .to(
         ".studio-block-five",
@@ -880,7 +866,7 @@ class AppAnimations {
       .add("blockContactsAppear")
       .to(
         ".block-contacts",
-        { duration: 25, autoAlpha: 1, ease: "linear" },
+        { duration: 25, opacity: 0.4, ease: "linear" },
         "blockContactsAppear"
       )
       .add("studioDisappear")
@@ -894,9 +880,14 @@ class AppAnimations {
         { duration: 20, autoAlpha: 0, ease: "linear" },
         "studioDisappear"
       )
+      // .to(
+      //   ".block-contacts",
+      //   { duration: 25, filter: "blur(0px)", ease: "linear" },
+      //   "studioDisappear"
+      // )
       .to(
         ".block-contacts",
-        { duration: 25, filter: "blur(0px)", ease: "linear" },
+        { duration: 25, opacity: 1, ease: "linear", delay: 5 },
         "studioDisappear"
       )
       .to(".block-contacts__image-disc", {

@@ -550,6 +550,7 @@ body {
   height: 60rem;
   /* ANIMATION GSAP */
   transform: scale(1) translateY(17%);
+  /* filter: grayscale(20%); */
 }
 
 @media only screen and (max-width: 1300px) and (min-height: 600px) {
@@ -2217,31 +2218,31 @@ body {
   /*  */
 
   .waving-text-line .span-14 {
-    transform: translateY(2.3rem) rotate(-18deg);
+    transform: translateY(2.3rem) rotate(-21deg);
   }
 
   .waving-text-line .span-15 {
-    transform: translateY(-0.7rem) rotate(-24deg);
+    transform: translateY(-0.7rem) rotate(-27deg);
   }
 
   .waving-text-line .span-16 {
-    transform: translateX(-0.5rem) translateY(-4.4rem) rotate(-31deg);
+    transform: translateX(-0.5rem) translateY(-4.4rem) rotate(-34deg);
   }
 
   .waving-text-line .span-17 {
-    transform: translateX(-1.6rem) translateY(-9rem) rotate(-38deg);
+    transform: translateX(-1.6rem) translateY(-9rem) rotate(-43deg);
   }
 
   .waving-text-line .span-18 {
-    transform: translateX(-3.2rem) translateY(-14rem) rotate(-41deg);
+    transform: translateX(-3.2rem) translateY(-14rem) rotate(-43deg);
   }
 
   .waving-text-line .span-19 {
-    transform: translateX(-4.8rem) translateY(-18.85rem) rotate(-36deg);
+    transform: translateX(-4.8rem) translateY(-18.85rem) rotate(-40deg);
   }
 
   .waving-text-line .span-20 {
-    transform: translateX(-5.7rem) translateY(-23rem) rotate(-27deg);
+    transform: translateX(-5.7rem) translateY(-23rem) rotate(-31deg);
   }
 
   .waving-text-line .span-21 {
@@ -2762,8 +2763,8 @@ body {
   z-index: 1000;
 
   opacity: 0;
-  visibility: hidden;
-  filter: blur(1rem);
+  /* visibility: hidden; */
+  /* filter: blur(1rem); */
 }
 
 /* .block-contacts__content {
