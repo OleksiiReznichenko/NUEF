@@ -180,6 +180,10 @@ const connectAnimationButtonBorder = CSSRulePlugin.getRule(
 );
 const preloaderTextFilling = CSSRulePlugin.getRule(".preloader__text:before");
 
+// VARIABLES
+let discRight = "40vw";
+let discTop = "0%";
+
 class AppAnimations {
   constructor() {
     // gsap.ticker.lagSmoothing(1000, 16);
@@ -192,6 +196,9 @@ class AppAnimations {
     this.phoneAnimation();
     this.studioAnimation();
 
+    
+
+    // EVENT LISTENERS
     formCallingButtons.forEach((el) => {
       el.addEventListener("click", (e) => {
         this.appearFormAnimation(false);
@@ -208,6 +215,40 @@ class AppAnimations {
         }
       });
     });
+
+    // window.addEventListener('resize', () => {
+    //   if (window.outerWidth < 900) {
+    //     // discRight = '-10%';
+    //     discRight = "90%";
+    //   }
+    //   if (window.outerWidth < 700) {
+    //     // discTop = '70%'
+    //     // discTop = '25%'
+    //     discTop = "70%";
+    //   }
+    //   if (window.outerWidth < 600) {
+    //     // discRight = '-20%'
+    //     discRight = "80%";
+    //   }
+    //   if (window.outerWidth < 500) {
+    //     // discRight = '-33%'
+    //     discRight = "75%";
+    //   }
+    //   if (window.outerWidth < 450) {
+    //     // discRight = '-25%'
+    //     discRight = "75%";
+  
+    //     if (isIOSDevice()) {
+    //       // discRight = '-50%'
+    //       discRight = "65%";
+    //     }
+    //   }
+    //   if (window.outerWidth > 2500) {
+    //     // discRight = '-25%'
+    //     discRight = "60vw";
+    //     discTop = "20%";
+    //   }
+    // })
   }
 
   fixedNav() {
@@ -466,8 +507,6 @@ class AppAnimations {
     let connectAnimationIndicator = 3;
     // let discTop = '50%', discRight = '0%';
     // let discTop = '0%', discRight = '100%';
-    let discTop = "0%",
-      discRight = "40vw";
 
     if (window.outerWidth < 900) {
       // discRight = '-10%';
@@ -565,85 +604,85 @@ class AppAnimations {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // PHONE ANIMATION
   phoneAnimation() {
-    if (window.outerWidth > 600) {
-      const observerLinesOptions = {
-        root: null,
-        rootMargin: "600px",
-        threshold: 0,
-      };
+    // if (window.outerWidth > 600) {
+    //   const observerLinesOptions = {
+    //     root: null,
+    //     rootMargin: "600px",
+    //     threshold: 0,
+    //   };
 
-      let step = 1;
-      let step2 = 1;
-      // let lastIndex = 44;
-      let lastIndex = 62;
+    //   let step = 1;
+    //   let step2 = 1;
+    //   // let lastIndex = 44;
+    //   let lastIndex = 62;
 
-      function observerLinesCallback(entries, observer) {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+    //   function observerLinesCallback(entries, observer) {
+    //     entries.forEach((entry) => {
+    //       if (entry.isIntersecting) {
 
-            setInterval(() => {
-              // if (!entry.isIntersecting) return;
-              wavingTextFrontSpans.forEach((el, i, arr) => {
-                setTimeout(() => {
-                  // if (i > lastIndex) return;
+    //         setInterval(() => {
+    //           // if (!entry.isIntersecting) return;
+    //           wavingTextFrontSpans.forEach((el, i, arr) => {
+    //             setTimeout(() => {
+    //               // if (i > lastIndex) return;
 
-                  console.log(el, el.classList)
-                  if (i - step < 0) {
-                    // arr[lastIndex + i - step].classList.remove(...el.classList);
-                    arr[lastIndex + i - step].classList = `span-${i}`;
-                  } else {
-                    // el.classList.remove(...el.classList);
-                    arr[i - step + 1].classList = `span-${i}`;
-                  }
+    //               console.log(el, el.classList)
+    //               if (i - step < 0) {
+    //                 // arr[lastIndex + i - step].classList.remove(...el.classList);
+    //                 arr[lastIndex + i - step].classList = `span-${i}`;
+    //               } else {
+    //                 // el.classList.remove(...el.classList);
+    //                 arr[i - step + 1].classList = `span-${i}`;
+    //               }
 
-                  if (i === lastIndex - 1) {
-                    if (step === lastIndex) {
-                      // indicatorStep = true;
-                      step = 1;
-                    }
-                    step += 1;
-                  }
-                }, i * 1);
-              });
+    //               if (i === lastIndex - 1) {
+    //                 if (step === lastIndex) {
+    //                   // indicatorStep = true;
+    //                   step = 1;
+    //                 }
+    //                 step += 1;
+    //               }
+    //             }, i * 1);
+    //           });
 
-              // setTimeout(() => {
-              // wavingTextBackSpans.forEach((el2, i2) => {
-              //   setTimeout(() => {
-              //     // if (i2 < 15) return;
+    //           // setTimeout(() => {
+    //           // wavingTextBackSpans.forEach((el2, i2) => {
+    //           //   setTimeout(() => {
+    //           //     // if (i2 < 15) return;
 
-              //     if (i2 - step2 <= 0) {
-              //       el2.classList.remove(...el2.classList);
-              //       el2.classList = `span-${lastIndex + i2 - step2}`;
-              //     } else {
-              //       el2.classList.remove(...el2.classList);
-              //       el2.classList = `span-${i2 - step2}`;
-              //     }
+    //           //     if (i2 - step2 <= 0) {
+    //           //       el2.classList.remove(...el2.classList);
+    //           //       el2.classList = `span-${lastIndex + i2 - step2}`;
+    //           //     } else {
+    //           //       el2.classList.remove(...el2.classList);
+    //           //       el2.classList = `span-${i2 - step2}`;
+    //           //     }
 
-              //     if (i2 === lastIndex - 1) {
-              //       if (step2 === lastIndex) {
-              //         step2 = 1;
-              //       }
-              //       step2 += 1;
-              //     }
-              //   }, i2 * 1);
-              // });
-              // }, 90);
-            }, 100);
+    //           //     if (i2 === lastIndex - 1) {
+    //           //       if (step2 === lastIndex) {
+    //           //         step2 = 1;
+    //           //       }
+    //           //       step2 += 1;
+    //           //     }
+    //           //   }, i2 * 1);
+    //           // });
+    //           // }, 90);
+    //         }, 100);
 
-          } else {
-            step = 1;
-            step2 = 1;
-          }
-        });
-      }
+    //       } else {
+    //         step = 1;
+    //         step2 = 1;
+    //       }
+    //     });
+    //   }
 
-      const observerLines = new IntersectionObserver(
-        observerLinesCallback,
-        observerLinesOptions
-      );
+    //   const observerLines = new IntersectionObserver(
+    //     observerLinesCallback,
+    //     observerLinesOptions
+    //   );
 
-      // observerLines.observe(blockFour);
-    }
+    //   // observerLines.observe(blockFour);
+    // }
 
     let phoneTimelineEnd = "+=1300px";
     let phoneLinesTimelineEnd = "+=1700px";

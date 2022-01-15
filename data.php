@@ -94,20 +94,28 @@ if (isset($_POST['submit'])) {
     $social = $_POST['social'];
     $message = $_POST['message'];
 
-    $headers =  'MIME-Version: 1.0' . "\r\n";
-    $headers .= 'From: ' . $email . "\r\n";
-    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    // $headers =  'MIME-Version: 1.0' . "\r\n";
+    // $headers .= 'From: ' . $email . "\r\n";
+    // $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
     // boundary 
     $semi_rand = md5(time());
     $mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
 
     // headers for attachment 
-    $headers .= "\nMIME-Version: 1.0\n" . "Content-Type: multipart/mixed;\n" . " boundary=\"{$mime_boundary}\"";
+    // $headers .= "\nMIME-Version: 1.0\n" . "Content-Type: multipart/mixed;\n" . " boundary=\"{$mime_boundary}\"";
 
+    $headers =  'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'From: ' . $email . "\r\n";
+    $headers .= 'Content-Type: multipart/mixed;' . "\r\n";
+    $headers .= "boundary=\"{$mime_boundary}\"";
     // multipart boundary 
-    $body = "This is a multi-part message in MIME format.\n\n" . "--{$mime_boundary}\n" . "Content-Type: text/plain; charset=\"iso-8859-1\"\n" . "Content-Transfer-Encoding: 7bit\n\n" . $message . "\n\n";
-    $body .= "--{$mime_boundary}\n";
+    $body = "This is a multi-part message in MIME format. --" . $mime_boundary . "\r\n" .
+        "Content-Type: text/plain; charset=\"iso-8859-1\"" . "\r\n" .
+        "Content-Transfer-Encoding: 7bit " . $message . "\r\n" .
+        "--" . $mime_boundary;
+    // $body = "This is a multi-part message in MIME format.\n\n" . "--{$mime_boundary}\n" . "Content-Type: text/plain; charset=\"iso-8859-1\"\n" . "Content-Transfer-Encoding: 7bit\n\n" . $message . "\n\n";
+    // $body .= "--{$mime_boundary}\n";
 
     // preparing attachments
     for ($x = 0; $x < count($files); $x++) {
@@ -118,8 +126,9 @@ if (isset($_POST['submit'])) {
         $name = $files[$x]['name'];
         $body .= "Content-Type: {\"application/octet-stream\"};\n" . " name=\"$name\"\n" .
             "Content-Disposition: attachment;\n" . " filename=\"$name\"\n" .
-            "Content-Transfer-Encoding: base64\n\n" . $data . "\n\n";
-        $body .= "--{$mime_boundary}\n";
+            "Content-Transfer-Encoding: base64\n\n" . $data . "\n\n" .
+            "--{$mime_boundary}\n";
+        // $body .= "--{$mime_boundary}\n";
     }
     // send
 
