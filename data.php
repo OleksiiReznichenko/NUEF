@@ -164,64 +164,76 @@ use PHPMailer\PHPMailer\Exception;
 
 if (isset($_POST['submit'])) {
 
-    $email = $_POST['email'];
-    $social = $_POST['social'];
-    $message = $_POST['message'];
-    // $file = $_POST['file'];
+    try {
+        $email = $_POST['email'];
+        $social = $_POST['social'];
+        $message = $_POST['message'];
+        // $file = $_POST['file'];
 
-    // $tmp_name    = $_FILES['file']['tmp_name'];
-    // $name        = $_FILES['file']['name'];
+        // $tmp_name    = $_FILES['file']['tmp_name'];
+        // $name        = $_FILES['file']['name'];
 
-    // $target_dir = "assets/media/";
-    // $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        // $target_dir = "assets/media/";
+        // $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 
-    // Create instance of phpmailer
-    $mail = new PHPMailer();
+        // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        // Create instance of phpmailer
+        $mail = new PHPMailer(true);
 
-    // Set mailer to use smtp
-    $mail->isSMTP();
+        $mail->SMTPDebug = 2;
+        // Set mailer to use smtp
+        $mail->isSMTP();
 
-    // Define smtp host
-    $mail->Host = "smtp.gmail.com";
+        // Define smtp host
+        $mail->Host = "smtp.gmail.com";
 
-    // Enable smtp authentication
-    $mail->SMTPAuth = "true";
+        // Enable smtp authentication
+        $mail->SMTPAuth = true;
 
-    // Set type of encryption (ssl/tls)
-    $mail->SMTPSecure = "tls";
+        // Set type of encryption (ssl/tls)
+        $mail->SMTPSecure = "tls";
+        // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
 
-    // Set port to connect smtp
-    $mail->Port = "587";
+        // Set port to connect smtp
+        $mail->Port = 587;
+        // $mail->Port = 465;
 
-    // Set gmail username
-    $mail->Username = "anton2006ivanov2006@gmail.com";
+        // Set gmail username
+        $mail->Username = "anton2006ivanov2006@gmail.com";
 
-    // Set gmail password
-    $mail->Password = "rynf2343";
+        // Set gmail password
+        $mail->Password = "runa6543211";
 
-    // Set email subject
-    $mail->Subject = 'From: ' . $email . "\r\n";
+        // Set email subject
+        $mail->Subject = 'From: ' . $email . "\r\n";
 
-    // Set sender email
-    $mail->setFrom("anton2006ivanov2006@gmail.com");
+        // Set sender email
+        $mail->setFrom("anton2006ivanov2006@gmail.com");
 
-    // Email body
-    $mail->Body = "Email : " . $email . "\r\n" .
-        "Social : " . $social . "\r\n" .
-        "Message : " . $message;
+        // Email body
+        $mail->Body = "Email : " . $email . "\r\n" .
+            "Social : " . $social . "\r\n" .
+            "Message : " . $message;
 
-    // Add an attachment
-    $mail->addAttachment("assets/media/colorfulDisc.png", "colorfulDisc.png");
+        // Add an attachment
+        // $mail->addAttachment("assets/media/colorfulDisc.png", "colorfulDisc.png");
 
-    // Add recipient
-    $mail->AddAddress("anton2006ivanov2006@gmail.com");
+        // Add recipient
+        $mail->AddAddress("anton2006ivanov2006@gmail.com");
 
-    // Send email
-    if ($mail->Send()) {
+        // Send email
+        // if ($mail->Send()) {
+        //     echo "Email Sent!";
+        // } else {
+        //     echo "Error";
+        // }
+
+        $mail->Send();
         echo "Email Sent!";
-    } else {
-        echo "Error";
-    }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    };
 
     // Close smtp connection
     $mail->smtpClose();
