@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- <meta name="viewport" content="width=1920"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Unique music label. We will help you to become famous and solve everything related to everyday routine. Join NUEF today!">
     <title>NUEF</title>
 
     <link rel="icon" href="assets/media/favicon.png" />
@@ -68,9 +68,6 @@
       @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Pragati+Narrow:wght@400;700&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
     </style> -->
-    <!-- <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script> -->
-
-    <!-- <script src="https://code.jquery.com/jquery-3.5.0.js"></script> -->
   </head>
 
   <body>
@@ -81,11 +78,6 @@
           alt=""
           class="preloader__image"
         />
-        <!-- <picture class="preloader__image">
-                    <source srcset="assets/media/colorfulDisc.webp" type="image/webp">
-                    <source srcset="assets/media/colorfulDisc.png" type="image/png">
-                    <img src="assets/media/colorfulDisc.png">
-                </picture> -->
         <span class="preloader__text">NUEF</span>
       </div>
     </div>
@@ -106,7 +98,8 @@
               tell us some words about yourself
             </h5>
           </div>
-          <form action="data.php" method="post" enctype="multipath/form-data" class="registration-form__form">
+          <iframe name="votar" style="display:none;"></iframe>
+          <form target="votar" action="data.php" method="post" id="fileInputForm" class="registration-form__form" enctype="multipart/form-data">
             <div class="registration-form__form__input-group">
               <label for="emali" class="registration-form__form__label"
                 >E-mail</label
@@ -115,6 +108,7 @@
                 <input
                   name="email"
                   type="email"
+                  id="emailInput"
                   class="registration-form__form__input"
                   placeholder="example@example.com"
                   required
@@ -134,6 +128,7 @@
                 <input
                   name="social"
                   type="text"
+                  id="socialInput"
                   class="registration-form__form__input"
                   placeholder="Link or username"
                   required
@@ -173,13 +168,13 @@
               ></textarea>
               <div class="registration-form__form__clip-container">
                 <label
-                  for="file"
+                  for="fileInput"
                   class="registration-form__form__file-custom"
                 ></label>
                 <input
-                  name="fileToUpload"
+                  name="fileInput"
                   type="file"
-                  id="file"
+                  id="fileInput"
                   class="registration-form__form__file"
                 />
                 <img
@@ -242,10 +237,6 @@
         <div class="line header__two-lines">MAKING</div>
         <div class="line header__two-lines">BRANDS</div>
         <div class="header__famous-line line z">FAMOUS</div>
-        
-            <!-- assets/media/singer500.png   500w,
-            assets/media/singer800.png   800w,
-            assets/media/singer1k.png   1000w, -->
         <img
           srcset="
             assets/media/singer1.5k.png 1500w,
@@ -263,17 +254,10 @@
         (max-width: 3000px) 20vw, 
         25vw"
           src="assets/media/singer2k.png"
-          class="singer hidden"
+          class="singer"
         />
-        <!-- <picture class="singer">
-          <source srcset="assets/media/singer.webp" type="image/webp" />
-          <source srcset="assets/media/singer.png" type="image/png" />
-          <img src="assets/media/singer.png" />
-        </picture> -->
-
         <div class="circle"></div>
       </div>
-      <!-- <div class="spotlights__container"> -->
       <div class="spotlights-white">
         <img
           src="assets/media/spotlightSmallW150.png"
@@ -322,7 +306,6 @@
           class="r spotlight-white-center-bottom spotlight-white-center-bottom-right"
         />
       </div>
-      <!-- </div> -->
 
       <img
         src="assets/media/spotlightTopCenter1000.png"
@@ -330,7 +313,6 @@
       />
 
       <div class="crowd__container">
-        <!-- <img src="assets/media/crowd2k.png" class="crowd"> -->
         <img
           srcset="
             assets/media/crowd500.png   500w,
@@ -355,15 +337,7 @@
           src="assets/media/crowd2k.png"
           class="crowd"
         />
-
-        <!-- assets/media/crowd4k.png  4000w,
-        assets/media/crowd5k.png  5000w -->
       </div>
-      <!-- <picture class="crowd">
-        <source srcset="assets/media/crowd.webp" type="image/webp" />
-        <source srcset="assets/media/crowd.png" type="image/png" />
-        <img src="assets/media/crowd.png" />
-      </picture> -->
       <div class="smoke"></div>
     </div>
 
@@ -421,22 +395,6 @@
       </div>
       <div class="musicCircle left">
         <img class="musicCircle-big" src="assets/media/musicCircle.png" />
-        <!-- <img srcset="assets/media/musicCircle500.png 500w,
-         assets/media/musicCircle.png 700w" 
-        sizes="(max-width: 450px) 112vw, 
-        (max-width: 600px) 85vw,
-        (max-width: 900px) 55vw, 
-        (max-width: 1200px) 45vw, 
-        (max-width: 1500px) 40vw,
-        40vw"
-        src="assets/media/musicCircle.png" 
-        class="musicCircle-big">
-      </div> -->
-        <!-- <picture class="musicCircle-big">
-                    <source srcset="assets/media/musicCircle.webp" type="image/webp">
-                    <source srcset="assets/media/musicCircle.png" type="image/png">
-                    <img src="assets/media/musicCircle.png">
-                </picture> -->
         <div class="bg"></div>
       </div>
 
@@ -444,11 +402,6 @@
         src="assets/media/musicCircleBottomRight500.png"
         class="musicCircle-small musicCircle right"
       />
-      <!-- <picture class="musicCircle-small musicCircle right">
-                <source srcset="assets/media/musicCircleBottomRight.webp" type="image/webp">
-                <source srcset="assets/media/musicCircleBottomRight.png" type="image/png">
-                <img src="assets/media/musicCircleBottomRight.png">
-            </picture> -->
       <img src="assets/media/spotlightTopRight.png" class="spotlight" />
     </div>
 
@@ -474,11 +427,6 @@
               class="circleBlock__image"
               src="assets/media/musicRecord700.png"
             />
-            <!-- <picture class="circleBlock__image">
-                            <source srcset="assets/media/musicRecord.webp" type="image/webp">
-                            <source srcset="assets/media/musicRecord.png" type="image/png">
-                            <img src="assets/media/musicRecord.png">
-                        </picture> -->
             <div class="connect-animation-button center">CONNECT</div>
           </div>
         </div>
@@ -487,7 +435,6 @@
           class="spotlight spotlight-block-three"
         />
       </div>
-      <!-- <img src="assets/media/leftArm800.png" alt="" class="arm left-arm" /> -->
       <img
         srcset="
           assets/media/leftArm500.png 500w,
@@ -503,12 +450,6 @@
         src="assets/media/leftArm800.png"
         class="arm left-arm"
       />
-      <!-- <picture class="arm left-arm">
-        <source srcset="assets/media/leftArm.webp" type="image/webp" />
-        <source srcset="assets/media/leftArm.png" type="image/png" />
-        <img src="assets/media/leftArm.png" />
-      </picture> -->
-      <!-- <img src="assets/media/rightArm800.png" alt="" class="arm right-arm" /> -->
       <img
         srcset="
           assets/media/rightArm500.png 500w,
@@ -524,11 +465,6 @@
         src="assets/media/rightArm800.png"
         class="arm right-arm"
       />
-      <!-- <picture class="arm right-arm">
-        <source srcset="assets/media/rightArm.webp" type="image/webp" />
-        <source srcset="assets/media/rightArm.png" type="image/png" />
-        <img src="assets/media/rightArm.png" />
-      </picture> -->
     </div>
 
     <div class="block four">
@@ -559,11 +495,6 @@
           </div>
 
           <img class="phone_image" src="assets/media/phone.png" />
-          <!-- <picture class="phone_image">
-            <source srcset="assets/media/phone.webp" type="image/webp" />
-            <source srcset="assets/media/phone.png" type="image/png" />
-            <img src="assets/media/phone.png" />
-          </picture> -->
         </div>
         <div class="col r">
           <div class="title">
@@ -710,65 +641,6 @@
           <p><span class="span-62">Nuef // </span></p>
           <p><span class="span-63">Nuef // </span></p>
         </div>
-
-        <!-- <svg class="waving-text-line waving-text-line-back" viewBox="0 0 1098.72 89.55">
-        <path id="curve" fill="transparent" d="M0.17,0.23c0,0,105.85,77.7,276.46,73.2s243.8-61.37,408.77-54.05c172.09,7.64,213.4,92.34,413.28,64.19"></path>
-        <text class="curved-text curved-text--back" width="100%" style="transform:translate3d(0,0,0);">
-            <textPath class="curved-text--path" style="transform:translate3d(0,0,0);" alignment-baseline="top" xlink:href="#curve">
-              Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef
-            </textPath>
-        </text>
-      </svg> -->
-
-        <!-- <svg class="waving-text-line waving-text-line-front" viewBox="0 0 1098.72 89.55">
-        <path id="curve" fill="transparent" d="M0.17,0.23c0,0,105.85,77.7,276.46,73.2s243.8-61.37,408.77-54.05c172.09,7.64,213.4,92.34,413.28,64.19"></path>
-        <text class="curved-text curved-text--front" width="100%" style="transform:translate3d(0,0,0);">
-            <textPath class="curved-text--path" style="transform:translate3d(0,0,0);" alignment-baseline="top" xlink:href="#curve" startOffset="1200px">
-              Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef
-            </textPath>
-        </text>
-      </svg>
-
-      <svg class="waving-text-line waving-text-line-back" viewBox="0 0 1098.72 89.55">
-        <path id="curve" fill="transparent" d="M0.17,0.23c0,0,105.85,77.7,276.46,73.2s243.8-61.37,408.77-54.05c172.09,7.64,213.4,92.34,413.28,64.19"></path>
-        <text class="curved-text curved-text--back" width="100%" style="transform:translate3d(0,0,0);">
-            <textPath class="curved-text--path" style="transform:translate3d(0,0,0);" alignment-baseline="top" xlink:href="#curve" startOffset="1200px">
-              Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef
-            </textPath>
-        </text>
-      </svg> -->
-
-        <!-- <div class="waving-text-line waving-text-line-front curved-text">
-          Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef
-        </div> -->
-
-        <!-- <h2 class="main-h2 main-h2--front" data-splitting>
-                    Nuef // Nuef // Nuef // Nuef
-                </h2>
-                <h2 class="main-h2 main-h2--back" data-splitting>
-                    Nuef // Nuef // Nuef // Nuef
-                </h2> -->
-
-        <!-- <div class="waving-text-line waving-text-line-back">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path id="curve1" fill='transparent' fill-opacity='0' d="M0,96L60,122.7C120,149,240,203,360,240C480,277,600,299,720,266.7C840,235,960,149,1080,106.7C1200,64,1320,64,1380,64L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
-                <text class="curved-text curved-text--back">
-                    <textPath xlink:href="#curve1" class="curved-text--path">
-                        Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef
-                    </textPath>
-                </text>
-            </svg>
-        </div>
-        <div class="waving-text-line waving-text-line-front">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path id="curve2" fill='transparent' fill-opacity='0' d="M0,96L60,122.7C120,149,240,203,360,240C480,277,600,299,720,266.7C840,235,960,149,1080,106.7C1200,64,1320,64,1380,64L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
-                <text class="curved-text curved-text--front">
-                    <textPath xlink:href="#curve2" class="curved-text--path">
-                        Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef // Nuef
-                    </textPath>
-                </text>
-            </svg>
-        </div> -->
       </div>
     </div>
 
@@ -865,8 +737,6 @@
         </div>
       </div>
 
-      <!-- <div class="studio-blur"></div> -->
-
       <div class="studio studio-block-five"></div>
       <div class="studioGlass studioGlass-block-five"></div>
       <div class="studio-content">
@@ -902,11 +772,6 @@
               alt=""
               class="block-contacts__image-disc"
             />
-            <!-- <picture class="block-contacts__image-disc">
-                            <source srcset="assets/media/discWithText.webp" type="image/webp">
-                            <source srcset="assets/media/discWithText.png" type="image/png">
-                            <img src="assets/media/discWithText.png">
-                        </picture> -->
           </div>
           <div class="block-contacts__text">
             <h1 class="block-contacts__heading">Contact Us</h1>

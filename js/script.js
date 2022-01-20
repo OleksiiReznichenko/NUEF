@@ -47,15 +47,13 @@ const blockContactText = document.querySelector(".block-contacts__text");
 const blockContactVideoContainer = document.querySelector(
   ".block-contacts__video-container"
 );
+const emailInput = document.getElementById("emailInput");
+const socialInput = document.getElementById("socialInput");
+const fileInput = document.getElementById("fileInput");
+const textarea = document.querySelector(".registration-form__form__textarea");
 
-// document.querySelector('.registration-form__form__clip-link').addEventListener('click', () => {
-//   console.log('CLIcked')
-// })
 
-document.getElementById("file").addEventListener("change", (e) => {
-  const stringValue = e.target.value;
-  alert(`Selected file: ${stringValue.substr(12, stringValue.length)}`);
-});
+document.getElementById('fileInputForm').addEventListener('submit', alert('Thanks'));
 
 const tx = document.querySelector("textarea");
 tx.setAttribute("style", "height:" + tx.scrollHeight + "px;");
@@ -70,6 +68,7 @@ function OnInput() {
     this.style.height = this.scrollHeight + "px";
   }
 }
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // IPHONE ADDAPTIVE
@@ -150,25 +149,6 @@ SmoothScroll({
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ANIMATIONS
 
-// const textPaths = Array.from(document.querySelectorAll(".curved-text--path"));
-
-// const h = document.documentElement,
-//       b = document.body,
-//       st = 'scrollTop',
-//       sh = 'scrollHeight';
-
-// document.addEventListener("scroll", e => {
-//   let percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
-//   textPaths.forEach((el, i) => {
-//     if (i === 0) {
-//       el.setAttribute("startOffset", (-percent * 40) + 1200)
-//     }
-//     if (i === 1) {
-//       el.setAttribute("startOffset", (-percent * 35) + 1100)
-//     }
-//   })
-// });
-
 gsap.registerPlugin(ScrollTrigger);
 
 gsap.registerPlugin(CSSRulePlugin);
@@ -180,9 +160,6 @@ const connectAnimationButtonBorder = CSSRulePlugin.getRule(
 );
 const preloaderTextFilling = CSSRulePlugin.getRule(".preloader__text:before");
 
-// VARIABLES
-let discRight = "40vw";
-let discTop = "0%";
 
 class AppAnimations {
   constructor() {
@@ -215,40 +192,6 @@ class AppAnimations {
         }
       });
     });
-
-    // window.addEventListener('resize', () => {
-    //   if (window.outerWidth < 900) {
-    //     // discRight = '-10%';
-    //     discRight = "90%";
-    //   }
-    //   if (window.outerWidth < 700) {
-    //     // discTop = '70%'
-    //     // discTop = '25%'
-    //     discTop = "70%";
-    //   }
-    //   if (window.outerWidth < 600) {
-    //     // discRight = '-20%'
-    //     discRight = "80%";
-    //   }
-    //   if (window.outerWidth < 500) {
-    //     // discRight = '-33%'
-    //     discRight = "75%";
-    //   }
-    //   if (window.outerWidth < 450) {
-    //     // discRight = '-25%'
-    //     discRight = "75%";
-  
-    //     if (isIOSDevice()) {
-    //       // discRight = '-50%'
-    //       discRight = "65%";
-    //     }
-    //   }
-    //   if (window.outerWidth > 2500) {
-    //     // discRight = '-25%'
-    //     discRight = "60vw";
-    //     discTop = "20%";
-    //   }
-    // })
   }
 
   fixedNav() {
@@ -373,16 +316,18 @@ class AppAnimations {
   }
 
   appearFormAnimation(regFormIndicator) {
-    // registrationFormWrapper.style.top = `${topPosition}vh`
-    // setTimeout(() => {
     if (!regFormIndicator) {
-      // gsap.to('body', {duration: 0, height: '100vh'})
       gsap.to(".registration-form__wrapper", { duration: 0.75, autoAlpha: 1 });
     } else {
-      // gsap.to('body', {duration: 0, height: '100%'})
       gsap.to(".registration-form__wrapper", { duration: 0.75, autoAlpha: 0 });
+
+      setTimeout(() => {
+        emailInput.value = '';
+        socialInput.value = '';
+        fileInput.value = '';
+        textarea.value = '';
+      }, 750);
     }
-    // }, 500);
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -431,7 +376,6 @@ class AppAnimations {
 
     let rotateSides = 40;
     let rotateCenter = 20;
-    let rotateCenterBottom = 140;
     let crowdY = "25vh";
 
     if (window.outerWidth > 2600) {
@@ -442,7 +386,6 @@ class AppAnimations {
       .to(".navigation-top__list", { duration: 2.1, x: "-150%" }, 0)
       .to(".navigation-top__button", { duration: 3.25, x: "250%" }, 0)
       .to(".socials-bottom", { duration: 1.2, autoAlpha: 0 }, 0)
-      // .to('.crowd', {duration: 2.5, y: '25vh', opacity: 1}, 0)
       .to(".crowd__container", { duration: 2.5, y: crowdY }, 0)
       .to(".header__famous-line", { duration: 2.5, y: 0, opacity: 1 }, 0)
       .to(".nuef-collaborations", { duration: 2.5, y: "-160%" }, 0)
@@ -504,9 +447,9 @@ class AppAnimations {
       connectAnimation();
     });
 
-    let connectAnimationIndicator = 3;
-    // let discTop = '50%', discRight = '0%';
-    // let discTop = '0%', discRight = '100%';
+    let connectAnimationIndicator = 3;    
+    let discRight = "40vw";
+    let discTop = "0%";
 
     if (window.outerWidth < 900) {
       // discRight = '-10%';
@@ -594,7 +537,6 @@ class AppAnimations {
         { duration: 1, opacity: 1, border: "0.75rem solid #ffffff" },
         1
       )
-      // .to('.disc-block-three', {duration: 1.5, x: 0, y: 0, top: discTop, right: discRight }, 1)
       .to(".disc-block-three", { duration: 1.5, x: discRight, y: discTop }, 1)
       .to(leftArm, { duration: 2, y: "-350%", rotate: 45, opacity: 0 }, 1)
       .to(rightArm, { duration: 2, y: "550%", rotate: 55, opacity: 0 }, 1)
@@ -604,86 +546,6 @@ class AppAnimations {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // PHONE ANIMATION
   phoneAnimation() {
-    // if (window.outerWidth > 600) {
-    //   const observerLinesOptions = {
-    //     root: null,
-    //     rootMargin: "600px",
-    //     threshold: 0,
-    //   };
-
-    //   let step = 1;
-    //   let step2 = 1;
-    //   // let lastIndex = 44;
-    //   let lastIndex = 62;
-
-    //   function observerLinesCallback(entries, observer) {
-    //     entries.forEach((entry) => {
-    //       if (entry.isIntersecting) {
-
-    //         setInterval(() => {
-    //           // if (!entry.isIntersecting) return;
-    //           wavingTextFrontSpans.forEach((el, i, arr) => {
-    //             setTimeout(() => {
-    //               // if (i > lastIndex) return;
-
-    //               console.log(el, el.classList)
-    //               if (i - step < 0) {
-    //                 // arr[lastIndex + i - step].classList.remove(...el.classList);
-    //                 arr[lastIndex + i - step].classList = `span-${i}`;
-    //               } else {
-    //                 // el.classList.remove(...el.classList);
-    //                 arr[i - step + 1].classList = `span-${i}`;
-    //               }
-
-    //               if (i === lastIndex - 1) {
-    //                 if (step === lastIndex) {
-    //                   // indicatorStep = true;
-    //                   step = 1;
-    //                 }
-    //                 step += 1;
-    //               }
-    //             }, i * 1);
-    //           });
-
-    //           // setTimeout(() => {
-    //           // wavingTextBackSpans.forEach((el2, i2) => {
-    //           //   setTimeout(() => {
-    //           //     // if (i2 < 15) return;
-
-    //           //     if (i2 - step2 <= 0) {
-    //           //       el2.classList.remove(...el2.classList);
-    //           //       el2.classList = `span-${lastIndex + i2 - step2}`;
-    //           //     } else {
-    //           //       el2.classList.remove(...el2.classList);
-    //           //       el2.classList = `span-${i2 - step2}`;
-    //           //     }
-
-    //           //     if (i2 === lastIndex - 1) {
-    //           //       if (step2 === lastIndex) {
-    //           //         step2 = 1;
-    //           //       }
-    //           //       step2 += 1;
-    //           //     }
-    //           //   }, i2 * 1);
-    //           // });
-    //           // }, 90);
-    //         }, 100);
-
-    //       } else {
-    //         step = 1;
-    //         step2 = 1;
-    //       }
-    //     });
-    //   }
-
-    //   const observerLines = new IntersectionObserver(
-    //     observerLinesCallback,
-    //     observerLinesOptions
-    //   );
-
-    //   // observerLines.observe(blockFour);
-    // }
-
     let phoneTimelineEnd = "+=1300px";
     let phoneLinesTimelineEnd = "+=1700px";
     let phoneLinesTimeline2End = "+=1700px";
@@ -710,11 +572,9 @@ class AppAnimations {
         start: "top 50%",
         end: phoneLinesTimelineEnd,
         scrub: 1,
-        // pin: ".four",
       },
     });
 
-    // let indicatorLines = true;
 
     const phoneLinesTimeline2 = gsap.timeline({
       scrollTrigger: {
@@ -722,14 +582,6 @@ class AppAnimations {
         start: "top 50%",
         end: phoneLinesTimeline2End,
         scrub: 1,
-        // onUpdate: self => {
-        //     if (self.progress > 0.5 && indicatorLines) {
-        //     console.log(self.progress)
-        //     phoneLinesTimeline2.pause();
-        //     phoneLinesTimeline2.reverse();
-        //     indicatorLines = false;
-        //   }
-        // }
       },
     });
 
@@ -745,11 +597,7 @@ class AppAnimations {
         0
       );
 
-      // phoneLinesTimeline2
-      // .to(wavingTextFrontP, {duration})
-
     phoneLinesTimeline2
-      // .to(wavingTextFrontP, {duration: 20, x: '500%', ease: 'linear', stagger: 0.5}, 0)
       .to(
         ".waving-text-line-front-1",
         { duration: 15, y: "6rem", ease: "linear" },
@@ -807,21 +655,6 @@ class AppAnimations {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // STUDIO ANIMATION
   studioAnimation() {
-    // gsap.to(".moving-text-back", {
-    //   duration: 60,
-    //   x: "-55%",
-    //   repeat: -1,
-    //   yoyo: true,
-    //   ease: "linear",
-    // });
-    // gsap.to(".moving-text-front", {
-    //   duration: 60,
-    //   x: "55%",
-    //   repeat: -1,
-    //   yoyo: true,
-    //   ease: "linear",
-    // });
-
     let studioTimelineEnd = "+=4000px";
 
     if (window.outerWidth < 600) {
@@ -862,11 +695,6 @@ class AppAnimations {
     }, 0)
 
     studioTimeline
-      // .to(
-      //   ".block-five__container",
-      //   { duration: 20, filter: "blur(1rem)", ease: "linear" },
-      //   0
-      // )
       .to(
         ".content-block-five",
         { duration: 20, opacity: 0, ease: "linear" },
@@ -919,11 +747,6 @@ class AppAnimations {
         { duration: 20, autoAlpha: 0, ease: "linear" },
         "studioDisappear"
       )
-      // .to(
-      //   ".block-contacts",
-      //   { duration: 25, filter: "blur(0px)", ease: "linear" },
-      //   "studioDisappear"
-      // )
       .to(
         ".block-contacts",
         { duration: 25, opacity: 1, ease: "linear", delay: 5 },
@@ -935,49 +758,6 @@ class AppAnimations {
         rotate: 360,
         ease: "linear",
       });
-
-    // let phoneTimelineEnd = "+=1300px";
-    // let phoneLinesTimelineEnd = "+=1700px";
-    // let phoneLinesTimeline2End = "+=1700px";
-
-    // if (window.outerWidth < 600) {
-    //   phoneTimelineEnd = "+=900px";
-    //   phoneLinesTimelineEnd = "+=1000px";
-    //   phoneLinesTimeline2End = "+=1000px";
-    // }
-
-    // const phoneLinesTimeline = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: ".block-contacts",
-    //     start: "top 50%",
-    //     end: phoneLinesTimelineEnd,
-    //     scrub: 1,
-    //     pin: ".block-contacts",
-    //   },
-    // });
-
-    // const phoneLinesTimeline2 = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: ".block-contacts",
-    //     start: "top 50%",
-    //     end: phoneLinesTimeline2End,
-    //     scrub: 1,
-    //   },
-    // });
-
-    // phoneLinesTimeline2
-    // .to('.waving-text-line-front-2', {duration: 15, y: '6rem', ease: 'linear'}, 0)
-    // .to('.waving-text-line-back-2', {duration: 15, y: '-6rem', ease: 'linear'}, 0)
-    // .to('.waving-text-line-front-2', {duration: 15, y: '0rem', ease: 'linear', delay: 15}, 0)
-    // .to('.waving-text-line-back-2', {duration: 15, y: '0rem', ease: 'linear', delay: 15}, 0)
-    // .to('.waving-text-line-front-2', {duration: 15, y: '8rem', ease: 'linear', delay: 30}, 0)
-    // .to('.waving-text-line-back-2', {duration: 15, y: '-8rem', ease: 'linear', delay: 30}, 0)
-    // .to('.waving-text-line-front-2', {duration: 15, y: '0rem', ease: 'linear', delay: 45}, 0)
-    // .to('.waving-text-line-back-2', {duration: 15, y: '0rem', ease: 'linear', delay: 45}, 0)
-
-    // phoneLinesTimeline
-    // .to('.waving-text-line-back-2', {duration: 10, x: '50%', ease: 'linear'}, 0)
-    // .to('.waving-text-line-front-2', {duration: 10, x: '-50%', ease: 'linear'}, 0)
   }
 }
 
