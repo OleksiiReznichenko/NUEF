@@ -53,22 +53,6 @@ const fileInput = document.getElementById("fileInput");
 const textarea = document.querySelector(".registration-form__form__textarea");
 
 
-document.getElementById('fileInputForm').addEventListener('submit', alert('Thanks'));
-
-const tx = document.querySelector("textarea");
-tx.setAttribute("style", "height:" + tx.scrollHeight + "px;");
-tx.addEventListener("input", OnInput, false);
-
-function OnInput() {
-  const heightUnit = window.innerHeight / 100;
-  const heightLimit = registrationForm.offsetHeight / heightUnit;
-  if (heightLimit >= 90) {
-  } else {
-    this.style.height = "auto";
-    this.style.height = this.scrollHeight + "px";
-  }
-}
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // IPHONE ADDAPTIVE
@@ -192,6 +176,24 @@ class AppAnimations {
         }
       });
     });
+
+    document.getElementById('fileInputForm').addEventListener('submit', () => {
+      alert('Thanks');
+    });
+    
+    const tx = document.querySelector("textarea");
+    tx.setAttribute("style", "height:" + tx.scrollHeight + "px;");
+    tx.addEventListener("input", OnInput, false);
+    
+    function OnInput() {
+      const heightUnit = window.innerHeight / 100;
+      const heightLimit = registrationForm.offsetHeight / heightUnit;
+      if (heightLimit >= 90) {
+      } else {
+        this.style.height = "auto";
+        this.style.height = this.scrollHeight + "px";
+      }
+    }
   }
 
   fixedNav() {
