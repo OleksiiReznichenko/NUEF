@@ -580,7 +580,7 @@ body {
 
   z-index: 1100;
 
-  background: url("../assets/media/smoke1500.png") center / cover;
+  background: url("../media/smoke1500.png") center / cover;
   opacity: 0;
 }
 
@@ -2338,7 +2338,7 @@ body {
 .block.five .footer .image .img {
   height: 100%;
   width: 100%;
-  background: url("../assets/media/fiveBlockImage.png") center / cover;
+  background: url("../media/fiveBlockImage.png") center / cover;
   mix-blend-mode: multiply;
 }
 
@@ -2454,37 +2454,37 @@ body {
 
 @media only screen and (max-width: 500px) {
   .studio {
-    background: url("../assets/media/studio800.png") center / cover;
+    background: url("../media/studio800.png") center / cover;
   }
 }
 
 @media only screen and (max-width: 1000px) {
   .studio {
-    background: url("../assets/media/studio1k.png") center / cover;
+    background: url("../media/studio1k.png") center / cover;
   }
 }
 
 @media only screen and (min-width: 1000px) and (max-width: 1500px) {
   .studio {
-    background: url("../assets/media/studio1.5k.png") center / cover;
+    background: url("../media/studio1.5k.png") center / cover;
   }
 }
 
 @media only screen and (min-width: 1500px) {
   .studio {
-    background: url("../assets/media/studio2k.png") center / cover;
+    background: url("../media/studio2k.png") center / cover;
   }
 }
 
 .studioGlass {
-  background: url("../assets/media/studioGlass.png") center / cover;
+  background: url("../media/studioGlass.png") center / cover;
   mix-blend-mode: screen;
   z-index: 5000;
 }
 
 @media only screen and (max-width: 900px) {
   .studioGlass {
-    background: url("../assets/media/studioGlass1500png.png") center / cover;
+    background: url("../media/studioGlass1500png.png") center / cover;
   }
 }
 

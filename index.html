@@ -9,8 +9,6 @@
 
     <link rel="icon" href="assets/media/favicon.png" />
 
-    <link rel="stylesheet" href="css/style.css" />
-
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -60,6 +58,15 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
     />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <script defer src="assets/js/script.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/CSSRulePlugin3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js"></script>
 
     <!-- <style>
       @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
@@ -74,7 +81,7 @@
     <div class="preloader">
       <div class="preloader__center">
         <img
-          src="assets/media/colorfulDisc.png"
+          src="assets/media/colorfulDisc.webp"
           alt=""
           class="preloader__image"
         />
@@ -84,9 +91,9 @@
 
     <div class="registration-form__wrapper trigger-close-button">
       <div class="registration-form">
-        <svg class="close-icon cross-icon" viewBox="0 0 20 20">
+        <svg class="registration-form__close-icon close-icon" viewBox="0 0 20 20">
           <path
-            class="cross-icon--path"
+            class="registration-form__close-icon--path"
             fill="white"
             d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z"
           ></path>
@@ -196,53 +203,56 @@
       </div>
     </div>
 
-    <div class="fixedNav">
-      <a href="#" class="about-link line fixedNavLink">ABOUT</a>
-      <a href="#" class="artists-link line fixedNavLink">ARTISTS</a>
-      <a href="#" class="records-link line fixedNavLink">RECORDS</a>
-      <a href="#" class="daily-link line fixedNavLink">DAILY</a>
+    <div class="fixed-nav">
+      <a href="#" class="fixed-nav__link about-link">ABOUT</a>
+      <a href="#" class="fixed-nav__link artists-link">ARTISTS</a>
+      <a href="#" class="fixed-nav__link records-link">RECORDS</a>
+      <a href="#" class="fixed-nav__link daily-link">DAILY</a>
     </div>
 
-    <div class="block one">
-      <div class="uix">
-        <nav class="line navigation-top">
-          <ul class="navigation-top__list">
-            <li class="list__item"><a href="#" class="">Studio</a></li>
-            <li class="list__item"><a href="#" class="">Landing</a></li>
-            <li class="list__item"><a href="#" class="">Collaborations</a></li>
+    <header class="section header">
+      <div class="header__uix">
+        <nav class="header__uix-item header__navigation-top">
+          <ul class="header__navigation-top__list">
+            <li class="header__navigation-top__item"><a href="#" class="header__navigation-top__link header__hover-link">Studio</a></li>
+            <li class="header__navigation-top__item"><a href="#" class="header__navigation-top__link header__hover-link">Landing</a></li>
+            <li class="header__navigation-top__item"><a href="#" class="header__navigation-top__link header__hover-link">Collaborations</a></li>
           </ul>
-          <a
-            href="#"
-            class="header-button trigger-button navigation-top__button"
-            >Contacts</a
-          >
+
+          <div class="header__navigation-top__button-container">
+            <a
+              href="#"
+              class="header__navigation-top__button trigger-button"
+              >Contacts</a
+            >
+          </div>
         </nav>
-        <div class="line">
-          <div class="e"></div>
-          <div class="e v o nuef-collaborations">NUEF COLLABORATIONS</div>
+        <div class="header__uix-item">
+          <!-- <div class="e"></div> -->
+          <div class="header__nuef-collaborations">NUEF COLLABORATIONS</div>
         </div>
-        <div class="line">
-          <ul class="socials-bottom">
-            <li class="social"><a href="#" class="">Facebook</a></li>
-            <li class="social"><a href="#" class="">Instagram</a></li>
-            <li class="social"><a href="#" class="">Linkedin</a></li>
+        <div class="header__uix-item">
+          <ul class="header__socials">
+            <li class="header__socials__item"><a href="#" class="header__socials__link header__hover-link">Facebook</a></li>
+            <li class="header__socials__item"><a href="#" class="header__socials__link header__hover-link">Instagram</a></li>
+            <li class="header__socials__item"><a href="#" class="header__socials__link header__hover-link">Linkedin</a></li>
           </ul>
-          <a href="#" class="e al">
-            <img src="assets/media/arrowDown.svg" />
+          <a href="#" class="header__language header__hover-link">
+            <img class="header__language-line" src="assets/media/arrowDown.svg" />
             ENG
           </a>
         </div>
       </div>
-      <div class="title">
-        <div class="line header__two-lines">MAKING</div>
-        <div class="line header__two-lines">BRANDS</div>
-        <div class="header__famous-line line z">FAMOUS</div>
+      <div class="header__title">
+        <div class="header__title-word header__two-lines">MAKING</div>
+        <div class="header__title-word header__two-lines">BRANDS</div>
+        <div class="header__title-word header__famous-line">FAMOUS</div>
         <img
           srcset="
-            assets/media/singer1.5k.png 1500w,
-            assets/media/singer2k.png   2000w,
-            assets/media/singer2.5k.png 2500w,
-            assets/media/singer3k.png   3000w
+            assets/media/singer1.5k.webp 1500w,
+            assets/media/singer2k.webp   2000w,
+            assets/media/singer2.5k.webp 2500w,
+            assets/media/singer3k.webp   3000w
           "
           sizes="(max-width: 600px) 55vw, 
         (max-width: 900px) 37vw, 
@@ -253,76 +263,76 @@
         (max-width: 2500px) 24vw, 
         (max-width: 3000px) 20vw, 
         25vw"
-          src="assets/media/singer2k.png"
-          class="singer"
+          src="assets/media/singer2k.webp"
+          class="header__singer"
         />
-        <div class="circle"></div>
+        <div class="header__circle"></div>
       </div>
-      <div class="spotlights-white">
+      <div class="header__spotlights-white">
         <img
           src="assets/media/spotlightSmallW150.png"
-          class="w spotlight-white spotlight-white-left"
-        />
-        <img
-          src="assets/media/spotlightSmallW150.png"
-          class="w spotlight-white spotlight-white-center-left"
+          class="header__spotlight-white header__spotlight-white-left"
         />
         <img
           src="assets/media/spotlightSmallW150.png"
-          class="w spotlight-white spotlight-white-center-right"
+          class="header__spotlight-white header__spotlight-white-center-left"
         />
         <img
           src="assets/media/spotlightSmallW150.png"
-          class="w spotlight-white spotlight-white-right"
-        />
-      </div>
-
-      <div class="spotlights-pink">
-        <img
-          src="assets/media/spotlightSmallP230.png"
-          class="p spotlight-pink"
+          class="header__spotlight-white header__spotlight-white-center-right"
         />
         <img
-          src="assets/media/spotlightSmallP230.png"
-          class="p spotlight-pink"
-        />
-        <img
-          src="assets/media/spotlightSmallP230.png"
-          class="p spotlight-pink"
-        />
-        <img
-          src="assets/media/spotlightSmallP230.png"
-          class="p spotlight-pink"
+          src="assets/media/spotlightSmallW150.png"
+          class="header__spotlight-white header__spotlight-white-right"
         />
       </div>
 
-      <div class="spotlights-white-center">
+      <div class="header__spotlights-pink">
+        <img
+          src="assets/media/spotlightSmallP230.webp"
+          class="header__spotlight-pink"
+        />
+        <img
+          src="assets/media/spotlightSmallP230.webp"
+          class="header__spotlight-pink"
+        />
+        <img
+          src="assets/media/spotlightSmallP230.webp"
+          class="header__spotlight-pink"
+        />
+        <img
+          src="assets/media/spotlightSmallP230.webp"
+          class="header__spotlight-pink"
+        />
+      </div>
+
+      <div class="header__spotlights-white-center">
         <img
           src="assets/media/spotlightSmallW150.png"
-          class="l spotlight-white-center-bottom spotlight-white-center-bottom-left"
+          class="l header__spotlight-white-center-bottom header__spotlight-white-center-bottom-left"
         />
         <img
           src="assets/media/spotlightSmallW150.png"
-          class="r spotlight-white-center-bottom spotlight-white-center-bottom-right"
+          class="r header__spotlight-white-center-bottom header__spotlight-white-center-bottom-right"
         />
       </div>
 
       <img
-        src="assets/media/spotlightTopCenter1000.png"
-        class="spotlight c spotlight-center"
+        src="assets/media/spotlightTopCenter1000.webp"
+        class="header__spotlight header__spotlight-center"
       />
 
-      <div class="crowd__container">
+      <div class="header__crowd-container">
         <img
           srcset="
-            assets/media/crowd500.png   500w,
-            assets/media/crowd800.png   800w,
-            assets/media/crowd1k.png   1000w,
-            assets/media/crowd1.5k.png 1500w,
-            assets/media/crowd2k.png   2000w,
-            assets/media/crowd2.5k.png 2500w,
-            assets/media/crowd3k.png   3000w,
-            assets/media/crowd3.5k.png 3500w
+            assets/media/crowd500.webp   500w,
+            assets/media/crowd800.webp   800w,
+            assets/media/crowd1k.webp   1000w,
+            assets/media/crowd1.5k.webp 1500w,
+            assets/media/crowd2k.webp   2000w,
+            assets/media/crowd2.5k.webp 2500w,
+            assets/media/crowd3k.webp   3000w,
+            assets/media/crowd3.5k.webp 3500w
           "
           sizes="(max-width: 450px) 210vw, 
         (max-width: 600px) 155vw,
@@ -334,58 +344,58 @@
         (max-width: 2500px) 100vw, 
         (max-width: 3000px) 67vw, 
         100vw"
-          src="assets/media/crowd2k.png"
-          class="crowd"
+          src="assets/media/crowd2k.webp"
+          class="header__crowd"
         />
       </div>
-      <div class="smoke"></div>
-    </div>
+      <div class="header__smoke"></div>
+    </header>
 
-    <div class="block two">
-      <div class="content">
-        <div class="title">WELCOME TO <span>NUEF</span></div>
-        <div class="equaliser-container div">
-          <ol class="equaliser-column">
-            <li class="colour-bar"></li>
+    <section class="section section-equaliser">
+      <div class="section-equaliser__content">
+        <h2 class="section-equaliser__title">WELCOME TO <span class="span-gradient">NUEF</span></h2>
+        <div class="section-equaliser__equaliser-container div">
+          <ol class="section-equaliser__equaliser-column">
+            <li class="section-equaliser__colour-bar"></li>
           </ol>
-          <ol class="equaliser-column">
-            <li class="colour-bar"></li>
+          <ol class="section-equaliser__equaliser-column">
+            <li class="section-equaliser__colour-bar"></li>
           </ol>
-          <ol class="equaliser-column">
-            <li class="colour-bar"></li>
+          <ol class="section-equaliser__equaliser-column">
+            <li class="section-equaliser__colour-bar"></li>
           </ol>
-          <ol class="equaliser-column">
-            <li class="colour-bar"></li>
+          <ol class="section-equaliser__equaliser-column">
+            <li class="section-equaliser__colour-bar"></li>
           </ol>
-          <ol class="equaliser-column">
-            <li class="colour-bar"></li>
+          <ol class="section-equaliser__equaliser-column">
+            <li class="section-equaliser__colour-bar"></li>
           </ol>
-          <ol class="equaliser-column">
-            <li class="colour-bar"></li>
+          <ol class="section-equaliser__equaliser-column">
+            <li class="section-equaliser__colour-bar"></li>
           </ol>
-          <ol class="equaliser-column">
-            <li class="colour-bar"></li>
+          <ol class="section-equaliser__equaliser-column">
+            <li class="section-equaliser__colour-bar"></li>
           </ol>
-          <ol class="equaliser-column">
-            <li class="colour-bar"></li>
+          <ol class="section-equaliser__equaliser-column">
+            <li class="section-equaliser__colour-bar"></li>
           </ol>
-          <ol class="equaliser-column">
-            <li class="colour-bar"></li>
+          <ol class="section-equaliser__equaliser-column">
+            <li class="section-equaliser__colour-bar"></li>
           </ol>
-          <ol class="equaliser-column">
-            <li class="colour-bar"></li>
+          <ol class="section-equaliser__equaliser-column">
+            <li class="section-equaliser__colour-bar"></li>
           </ol>
-          <ol class="equaliser-column">
-            <li class="colour-bar"></li>
+          <ol class="section-equaliser__equaliser-column">
+            <li class="section-equaliser__colour-bar"></li>
           </ol>
-          <ol class="equaliser-column">
-            <li class="colour-bar"></li>
+          <ol class="section-equaliser__equaliser-column">
+            <li class="section-equaliser__colour-bar"></li>
           </ol>
-          <ol class="equaliser-column">
-            <li class="colour-bar"></li>
+          <ol class="section-equaliser__equaliser-column">
+            <li class="section-equaliser__colour-bar"></li>
           </ol>
         </div>
-        <div class="desc">
+        <div class="section-equaliser__desc">
           Money alone can’t buy anything here. We only want people who believe.
           In case you will stop to believe in yourself or in your musical
           project you really must talk about it with us. We work hard for you,
@@ -393,53 +403,54 @@
           requested if you’ll want to unaffiliate from us.
         </div>
       </div>
-      <div class="musicCircle left">
-        <img class="musicCircle-big" src="assets/media/musicCircle.png" />
-        <div class="bg"></div>
+      <div class="section-equaliser__music-circle-left-container left">
+        <img class="section-equaliser__music-circle-left" src="assets/media/musicCircle.webp" />
+        <div class="section-equaliser__music-circle-left__bg"></div>
       </div>
 
       <img
-        src="assets/media/musicCircleBottomRight500.png"
-        class="musicCircle-small musicCircle right"
+        src="assets/media/musicCircleBottomRight500.webp"
+        class="section-equaliser__music-circle-right"
       />
-      <img src="assets/media/spotlightTopRight.png" class="spotlight" />
-    </div>
+      <img src="assets/media/spotlightTopRight.webp" class="section-equaliser__spotlight" />
+    </section>
 
-    <div class="block three">
-      <div class="content">
-        <div class="col l text-block-three">
-          <div class="title">
-            <span class="span-left">CON</span
-            ><span class="span-right">NECT</span><br />TO
-            <span class="span-colorful">COMMUNITY</span>
-          </div>
-          <div class="desc">
+    <section class="section section-disc">
+      <div class="section-disc__content">
+        <div class="section-disc__info">
+          <h2 class="section-disc__title">
+            <span class="section-disc__title__span-left">CON</span>
+            <span class="section-disc__title__span-right">NECT</span><br />TO
+            <span class="section-disc__title__span-colorful">COMMUNITY</span>
+          </h2>
+          <div class="section-disc__desc">
             10 TECHNOLOGIES THAT WILL TRANSFORM<br />THE GLOBAL ECONOMY BY 2025
           </div>
-          <a href="#" class="block-three-button trigger-button btn btn-hover">
+          <a href="#" class="section-disc__button trigger-button btn btn-hover">
             Connect
-            <img src="assets/media/arrowRight.svg" />
+            <img class="section-disc__button__arrow" src="assets/media/arrowRight.svg" />
           </a>
         </div>
-        <div class="col r section__three__col__r disc-block-three">
-          <div class="circleBlock">
+        <div class="section-disc__image-container">
+          <div class="section-disc__circle-block">
             <img
-              class="circleBlock__image"
-              src="assets/media/musicRecord700.png"
+              class="section-disc__circle-block__image"
+              src="assets/media/musicRecord700.webp"
             />
-            <div class="connect-animation-button center">CONNECT</div>
+            <div class="section-disc__circle-block__border"></div>
+            <div class="section-disc__connect-animation-button">CONNECT</div>
           </div>
         </div>
         <img
-          src="assets/media/spotlightTopLeft.png"
-          class="spotlight spotlight-block-three"
+          src="assets/media/spotlightTopLeft.webp"
+          class="section-disc__spotlight"
         />
       </div>
       <img
         srcset="
-          assets/media/leftArm500.png 500w,
-          assets/media/leftArm600.png 600w,
-          assets/media/leftArm800.png 800w
+          assets/media/leftArm500.webp 500w,
+          assets/media/leftArm600.webp 600w,
+          assets/media/leftArm800.webp 800w
         "
         sizes="(max-width: 450px) 116vw, 
         (max-width: 600px) 90vw,
@@ -447,14 +458,14 @@
         (max-width: 1200px) 53vw, 
         (max-width: 1500px) 49vw,
         49vw"
-        src="assets/media/leftArm800.png"
-        class="arm left-arm"
+        src="assets/media/leftArm800.webp"
+        class="section-disc__arm section-disc__left-arm"
       />
       <img
         srcset="
-          assets/media/rightArm500.png 500w,
-          assets/media/rightArm600.png 600w,
-          assets/media/rightArm800.png 800w
+          assets/media/rightArm500.webp 500w,
+          assets/media/rightArm600.webp 600w,
+          assets/media/rightArm800.webp 800w
         "
         sizes="(max-width: 450px) 116vw, 
         (max-width: 600px) 90vw,
@@ -462,53 +473,51 @@
         (max-width: 1200px) 53vw, 
         (max-width: 1500px) 49vw,
         49vw"
-        src="assets/media/rightArm800.png"
-        class="arm right-arm"
+        src="assets/media/rightArm800.webp"
+        class="section-disc__arm section-disc__right-arm"
       />
-    </div>
+    </section>
 
-    <div class="block four">
-      <div class="content">
-        <div class="col l">
-          <div class="text">
-            <div class="phone-line line">
-              <span class="phone-line-line"></span>MANAGE GROUP
+    <section class="section section-phone">
+      <div class="section-phone__content">
+        <div class="section-phone__phone-container">
+          <div class="section-phone__phone-info">
+            <div class="section-phone__phone-line">
+              <span class="section-phone__phone-span"></span>MANAGE GROUP
             </div>
-            <div class="phone-line line">
-              <span class="phone-line-line"></span>INSTAGRAM CHECK
+            <div class="section-phone__phone-line">
+              <span class="section-phone__phone-span"></span>INSTAGRAM CHECK
             </div>
-            <div class="phone-line line">
-              <span class="phone-line-line"></span>UPDATE STATUS
+            <div class="section-phone__phone-line">
+              <span class="section-phone__phone-span"></span>UPDATE STATUS
             </div>
-            <div class="phone-line line">
-              <span class="phone-line-line"></span>CHECK MAIL
+            <div class="section-phone__phone-line">
+              <span class="section-phone__phone-span"></span>CHECK MAIL
             </div>
-            <div class="phone-line line">
-              <span class="phone-line-line"></span>INSTAGRAM CHECK
+            <div class="section-phone__phone-line">
+              <span class="section-phone__phone-span"></span>INSTAGRAM CHECK
             </div>
-            <div class="phone-line line">
-              <span class="phone-line-line"></span>UPDATE STATUS
+            <div class="section-phone__phone-line">
+              <span class="section-phone__phone-span"></span>UPDATE STATUS
             </div>
-            <div class="phone-line line">
-              <span class="phone-line-line"></span>CHECK MAIL
+            <div class="section-phone__phone-line">
+              <span class="section-phone__phone-span"></span>CHECK MAIL
             </div>
           </div>
 
-          <img class="phone_image" src="assets/media/phone.png" />
+          <img class="section-phone__phone-image" src="assets/media/phone.webp" />
         </div>
-        <div class="col r">
-          <div class="title">
+        <div class="section-phone__info">
+          <div class="section-phone__title">
             FORGET ABOUT ROUTINE.<br />LEAVE IT TO <span>NUEF</span>
           </div>
-          <a href="#" class="block-four-button trigger-button btn btn-hover">
+          <a href="#" class="section-phone__button trigger-button btn btn-hover">
             How it works?
-            <img src="assets/media/arrowRight.svg" />
+            <img class="section-phone__button__arrow" src="assets/media/arrowRight.svg" />
           </a>
         </div>
 
-        <div
-          class="waving-text-line waving-text-line-back waving-text-line-back-1 curved-text"
-        >
+        <div class="section-phone__waving-text-line section-phone__waving-text-line-back">
           <p><span class="span-1">Nuef // </span></p>
           <p><span class="span-2">Nuef // </span></p>
           <p><span class="span-3">Nuef // </span></p>
@@ -574,9 +583,7 @@
           <p><span class="span-63">Nuef // </span></p>
         </div>
 
-        <div
-          class="waving-text-line waving-text-line-front waving-text-line-front-1 curved-text"
-        >
+        <div class="section-phone__waving-text-line section-phone__waving-text-line-front">
           <p><span class="span-1">Nuef // </span></p>
           <p><span class="span-2">Nuef // </span></p>
           <p><span class="span-3">Nuef // </span></p>
@@ -642,20 +649,20 @@
           <p><span class="span-63">Nuef // </span></p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="block five">
-      <div class="block block-five__container">
-        <div class="content content-block-five">
-          <div class="line">
+    <section class="section section-studio">
+      <section class="section section-moving-line">
+        <div class="section-moving-line__content">
+          <div class="section-moving-line__text-line">
             THE KEY TO SURVIVING THIS NEW INDUSTRIAL REVOLUTION IS
           </div>
-          <div class="line">
+          <div class="section-moving-line__text-line">
             LEADING IT. THAT REQUIRES TWO KEY ELEMENTS OF AGILE
           </div>
         </div>
-        <div class="footer footer-block-five">
-          <div class="moving-text-back text back">
+        <div class="section-moving-line__footer">
+          <div class="section-moving-line__moving-text-back section-moving-line__moving-text">
             <div class="name">DUCKO MCFIE</div>
             <div class="div">//</div>
             <div class="name">TY DOLLAR SIGN</div>
@@ -693,18 +700,18 @@
             <div class="name">TYLER THE CREATOR</div>
           </div>
 
-          <div class="image">
-            <div class="img"></div>
+          <div class="section-moving-line__image-container">
+            <div class="section-moving-line__image"></div>
           </div>
 
-          <div class="moving-text-front text front">
+          <div class="section-moving-line__moving-text-front section-moving-line__moving-text">
             <div class="name">DUCKO MCFIE</div>
             <div class="div">//</div>
             <div class="name">TY DOLLAR SIGN</div>
             <div class="div">//</div>
             <div class="name">EZA</div>
             <div class="div">//</div>
-            <div class="name a">FELLY</div>
+            <div class="name white">FELLY</div>
             <div class="div">//</div>
             <div class="name">MARLON CRAFT</div>
             <div class="div">//</div>
@@ -716,7 +723,7 @@
             <div class="div">//</div>
             <div class="name">EZA</div>
             <div class="div">//</div>
-            <div class="name a">FELLY</div>
+            <div class="name white">FELLY</div>
             <div class="div">//</div>
             <div class="name">MARLON CRAFT</div>
             <div class="div">//</div>
@@ -728,18 +735,18 @@
             <div class="div">//</div>
             <div class="name">EZA</div>
             <div class="div">//</div>
-            <div class="name a">FELLY</div>
+            <div class="name white">FELLY</div>
             <div class="div">//</div>
             <div class="name">MARLON CRAFT</div>
             <div class="div">//</div>
             <div class="name">TYLER THE CREATOR</div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="studio studio-block-five"></div>
-      <div class="studioGlass studioGlass-block-five"></div>
-      <div class="studio-content">
+      <div class="section-studio__studio"></div>
+      <div class="section-studio__studio-glass"></div>
+      <div class="section-studio__studio-content">
         So, how do you create an organization that is nimble,
         <span>flexible</span> and takes a fresh view of team structure? These
         are <span>the keys</span> to <span>creating</span> and
@@ -747,80 +754,71 @@
         of time.
       </div>
 
-      <div class="block block-contacts">
-        <!-- <div class="block-contacts__video-container"> -->
+      <section class="section section-contacts">
+        <!-- <div class="section-contacts__video-container"> -->
           <video
             autoplay
             loop
             muted
             playsinline
             preload="yes"
-            poster="assets/media/VideoPoster.png"
-            class="block-contacts__video"
+            poster="assets/media/VideoPoster.webp"
+            class="section-contacts__video"
           >
             <source src="assets/media/BackgroundWaves.mov" type="video/mp4" />
             <source src="assets/media/BackgroundWaves.webm" type="video/webm" />
           </video>
         <!-- </div> -->
-        <div class="block-contacts__content">
-          <div class="block-contacts__image-container">
-            <div class="block-contacts__image-square">
+        <div class="section-contacts__content">
+          <div class="section-contacts__image-container">
+            <div class="section-contacts__image-square">
               <span class="">Nuef</span>
             </div>
             <img
-              src="assets/media/discWithText.png"
+              src="assets/media/discWithText.webp"
               alt=""
-              class="block-contacts__image-disc"
+              class="section-contacts__image-disc"
             />
           </div>
-          <div class="block-contacts__text">
-            <h1 class="block-contacts__heading">Contact Us</h1>
-            <a
-              href="#"
-              class="button-background-animated trigger-button block-contacts__button"
-              >Right Now</a
-            >
+          <div class="section-contacts__text">
+            <h1 class="section-contacts__heading">Contact Us</h1>
+            <a href="#" class="button-background-animated trigger-button section-contacts__button">
+              Right Now
+            </a>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </section>
 
-    <div class="block footer">
-      <div class="content">
-        <div class="div"></div>
-        <div class="logo">NUEF</div>
-        <div class="desc">
+    <footer class="footer">
+      <div class="footer__content">
+        <div class="footer__border-top"></div>
+        <h2 class="footer__logo">NUEF</h2>
+        <p class="footer__desc">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt.
+        </p>
+        <div class="footer__nav">
+          <a href="#" class="footer__nav__link footer__hover-link">Studio</a>
+          <a href="#" class="footer__nav__link footer__hover-link">About</a>
+          <a href="#" class="footer__nav__link footer__hover-link">Collaborations</a>
+          <a href="#" class="footer__nav__link footer__hover-link">Partners</a>
+          <a href="#" class="footer__nav__link footer__hover-link">Social</a>
+          <a href="#" class="footer__nav__link footer__hover-link">FAQs</a>
         </div>
-        <div class="nav">
-          <a href="#" class="e">Studio</a>
-          <a href="#" class="e">About</a>
-          <a href="#" class="e">Collaborations</a>
-          <a href="#" class="e">Partners</a>
-          <a href="#" class="e">Social</a>
-          <a href="#" class="e">FAQs</a>
-        </div>
-        <div class="socials">
-          <a href="#">
-            <img src="assets/media/facebookFooter.svg" />
+        <div class="footer__socials">
+          <a class="footer__socials__link footer__hover-link" href="#">
+            <img class="footer__socials__svg" src="assets/media/facebookFooter.svg" />
           </a>
-          <a href="#">
-            <img src="assets/media/twitter.svg" />
+          <a class="footer__socials__link footer__hover-link" href="#">
+            <img class="footer__socials__svg" src="assets/media/twitter.svg" />
           </a>
-          <a href="#">
-            <img src="assets/media/InstaFooter.svg" />
+          <a class="footer__socials__link footer__hover-link" href="#">
+            <img class="footer__socials__svg" src="assets/media/InstaFooter.svg" />
           </a>
         </div>
-        <img src="assets/media/sign.png" class="sign" />
+        <img src="assets/media/sign.webp" class="footer__sign" />
       </div>
-    </div>
+    </footer>
   </body>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
-  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/CSSRulePlugin3.min.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js"></script>
-  <script src="js/script.js"></script>
 </html>

@@ -1,0 +1,202 @@
+@keyframes color-bar {
+  0% {
+    height: 0.3rem;
+    background: #9b2146;
+  }
+  10% {
+    height: 0.9rem;
+    background: #9b2146;
+  }
+  20% {
+    height: 1.5rem;
+    background: #9b2146;
+  }
+  30% {
+    height: 0.6rem;
+    background: #9b2146;
+  }
+  40% {
+    height: 2.1rem;
+    background: #9b2146;
+  }
+  50% {
+    height: 2.7rem;
+    background: #9b2146;
+  }
+  60% {
+    height: 0.9rem;
+    background: #9b2146;
+  }
+  70% {
+    height: 2.4rem;
+    background: #9b2146;
+  }
+  80% {
+    height: 1.5rem;
+    background: #9b2146;
+  }
+  90% {
+    height: 0.9rem;
+    background: #9b2146;
+  }
+  100% {
+    height: 0.3rem;
+    background: #9b2146;
+  }
+}
+
+.section-equaliser {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    @media only screen and (max-width: 750px) {
+      position: relative;
+      z-index: 1000;
+    }
+  }
+
+  &__title {
+    font-weight: 900;
+    font-size: 5.5rem;
+    line-height: 6.75rem;
+  }
+
+  &__equaliser-container {
+    height: 3rem;
+    width: 20rem;
+    margin: 2rem 0 2.3rem 0;
+    padding: 0 0 0 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__colour-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3rem;
+    background: #9b2146;
+    border-radius: 0.5rem;
+  }
+
+  &__equaliser-column {
+    width: 0.35rem;
+    padding: 0;
+    height: 3rem;
+    position: relative;
+    list-style-type: none;
+    border-radius: 0.5rem;
+    overflow: hidden;
+
+    &:not(:last-of-type) {
+      margin: 0 0.5rem 0 0;
+    }
+  }
+
+  &__equaliser-column:nth-child(1) &__colour-bar,
+  &__equaliser-column:nth-child(8) &__colour-bar {
+    animation: color-bar 2s 1s ease-out alternate infinite;
+  }
+  &__equaliser-column:nth-child(2) &__colour-bar,
+  &__equaliser-column:nth-child(9) &__colour-bar {
+    animation: color-bar 2s 0.5s ease-out alternate infinite;
+  }
+  &__equaliser-column:nth-child(3) &__colour-bar,
+  &__equaliser-column:nth-child(10) &__colour-bar {
+    animation: color-bar 2s 1.5s ease-out alternate infinite;
+  }
+  &__equaliser-column:nth-child(4) &__colour-bar,
+  &__equaliser-column:nth-child(11) &__colour-bar {
+    animation: color-bar 2s 0.25s ease-out alternate infinite;
+  }
+  &__equaliser-column:nth-child(5) &__colour-bar,
+  &__equaliser-column:nth-child(12) &__colour-bar {
+    animation: color-bar 2s 2s ease-out alternate infinite;
+  }
+  &__equaliser-column:nth-child(6) &__colour-bar,
+  &__equaliser-column:nth-child(13) &__colour-bar {
+    animation: color-bar 2s 2.25s ease-out alternate infinite;
+  }
+  &__equaliser-column:nth-child(7) &__colour-bar {
+    animation: color-bar 2s 0.75s ease-out alternate infinite;
+  }
+
+  &__desc {
+    max-width: 58.45rem;
+
+    font-family: Pragati Narrow;
+    font-size: 1.85rem;
+    line-height: 3.15rem;
+
+    @media only screen and (max-width: 400px) {
+      max-width: 90%;
+    }
+  }
+
+  &__spotlight {
+    position: absolute;
+    height: 120vh;
+    bottom: -5%;
+    right: 0;
+    z-index: 1;
+    // transform: rotate(10deg);
+
+    @media only screen and (max-width: 950px) {
+      bottom: -15%;
+    }
+  }
+
+  &__music-circle-left-container {
+    position: absolute;
+    left: -37.7rem;
+    z-index: 1;
+  }
+
+  &__music-circle-left {
+    height: 64rem;
+    z-index: 0;
+
+    &__bg {
+      position: absolute;
+
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(
+        180deg,
+        #000000 0%,
+        rgba(0, 0, 0, 0) 40%,
+        rgba(0, 0, 0, 0) 100%
+      );
+
+      z-index: 1;
+    }
+  }
+
+  &__music-circle-right {
+    position: absolute;
+    right: -8%;
+    bottom: -5%;
+    height: 31.2rem;
+    z-index: 1;
+
+    @media only screen and (max-width: 800px) {
+      right: -12rem;
+    }
+  }
+}

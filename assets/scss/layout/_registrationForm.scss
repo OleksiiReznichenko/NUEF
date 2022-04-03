@@ -1,0 +1,246 @@
+.registration-form__wrapper {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(0.5rem);
+  z-index: 100000000;
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+.registration-form {
+  border-radius: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 4.5rem 7rem 7.5rem;
+  z-index: 1000000;
+  border: 1px solid #a40cea;
+
+  @media only screen and (max-height: 500px) {
+    transform: translate(-50%, 0);
+    padding: 1.5rem 7rem 4rem;
+    top: 0%;
+    height: 100%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    padding: 3.5rem 5rem 6rem;
+    width: 40rem;
+  }
+
+  @media only screen and (max-width: 450px) {
+    width: 60%;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  &__heading-container {
+    margin-bottom: 4rem;
+  }
+
+  &__heading {
+    // line-height: 40%;
+    letter-spacing: 0.005em;
+    font-weight: 900;
+    font-size: 4.5rem;
+    text-transform: uppercase;
+
+    @media only screen and (max-height: 500px) {
+      white-space: nowrap;
+    }
+
+    @media only screen and (max-width: 700px) {
+      line-height: 90%;
+    }
+  }
+
+  &__small-heading {
+    // line-height: 81.5%;
+    letter-spacing: 0.005em;
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: #a3a3a3;
+  }
+
+  &__close-icon {
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    z-index: 1000;
+    cursor: pointer;
+  }
+
+  &__close-icon--path {
+    fill: #fff;
+    transition: all 0.3s;
+  }
+
+  &__close-icon:hover &__close-icon--path {
+    fill: rgb(250, 66, 66);
+  }
+
+  &__form {
+    margin: 0 auto;
+
+    &__input-group {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      &:not(:last-of-type) {
+        margin-bottom: 2.5rem;
+      }
+    }
+
+    &__label {
+      font-family: Montserrat;
+      font-weight: 500;
+      font-size: 1.5rem;
+      text-align: left;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    &__input,
+    &__textarea {
+      font-family: Montserrat;
+      display: inline-block;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-sizing: border-box;
+      border-radius: 0.5rem;
+      background-color: transparent;
+      padding: 0.75rem;
+      color: white;
+      width: 100%;
+      position: relative;
+    }
+
+    &__input::placeholder,
+    &__textarea::placeholder {
+      font-family: Montserrat;
+      font-size: 1.2rem;
+
+      @media only screen and (max-width: 450px) {
+        font-size: 1.4rem;
+      }
+    }
+
+    &__input::placeholder {
+      @media only screen and (max-width: 450px) {
+        transform: translateY(1px);
+      }
+    }
+
+    &__button {
+      cursor: pointer;
+      font-family: Montserrat;
+      font-weight: 300;
+      font-size: 1.8rem;
+      color: white;
+      border: 1px solid #ffffff;
+      box-sizing: border-box;
+      border-radius: 100rem;
+      padding: 0.75rem 7rem;
+      margin-top: 5rem;
+      background-color: transparent;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: white;
+        color: black;
+        font-weight: 600;
+      }
+    }
+
+    &__input-img-group {
+      position: relative;
+      width: 100%;
+      text-align: left;
+    }
+
+    &__email-svg,
+    &__telegram-svg,
+    &__facebook-svg,
+    &__insta-svg,
+    &__whatsapp-svg {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    &__email-svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &__telegram-svg {
+      right: 7.75rem;
+    }
+
+    &__facebook-svg {
+      right: 5.5rem;
+    }
+
+    &__insta-svg {
+      right: 3.25rem;
+    }
+
+    &__whatsapp-svg {
+      right: 1rem;
+    }
+
+    &__clip-container {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      width: 3rem;
+      height: 3rem;
+      opacity: 0.8;
+      z-index: 1000;
+      cursor: pointer !important;
+    }
+
+    &__clip-svg,
+    &__file-custom {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer !important;
+    }
+
+    &__file-custom {
+      opacity: 0;
+      z-index: 1000;
+    }
+
+    &__file {
+      display: none;
+    }
+  }
+}

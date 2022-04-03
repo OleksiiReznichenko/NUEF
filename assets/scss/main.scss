@@ -1,0 +1,20 @@
+// Variables and mixins
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+// Fonts, base setup, typography
+// @import "base/fonts";
+@import "base/base";
+@import "base/typography";
+
+// Layout: preloader, navigation, header, main, footer
+@import "layout/preloader";
+@import "layout/fixedNav";
+@import "layout/header";
+@import "layout/sectionEqualiser";
+@import "layout/sectionDisc";
+@import "layout/sectionPhone";
+@import "layout/sectionStudio";
+@import "layout/sectionContacts";
+@import "layout/footer";
+@import "layout/registrationForm";

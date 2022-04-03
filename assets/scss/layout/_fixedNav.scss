@@ -1,0 +1,38 @@
+.fixed-nav {
+  position: fixed;
+
+  left: 6.15rem;
+  bottom: 22.5%;
+
+  font-family: Bebas Neue;
+  font-size: 1.6rem;
+  line-height: 1.92rem;
+
+  z-index: 100000;
+
+  @media only screen and (max-width: 1050px) {
+    bottom: 17.5%;
+  }
+
+  @media only screen and (max-width: 500px) {
+    font-size: 1.8rem;
+  }
+
+  &__link {
+    display: block;
+    opacity: 0.25;
+
+    &:not(:last-of-type) {
+      margin-bottom: 1.75rem;
+    }
+
+    @media only screen and (max-width: 500px) {
+      opacity: 0.2;
+    }
+  }
+
+  .active {
+    color: #9b2146;
+    opacity: 1;
+  }
+}
