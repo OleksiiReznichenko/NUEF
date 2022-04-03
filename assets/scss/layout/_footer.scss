@@ -71,10 +71,10 @@
     &__link {
       &:not(:last-of-type) {
         margin-right: 6rem;
-      }
 
-      @media only screen and (max-width: 450px) {
-        margin-right: 3rem;
+        @media only screen and (max-width: 450px) {
+          margin-right: 3rem;
+        }
       }
     }
   }

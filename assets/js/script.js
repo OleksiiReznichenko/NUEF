@@ -88,6 +88,10 @@ class AppAnimations {
       });
       
       gsap.registerPlugin(ScrollTrigger);
+
+      // gsap.config({
+      //   force3D: true,
+      // });
   }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -394,12 +398,12 @@ class AppAnimations {
       .to(".header__nuef-collaborations", { duration: 2.5, y: "-160%" }, 0)
       .to(".header__singer", { duration: 2.5, y: 0, scale: 1 }, 0)
       .to(".header__two-lines", { duration: 2.5, y: 0, scale: 1 }, 0)
-      .to(".header__smoke", { duration: 2.5, opacity: 1 }, 0)
-      .to(".header__spotlight-center", { duration: 3.25, opacity: 0.35 }, 0)
+      .to(".header__smoke", { duration: 2.5, opacity: 1, delay: 1 }, 0)
+      .to(".header__spotlight-center", { duration: 3.25, opacity: 0.35, delay: 1 }, 0)
 
-      .to(".header__spotlights-pink", { duration: 3.25, opacity: 1 }, 0)
-      .to(".header__spotlights-white", { duration: 2.5, opacity: 1 }, 0)
-      .to(".header__spotlights-white-center", { duration: 2.5, opacity: 1 }, 0)
+      .to(".header__spotlights-pink", { duration: 3.25, opacity: 1, delay: 1 }, 0)
+      .to(".header__spotlights-white", { duration: 2.5, opacity: 1, delay: 1 }, 0)
+      .to(".header__spotlights-white-center", { duration: 2.5, opacity: 1, delay: 1 }, 0)
       .to(
         ".header__spotlight-white-left",
         { duration: 2.5, y: 0, x: "-82%", rotate: rotateSides },
@@ -496,7 +500,7 @@ class AppAnimations {
       }
     }
 
-    let connectAnimationTimelineEnd = "+=1500px";
+    let connectAnimationTimelineEnd = "+=1200px";
 
     if (window.outerWidth < 600) {
       connectAnimationTimelineEnd = "+=900px";
@@ -530,8 +534,6 @@ class AppAnimations {
       )
       .to(this.leftArm, { duration: 1, opacity: 1, x: "40%", y: "-20%" }, 0)
       .to(this.rightArm, { duration: 1, opacity: 1, x: "-40%", y: "20%" }, 0)
-      .to(".section-disc__info", { duration: 1, autoAlpha: 1 }, 1)
-      .to(".section-disc__spotlight", { duration: 1, autoAlpha: 1 }, 1)
       .to(".section-disc__circle-block__image", { duration: 1, opacity: 1 }, 1)
       .to(this.connectAnimationButton, { duration: 1.25, rotate: 360, scale: 1 }, 1)
       .to('.section-disc__circle-block', { duration: 1, scale: 1, opacity: 1 }, 1)
@@ -543,7 +545,9 @@ class AppAnimations {
       .to(".section-disc__image-container", { duration: 1.5, x: discRight, y: discTop }, 1)
       .to(this.leftArm, { duration: 2, y: "-350%", rotate: 45, opacity: 0 }, 1)
       .to(this.rightArm, { duration: 2, y: "550%", rotate: 55, opacity: 0 }, 1)
-      .to(".section-disc__title__span-right", { duration: 2, x: '-1.3rem' }, 1);
+      .to(".section-disc__title__span-right", { duration: 1.5, x: '-1.3rem', delay: .4 }, 1)
+      .to(".section-disc__info", { duration: 1, autoAlpha: 1, delay: .4 }, 1)
+      .to(".section-disc__spotlight", { duration: 1, autoAlpha: 1, delay: .4 }, 1)
       // .to(".section-disc__title__span-right", { duration: 2, x: 0 }, 1);
   }
 
@@ -663,7 +667,7 @@ class AppAnimations {
     let studioTimelineEnd = "+=3000px";
 
     if (window.outerWidth < 600) {
-      studioTimelineEnd = "+=2000px";
+      studioTimelineEnd = "+=1800px";
     }
 
     const studioTimeline = gsap.timeline({

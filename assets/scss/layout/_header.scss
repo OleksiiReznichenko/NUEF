@@ -30,6 +30,10 @@
 
   &__uix-item:last-child {
     margin-bottom: 2.3rem;
+
+    @media only screen and (max-width: 950px) {
+      margin-bottom: 6rem;
+    }
   }
 
   &__hover-link {
@@ -83,9 +87,6 @@
       &:not(:last-of-type) {
         margin-right: 3rem !important;
       }
-    }
-
-    &__link {
     }
   }
 
