@@ -1,69 +1,158 @@
-# NUEF - interactive frontend portfolio demo
+# NUEF
 
-NUEF is an archived music-label / creative-agency landing-page concept. This version is a **static frontend demonstration** of the original HTML, SCSS, JavaScript, artwork and GSAP ScrollTrigger effects. It is not an active music-label, contact or application service.
+An interactive music and creative-brand landing page built with JavaScript, SCSS, and GSAP.
 
-## Running the site
+**[Live Demo](https://nuef.oleksiireznichenko.com)**
 
-The archive includes the compiled CSS, so no dependencies are needed for a preview:
+## Overview
 
-```powershell
+NUEF is a frontend project for a music and creative brand, built around scroll-driven animations, interactive elements, and visual storytelling.
+
+The website combines bold typography, animated graphics, background video, and custom transitions to create an immersive browsing experience.
+
+Originally developed as a client project, it has since been restored and optimized as a standalone frontend demo for my portfolio.
+
+## Features
+
+- **Scroll-driven animations** - GSAP and ScrollTrigger power pinned sections, transitions, and interactive visual effects.
+- **Interactive landing page** - Animated spotlights, typography, and layered visual elements.
+- **Animated sections** - Rotating vinyl records, interactive disc elements, phone animations, and studio transitions.
+- **Smooth scrolling** - Custom desktop scrolling behavior integrated with GSAP.
+- **Responsive design** - Adapted layouts, images, and animations for desktop, tablet, and mobile devices.
+- **Custom UI interactions** - Section navigation, animated buttons, hover effects, and transitions.
+- **Standalone frontend** - No backend, authentication, or external application services required.
+
+## Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| HTML5 | Page structure and semantic markup |
+| SCSS / CSS3 | Styling, responsive layouts, and visual effects |
+| JavaScript | Application logic and UI interactions |
+| GSAP | Animation timelines and transitions |
+| ScrollTrigger | Scroll-based animation control and pinned sections |
+| SmoothScroll | Smooth desktop wheel scrolling |
+| Node.js | Local development and build scripts |
+
+The project uses vanilla JavaScript without a frontend framework.
+
+## Getting Started
+
+### Requirements
+
+- Node.js 20 or newer
+- npm
+- Modern web browser
+
+### Run Locally
+
+Clone the repository:
+
+```bash
+git clone https://github.com/OleksiiReznichenko/NUEF.git
+cd NUEF
+```
+
+Start the local development server:
+
+```bash
 npm run dev
 ```
 
-Open http://localhost:5173. The `dev` command runs the included Node.js static server (Node 20+ recommended).
+Open:
 
-```powershell
+```text
+http://localhost:5173
+```
+
+The project includes compiled CSS, so dependencies are not required for a basic preview.
+
+### Working with SCSS
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Compile SCSS:
+
+```bash
+npm run build:css
+```
+
+Watch SCSS files during development:
+
+```bash
+npm run watch:css
+```
+
+### Project Checks
+
+Run the included source and configuration checks:
+
+```bash
 npm run check
 ```
 
-To edit SCSS and recompile CSS, install the Sass developer dependency first:
+## Project Structure
 
-```powershell
-npm install
-npm run build:css
-# or: npm run watch:css
+```text
+NUEF/
+├── assets/
+│   ├── css/          # Compiled stylesheets
+│   ├── js/           # JavaScript and GSAP animations
+│   ├── media/        # Images, videos, and other assets
+│   └── scss/         # SCSS source files
+├── tools/             # Development server and validation scripts
+├── index.html         # Main HTML page
+├── package.json       # Development scripts
+└── README.md
 ```
 
-`assets/scss/main.scss` produces `assets/css/style.css`; `assets/scss/layout/_demo.scss` produces `assets/css/demo.css`. The compiled CSS is committed for dependency-free previews. The GSAP scripts and web fonts load from public CDNs and require an internet connection; without GSAP, a static fallback is provided.
+## Animation Architecture
 
-## Latest fixes
+The website uses GSAP timelines and ScrollTrigger to coordinate animations with the user's scroll position.
 
-### Header composition
+Several sections use pinned scroll sequences, allowing visual elements to animate while their section remains visible.
 
-The original header text and singer are positioned using nested responsive transforms. The previous optimization left too much empty space above the first title on some desktop viewports. The initial offsets in `assets/scss/layout/_header.scss` were reduced: header title starts higher, "MAKING/BRANDS" begins closer to its intended position, "FAMOUS" starts nearer its reveal point, and the singer begins higher. The header's original ScrollTrigger choreography remains intact.
+The animation system includes:
 
-### Slower GSAP pacing and restored smooth wheel scrolling
+- Timeline-based transitions between sections
+- Scroll-linked transformations, opacity, and movement
+- Layered graphics and animated typography
+- Interactive rotating elements
+- Responsive animation configurations
+- ScrollTrigger refresh handling for viewport changes
 
-The original NUEF used the [SmoothScroll 1.4.10](https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js) browser script to ease mouse-wheel/trackpad input. An earlier demo optimization removed it, so only anchor-link jumps were smooth. This version restores the **same original library and configuration** on desktop/pointer-fine devices. It automatically uses native scrolling on touch-oriented devices, for reduced-motion users, or if the CDN does not load. The GSAP ScrollTrigger animations are still synchronized to actual page scroll positions.
+The original animations have been preserved where possible, with adjustments to pacing, scrolling behavior, and responsive layouts.
 
-In addition, the pinned GSAP sections are approximately 24% longer than the previous version at a 900px desktop viewport, giving the animations a more deliberate pace without rebuilding any timelines:
+## Project Status
 
-| Section | Desktop >= 600px | Mobile < 600px |
-|---|---:|---:|
-| Header | 1.45 viewport heights | 1.15 viewport heights |
-| Disc | 1.70 | 1.50 |
-| Phone | 1.90 | 1.65 |
-| Studio | 2.70 | 2.30 |
+**Restored frontend portfolio demo.**
 
-At 900px desktop height this is about **6,975px** total pinned scroll (previous version: 5,625px). Each section also has a minimum scroll length of 480px. Tune only the ratios in `_scrollDistance()` in `assets/js/script.js` if you'd prefer yet slower or shorter sequences. GSAP `ease: "none"` and `scrub: 0.8` remain in place.
+The original project has been updated to improve compatibility with modern browsers and provide a standalone browsing experience.
 
-The `SmoothScroll` script is loaded from the same public CDN used by the original project; it therefore requires internet access. Smooth wheel behavior is not available offline, but the site still scrolls normally. Avoid installing a second smooth-scroll library or enabling another scroll hijacker at the same time.
+The restoration focused on:
 
-### PHP and forms: fully removed
+- Improving animation pacing and scroll behavior
+- Fixing responsive layouts and overlapping elements
+- Improving navigation and UI interactions
+- Removing obsolete PHP backend and form functionality
+- Optimizing assets and development configuration
+- Preparing the project for static deployment
 
-The old PHP mailer, disabled contact/application form, file upload UI, form event handlers, form SCSS/CSS, and the now-unused form icons are absent. No email, identity, personal data, or attachments are collected or submitted. Buttons navigate to the final animated NUEF concept section instead. The final CTA returns to the beginning.
+This repository demonstrates the frontend implementation and is not an active commercial music-label platform.
 
-Since the concept's contacts section is **inside a pinned GSAP scene**, `#contact` navigation calculates the end of the studio ScrollTrigger. This avoids jumping to the untransformed position of content that is not yet visible. It falls back to normal scrolling when GSAP is unavailable.
+## Notes
 
-## Deployment and security
+- GSAP and some supporting libraries and fonts are loaded through external CDNs.
+- Certain animations require these libraries to load successfully.
+- The original backend and contact form functionality have been removed.
+- The project is preserved primarily as a frontend development and animation showcase.
 
-Deploy `index.html`, `assets/`, and optionally `tools/` and docs to any static site host. No server API or environment variables are needed. No PHP runtime is required.
+## Credits
 
-**Important:** An *earlier* original archive contained an embedded SMTP credential in `data.php`. Revoke/rotate it if it has not already been revoked and inspect all Git refs/history before making the old repository public. Removing a file from the current working tree does **not** purge old commits. If overlaying this package over an older project, delete the obsolete `data.php`, `assets/includes/`, `assets/scss/layout/_registrationForm.scss`, `assets/css/stylePrev.css`, and any old package lock tied to `node-sass`. Start with a clean folder if possible, since extracting an archive doesn't delete removed files.
+Frontend development and implementation by [Oleksii Reznichenko](https://oleksiireznichenko.com).
 
-## Verification
-
-- Passed: JavaScript syntax validation (`node --check`), `npm run check`, source/asset references, static navigation IDs, no form or PHP submission code, CSS parsing, and modified asset presence.
-- Not completed: fresh `npm install` / Sass recompilation (npm registry DNS unavailable), real GSAP browser playback, visual checks across desktop/tablet/mobile. An attempted headless Chromium local screenshot timed out in this environment.
-
-Before deployment, manually check the header at 1440x900, the entire scroll sequence, `#contact` navigation, and mobile widths 320, 375, 430, and 768px. See `RELEASE-CHECKLIST.md`.
+Original branding, design assets, imagery, and other media remain the property of their respective owners. Their inclusion in this portfolio project does not grant permission for redistribution or commercial reuse.
