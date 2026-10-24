@@ -1,18 +1,15 @@
 {
-  "name": "elixar",
+  "name": "nuef-portfolio-demo",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.html",
+  "private": true,
+  "description": "Archived NUEF interactive landing page, restored as a safe frontend-only portfolio demo.",
   "scripts": {
-    "watch:sass-main": "node-sass assets/scss/main.scss assets/css/style.css -w",
-    "compress:css-main": "node-sass assets/css/style.css assets/css/style.css --output-style compressed"
+    "dev": "node tools/dev-server.mjs",
+    "build:css": "sass --no-source-map assets/scss/main.scss:assets/css/style.css assets/scss/layout/_demo.scss:assets/css/demo.css",
+    "watch:css": "sass --watch --no-source-map assets/scss/main.scss:assets/css/style.css assets/scss/layout/_demo.scss:assets/css/demo.css",
+    "check": "node tools/check.mjs && node tools/test-scroll.mjs"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "node-sass": "^7.0.1",
-    "postcss": "^8.4.7",
-    "postcss-cli": "^9.1.0",
-    "sass": "^1.49.9"
+    "sass": "^1.77.0"
   }
 }

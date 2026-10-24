@@ -1,51 +1,38 @@
-const blockContactImageContainer = document.querySelector(".block-contacts__image-container");
-const blockContactText = document.querySelector(".block-contacts__text");
-const musicDisc = document.querySelector(".section-disc__circle-block");
-const phoneImg = document.querySelector(".phone_image");
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// IPHONE ADDAPTIVE
-
+// Only used for the existing iOS-specific disc positioning.
 function isIOSDevice() {
-  return !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+  return /iPad|iPhone|iPod/.test(navigator.platform) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 }
-
-function iphoneAdaptive(iphoneIndicator) {
-  if (!iphoneIndicator) return;
-  if (window.outerWidth < 600) {
-    musicDisc.classList.add("circleBlock_iphone_adaptive");
-    phoneImg.classList.add("phone_image_iphone_adaptive");
-    blockContactImageContainer.classList.add(
-      "block-contacts__image-container_iphone_adaptive"
-    );
-    blockContactText.classList.add("block-contacts__text_iphone_adaptive");
-  }
-}
-
-iphoneAdaptive(isIOSDevice());
-
 
 class AppAnimations {
   constructor() {
     this._DOMSelection();
     this._librariesPluginsInit();
-    this._linksPreventDefault();
-    this._resize();
-    this._eventListeners();
-    this._fixedNav();
+    this._navigation();
+    this._lazyVideo();
     this._preloaderAnimation();
+
+    if (!window.gsap || !window.ScrollTrigger) {
+      document.documentElement.classList.add("animations-unavailable");
+      console.warn("NUEF: animation scripts are unavailable; showing static content.");
+      return;
+    }
+
+    this._resize();
     this._headerAnimation();
     this._welcomeToNuefAnimation();
     this._connectAnimation();
     this._phoneAnimation();
     this._studioAnimation();
+
+    // Pin measurements must be calculated after all scenes are registered.
+    if (typeof ScrollTrigger.sort === "function") ScrollTrigger.sort();
+    requestAnimationFrame(() => ScrollTrigger.refresh());
   }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // DOM SELECTION
   _DOMSelection() {
-    this.formCallingButtons = Array.from(document.querySelectorAll(".trigger-button"));
-    this.formClosingButtons = Array.from(document.querySelectorAll(".trigger-close-button"));
     this.fixedNavLinks = Array.from(document.querySelectorAll(".fixed-nav__link"));
 
     this.header = document.querySelector(".header");
@@ -59,12 +46,6 @@ class AppAnimations {
     this.recordsLink = document.querySelector(".records-link");
     this.dailyLink = document.querySelector(".daily-link");
     this.connectAnimationButton = document.querySelector(".section-disc__connect-animation-button");
-    this.emailInput = document.getElementById("emailInput");
-    this.socialInput = document.getElementById("socialInput");
-    this.fileInput = document.getElementById("fileInput");
-    this.textarea = document.querySelector(".registration-form__form__textarea");
-
-    this.registrationForm = document.querySelector(".registration-form");
     this.rightArm = document.querySelector(".section-disc__right-arm");
     this.leftArm = document.querySelector(".section-disc__left-arm");
     this.circleBlockBorder = document.querySelector(".section-disc__circle-block__border");
@@ -74,306 +55,183 @@ class AppAnimations {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // INITIALIZATION OF LIBRARIES & PLUGINS
   _librariesPluginsInit() {
-      SmoothScroll({
-          animationTime    : 600,
-          stepSize         : 75,
-          accelerationDelta : 20,  
-          accelerationMax   : 2,   
-          keyboardSupport   : true,  
-          arrowScroll       : 50,
-          pulseAlgorithm   : true,
-          pulseScale       : 4,
-          pulseNormalize   : 1,
-          touchpadSupport   : true,
+    // The original NUEF used SmoothScroll for eased mouse-wheel/trackpad input.
+    // It was removed during the static-demo optimization, leaving only smooth
+    // anchor navigation. Use it on desktop, with native scrolling as fallback.
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+
+    if (typeof window.SmoothScroll === "function" && !reducedMotion && !coarsePointer) {
+      window.SmoothScroll({
+        animationTime: 600,
+        stepSize: 75,
+        accelerationDelta: 20,
+        accelerationMax: 2,
+        keyboardSupport: true,
+        arrowScroll: 50,
+        pulseAlgorithm: true,
+        pulseScale: 4,
+        pulseNormalize: 1,
+        touchpadSupport: true,
       });
-      
+    }
+
+    if (window.gsap && window.ScrollTrigger) {
       gsap.registerPlugin(ScrollTrigger);
-
-      // gsap.config({
-      //   force3D: true,
-      // });
+      // Address-bar height changes should not continually rebuild pinned scenes.
+      if (typeof ScrollTrigger.config === "function") {
+        ScrollTrigger.config({ ignoreMobileResize: true });
+      }
+    }
   }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// DISABLE EMPTY LINKS CLICK
-  _linksPreventDefault() {
-      const links = Array.from(document.querySelectorAll('a[href="#"]'));
-      links.forEach((el) => {
-        el.addEventListener("click", (e) => {
-          e.preventDefault();
+// NAVIGATION / RESIZE
+  _navigation() {
+    const sections = [this.header, this.sectionEqualiser, this.sectionDisc, this.sectionPhone, this.sectionStudio];
+    const navItems = [this.aboutLink, this.artistsLink, this.recordsLink, this.dailyLink];
+    const sectionLinks = new Map([
+      [this.sectionEqualiser, this.aboutLink],
+      [this.sectionDisc, this.artistsLink],
+      [this.sectionPhone, this.recordsLink],
+      [this.sectionStudio, this.dailyLink],
+    ]);
+
+    // #contact sits inside a pinned GSAP scene. Native hash navigation jumps
+    // to its untransformed document position, before the finale is visible.
+    document.querySelectorAll('a[href="#contact"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const finale = document.getElementById("contact");
+        if (!finale) return;
+        event.preventDefault();
+        const trigger = window.ScrollTrigger?.getAll().find((item) =>
+          item.vars.trigger === this.sectionStudio && item.vars.pin === this.sectionStudio
+        );
+        if (trigger) {
+          window.scrollTo({ top: Math.max(0, trigger.end - 24), behavior: "smooth" });
+        } else {
+          finale.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+
+    // Use native anchor navigation; don't capture scrolling at the document level.
+    this.fixedNavLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const target = document.querySelector(link.getAttribute("href"));
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          navItems.forEach((link) => link.classList.remove("active"));
+          const active = sectionLinks.get(entry.target);
+          if (active) active.classList.add("active");
         });
-      });
+      }, { threshold: 0.45 });
+      sections.forEach((section) => observer.observe(section));
+    }
   }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// RESIZE
   _resize() {
-      const initialWindowWidth = window.outerWidth;
-      // const initialWindowHeight = window.outerHeight;
+    // ScrollTrigger can recalculate pins and end distances; a full page reload
+    // destroys UI state and causes loops when mobile browser chrome changes size.
+    let resizeFrame = 0;
+    let previousWidth = window.innerWidth;
+    window.addEventListener("resize", () => {
+      if (Math.abs(window.innerWidth - previousWidth) < 2) return;
+      previousWidth = window.innerWidth;
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(() => ScrollTrigger.refresh());
+    }, { passive: true });
 
-      window.addEventListener('resize', () => {
-          const newWindowWidth = Math.abs(initialWindowWidth - window.outerWidth);
-          // const newWindowHeight = Math.abs(initialWindowHeight - window.outerHeight);
-          if (newWindowWidth < 100) return;
-          location.reload();
-      })
-  }
-
-  _fixedNav() {
-    let clickIndicator = false;
-    this.aboutLink.addEventListener("click", () => {
-      if (clickIndicator) return;
-      clickIndicator = true;
-
-      this.sectionEqualiser.scrollIntoView({
-        behavior: "smooth",
-      });
-      this.fixedNavLinks.forEach((el) => {
-        el.classList.remove("active");
-      });
-      this.aboutLink.classList.add("active");
-
-      if (!this.aboutLink.classList.contains("active")) return;
-      setTimeout(() => {
-        clickIndicator = false;
-      }, 1500);
-    });
-    this.artistsLink.addEventListener("click", () => {
-      if (clickIndicator) return;
-      clickIndicator = true;
-
-      this.sectionDisc.scrollIntoView({
-        behavior: "smooth",
-      });
-      this.fixedNavLinks.forEach((el) => {
-        el.classList.remove("active");
-      });
-      this.artistsLink.classList.add("active");
-
-      if (!this.artistsLink.classList.contains("active")) return;
-      setTimeout(() => {
-        clickIndicator = false;
-      }, 1500);
-    });
-    this.recordsLink.addEventListener("click", () => {
-      if (clickIndicator) return;
-      clickIndicator = true;
-
-      this.sectionPhone.scrollIntoView({
-        behavior: "smooth",
-      });
-      this.fixedNavLinks.forEach((el) => {
-        el.classList.remove("active");
-      });
-      this.recordsLink.classList.add("active");
-
-      if (!this.recordsLink.classList.contains("active")) return;
-      setTimeout(() => {
-        clickIndicator = false;
-      }, 1500);
-    });
-    this.dailyLink.addEventListener("click", () => {
-      if (clickIndicator) return;
-      clickIndicator = true;
-
-      this.sectionStudio.scrollIntoView({
-        behavior: "smooth",
-      });
-      this.fixedNavLinks.forEach((el) => {
-        el.classList.remove("active");
-      });
-      this.dailyLink.classList.add("active");
-
-      if (!this.dailyLink.classList.contains("active")) return;
-      setTimeout(() => {
-        clickIndicator = false;
-      }, 1500);
-    });
-
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.7,
-    };
-
-    const observerCallback = (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          this.fixedNavLinks.forEach((el) => {
-            el.classList.remove("active");
-          });
-
-          if (entry.target.classList.contains("header")) {
-            this.fixedNavLinks.forEach((el) => {
-              el.classList.remove("active");
-            });
-          }
-
-          if (entry.target.classList.contains("section-equaliser")) {
-            this.aboutLink.classList.add("active");
-          }
-
-          if (entry.target.classList.contains("section-disc")) {
-            this.artistsLink.classList.add("active");
-          }
-
-          if (entry.target.classList.contains("section-phone")) {
-            this.recordsLink.classList.add("active");
-          }
-
-          if (entry.target.classList.contains("section-studio")) {
-            this.dailyLink.classList.add("active");
-          }
-        }
-      });
-    }
-
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions
-    );
-
-    observer.observe(this.header);
-    observer.observe(this.sectionEqualiser);
-    observer.observe(this.sectionDisc);
-    observer.observe(this.sectionPhone);
-    observer.observe(this.sectionStudio);
-  }
-
-// APPEAR FORM ANIMATION
-  _appearFormAnimation(regFormIndicator) {
-    if (!regFormIndicator) {
-      gsap.to(".registration-form__wrapper", { duration: 0.75, autoAlpha: 1 });
-    } else {
-      gsap.to(".registration-form__wrapper", { duration: 0.75, autoAlpha: 0 });
-
-      setTimeout(() => {
-        this.emailInput.value = '';
-        this.socialInput.value = '';
-        this.fileInput.value = '';
-        this.textarea.value = '';
-      }, 750);
+    window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => ScrollTrigger.refresh()).catch(() => {});
     }
   }
 
-// CHECK TEXTAREA HEIGHT
-  _onInput() {
-    const heightUnit = window.innerHeight / 100;
-    const heightLimit = this.registrationForm.offsetHeight / heightUnit;
-
-    if (heightLimit >= 90) return;
-    this.style.height = "auto";
-    this.style.height = this.scrollHeight + "px";
+  _scrollDistance(section) {
+    // Pinned distance determines the amount of scroll needed to play each
+    // GSAP scene. SmoothScroll affects wheel input, not these distances.
+    // Keep all pacing controls together so sections remain easy to tune.
+    const mobile = window.innerWidth < 600;
+    const ratios = mobile
+      ? { header: 1.035, disc: 1.35, phone: 1.485, studio: 2.07 }
+      : { header: 1.305, disc: 1.53, phone: 1.71, studio: 2.43 };
+    return Math.round(Math.max(480, window.innerHeight * ratios[section]));
   }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// EVENT LISTENERS
-  _eventListeners() {
-    this.formCallingButtons.forEach((el) => {
-      el.addEventListener("click", (e) => {
-        this._appearFormAnimation(false);
+// LAZY VIDEO LOADING
+  _lazyVideo() {
+    const video = document.querySelector(".section-contacts__video");
+    if (!video) return;
+    const load = () => {
+      video.querySelectorAll("source[data-src]").forEach((source) => {
+        source.src = source.dataset.src;
+        delete source.dataset.src;
       });
-    });
-
-    this.formClosingButtons.forEach((el) => {
-      el.addEventListener("click", (e) => {
-        if (
-          e.target.classList.contains("registration-form__wrapper") ||
-          e.target.classList.contains("close-icon")
-        ) {
-          this._appearFormAnimation(true, 0);
-        }
-      });
-    });
-
-    document.getElementById('fileInputForm').addEventListener('submit', () => {
-      alert('Thanks');
-    });
-    
-    const tx = document.querySelector("textarea");
-    tx.setAttribute("style", "height:" + tx.scrollHeight + "px;");
-    tx.addEventListener("input", this._onInput, false);
+      video.load();
+      video.play().catch(() => {});
+    };
+    if (!("IntersectionObserver" in window)) {
+      load();
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        load();
+        observer.disconnect();
+      }
+    }, { rootMargin: "500px" });
+    observer.observe(video);
   }
 
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // PRELOADER ANIMATION
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// PRELOADER: single completion path and independent of optional CDNs
   _preloaderAnimation() {
-    const preloaderTimeline = gsap.timeline({});
-
-    // preloaderTimeline
-    //   .to(
-    //     ".preloader__image",
-    //     { duration: 10, rotate: -1080, ease: "linear" },
-    //     0
-    //   )
-    //   .to(
-    //     preloaderTextFilling,
-    //     { duration: 3.5, width: "100%", ease: "linear" },
-    //     0
-    //   )
-    //   .to(
-    //     ".preloader",
-    //     { duration: 1, autoAlpha: 0, ease: "linear", delay: 4 },
-    //     0
-    //   )
-    //   .to("html", { duration: 0, overflowY: "visible", delay: 5 }, 0);
-
-      preloaderTimeline
-        .to(
-          ".preloader__image",
-          { duration: 10, rotate: -1080, ease: "linear" },
-          0
-        )
-        .to(
-            ".preloader",
-            { duration: 1, autoAlpha: 0, ease: "linear", delay: 2 },
-            0
-        )
-        .to("html", { duration: 0, overflowY: "visible", delay: 3.2 }, 0);
-
-        
-        const interval = setInterval(() => {
-            if (document.readyState === 'complete') {
-                clearInterval(interval);
-                
-                preloaderTimeline
-                .to(
-                    ".preloader",
-                    { duration: 1.2, autoAlpha: 0, ease: "linear", delay: .5 },
-                    0
-                )
-                .to("html", { duration: 0, overflowY: "visible", delay: 1.4 }, 0)
-            }    
-        }, 100);
+    const finish = () => {
+      if (this._preloaderFinished) return;
+      this._preloaderFinished = true;
+      document.documentElement.classList.add("is-loaded");
+      if (window.ScrollTrigger) requestAnimationFrame(() => ScrollTrigger.refresh());
+      const preloader = document.querySelector(".preloader");
+      if (preloader) {
+        preloader.addEventListener("transitionend", () => preloader.remove(), { once: true });
+        setTimeout(() => preloader.remove(), 750);
+      }
+    };
+    if (document.readyState === "complete") {
+      setTimeout(finish, 400);
+    } else {
+      window.addEventListener("load", () => setTimeout(finish, 400), { once: true });
+    }
+    // Slow external fonts/JS/video must never lock the entire page.
+    setTimeout(finish, 2400);
   }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // HEADER ANIMATION
   _headerAnimation() {
-    // let headerTimelineEnd = "+=1000px";
-    let headerTimelineEnd = "top -130%";
-
-    if (window.outerWidth < 600) {
-      headerTimelineEnd = "+=500px";
-    }
+    const headerTimelineEnd = () => `+=${this._scrollDistance("header")}`;
 
     const headerTimeline = gsap.timeline({
+      defaults: { ease: "none" },
       scrollTrigger: {
         trigger: this.header,
         start: "top 0%",
         end: headerTimelineEnd,
-        scrub: 1,
+        invalidateOnRefresh: true,
+        scrub: 0.8,
         pin: this.header,
-        // onUpdate: (self) => {
-        //   console.log(self.progress)
-        //   if (self.progress < 0.05) {
-        //     if (this.headerButton.style.transition = 'all 0.3s') return;
-        //     this.headerButton.style.transition = 'all 0.3s';
-        //   } else {
-        //     if (this.headerButton.style.transition = 'none') return;
-        //     this.headerButton.style.transition = 'none';
-        //   }
-        // }
+        pinSpacing: true,
+        anticipatePin: 1,
       },
     });
 
@@ -381,11 +239,11 @@ class AppAnimations {
     let rotateCenter = 20;
     let crowdY = "25vh";
 
-    if (window.outerWidth < 950 && window.outerHeight < 520) {
+    if (window.innerWidth < 950 && window.innerHeight < 520) {
       crowdY = "35vh";
     }
 
-    if (window.outerWidth > 2600) {
+    if (window.innerWidth > 2600) {
       crowdY = "15vh";
     }
 
@@ -430,11 +288,13 @@ class AppAnimations {
 // WELCOME TO NUEF ANIMATION
   _welcomeToNuefAnimation() {
     const welcomeToNuefTimeline = gsap.timeline({
+      defaults: { ease: "none" },
       scrollTrigger: {
         trigger: this.header,
         start: "top 0%",
-        end: "bottom -100%",
-        scrub: 1,
+        end: () => `+=${this._scrollDistance("header")}`,
+        scrub: 0.8,
+        invalidateOnRefresh: true,
       },
     });
 
@@ -450,68 +310,29 @@ class AppAnimations {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CONNECT ANIMATION
   _connectAnimation() {
-    this.connectAnimationButton.addEventListener("click", () => {
-      connectAnimation();
-    });
-
-    let connectAnimationIndicator = 3;    
     let discRight = "40vw";
     let discTop = "0%";
 
-    if (window.outerWidth < 900) {
-      // discRight = '-10%';
-      discRight = "90%";
-    }
-    if (window.outerWidth < 700 && window.outerHeight > 520) {
-      // discTop = '70%'
-      // discTop = '25%'
-      discTop = "70%";
-    }
-    if (window.outerWidth < 600) {
-      // discRight = '-20%'
-      discRight = "80%";
-    }
-    if (window.outerWidth < 500) {
-      // discRight = '-33%'
-      discRight = "75%";
-    }
-    if (window.outerWidth < 450) {
-      // discRight = '-25%'
-      discRight = "75%";
-
-      if (isIOSDevice()) {
-        // discRight = '-50%'
-        discRight = "65%";
-      }
-    }
-    if (window.outerWidth > 2500) {
-      // discRight = '-25%'
+    if (window.innerWidth < 900) {
+      // Keep the animated disc inside the mobile scene instead of sending it
+      // most of a disc-width beyond the right edge of the viewport.
+      discRight = "14vw";
+      discTop = "8%";
+    } else if (window.innerWidth > 2500) {
       discRight = "60vw";
       discTop = "20%";
     }
 
-    function connectAnimation() {
-      if (connectAnimationIndicator === 3) {
-        gsap.to(this.connectAnimationButton, { duration: 0.75, rotate: -180 });
-        connectAnimationIndicator = 4;
-      } else if (connectAnimationIndicator === 4) {
-        gsap.to(this.connectAnimationButton, { duration: 0.75, rotate: 0 });
-        connectAnimationIndicator = 3;
-      }
-    }
-
-    let connectAnimationTimelineEnd = "+=1200px";
-
-    if (window.outerWidth < 600) {
-      connectAnimationTimelineEnd = "+=900px";
-    }
+    const connectAnimationTimelineEnd = () => `+=${this._scrollDistance("disc")}`;
 
     const connectAnimationTimeline = gsap.timeline({
+      defaults: { ease: "none" },
       scrollTrigger: {
         trigger: this.sectionDisc,
         start: "top 0%",
         end: connectAnimationTimelineEnd,
-        scrub: 1,
+        scrub: 0.8,
+        invalidateOnRefresh: true,
         pin: this.sectionDisc,
       },
     });
@@ -523,7 +344,7 @@ class AppAnimations {
           duration: 0.75,
           rotate: -180,
           background:
-            "linear-gradient(90deg, #0400ff 0%, #a40cea 53.13%, #ec0a7a 100%",
+            "linear-gradient(90deg, #0400ff 0%, #a40cea 53.13%, #ec0a7a 100%)",
         },
         0
       )
@@ -554,140 +375,68 @@ class AppAnimations {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // PHONE ANIMATION
   _phoneAnimation() {
-    let phoneTimelineEnd = "+=1300px";
-    let phoneLinesTimelineEnd = "+=1700px";
-    let phoneLinesTimeline2End = "+=1700px";
-
-    if (window.outerWidth < 600) {
-      phoneTimelineEnd = "+=900px";
-      phoneLinesTimelineEnd = "+=1000px";
-      phoneLinesTimeline2End = "+=1000px";
-    }
-
     const phoneTimeline = gsap.timeline({
+      defaults: { ease: "none" },
       scrollTrigger: {
         trigger: this.sectionPhone,
-        start: "top 0%",
-        end: phoneTimelineEnd,
-        scrub: 1,
+        start: "top top",
+        end: () => `+=${this._scrollDistance("phone")}`,
+        scrub: 0.8,
         pin: this.sectionPhone,
+        invalidateOnRefresh: true,
       },
     });
 
-    const phoneLinesTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: this.sectionPhone,
-        start: "top 50%",
-        end: phoneLinesTimelineEnd,
-        scrub: 1,
-      },
-    });
-
-
-    const phoneLinesTimeline2 = gsap.timeline({
-      scrollTrigger: {
-        trigger: this.sectionPhone,
-        start: "top 50%",
-        end: phoneLinesTimeline2End,
-        scrub: 1,
-      },
-    });
-
+    // Text color, line fills and background waves share ONE scroll progress.
+    // Previously three separate triggers stretched beyond the pinned section.
     phoneTimeline
-      .to(
-        ".section-phone__phone-line",
-        { duration: 2, color: "#232323", ease: "linear", stagger: 1 },
-        0
-      )
-      .to(
-        ".section-phone__phone-span",
-        { duration: 2, width: "110%", ease: "linear", stagger: 1 },
-        0
-      );
-
-    phoneLinesTimeline2
-      .to(
-        ".section-phone__waving-text-line-front",
-        { duration: 15, y: "6rem", ease: "linear" },
-        0
-      )
-      .to(
-        ".section-phone__waving-text-line-back",
-        { duration: 15, y: "-6rem", ease: "linear" },
-        0
-      )
-      .to(
-        ".section-phone__waving-text-line-front",
-        { duration: 15, y: "0rem", ease: "linear", delay: 15 },
-        0
-      )
-      .to(
-        ".section-phone__waving-text-line-back",
-        { duration: 15, y: "0rem", ease: "linear", delay: 15 },
-        0
-      )
-      .to(
-        ".section-phone__waving-text-line-front",
-        { duration: 15, y: "8rem", ease: "linear", delay: 30 },
-        0
-      )
-      .to(
-        ".section-phone__waving-text-line-back",
-        { duration: 15, y: "-8rem", ease: "linear", delay: 30 },
-        0
-      )
-      .to(
-        ".section-phone__waving-text-line-front",
-        { duration: 15, y: "0rem", ease: "linear", delay: 45 },
-        0
-      )
-      .to(
-        ".section-phone__waving-text-line-back",
-        { duration: 15, y: "0rem", ease: "linear", delay: 45 },
-        0
-      );
-
-    phoneLinesTimeline
-      .to(
-        ".section-phone__waving-text-line-back",
-        { duration: 10, x: "50%", ease: "linear" },
-        0
-      )
-      .to(
-        ".section-phone__waving-text-line-front",
-        { duration: 10, x: "-50%", ease: "linear" },
-        0
-      );
+      .to(".section-phone__phone-line", {
+        duration: 3, color: "#232323", ease: "none", stagger: 0.65,
+      }, 0)
+      .to(".section-phone__phone-span", {
+        duration: 3, width: "110%", ease: "none", stagger: 0.65,
+      }, 0)
+      .to(".section-phone__waving-text-line-back", {
+        duration: 9, x: "50%", ease: "none",
+      }, 0)
+      .to(".section-phone__waving-text-line-front", {
+        duration: 9, x: "-50%", ease: "none",
+      }, 0)
+      .to(".section-phone__waving-text-line-front", {
+        keyframes: [{ y: "6rem" }, { y: 0 }, { y: "8rem" }, { y: 0 }],
+        duration: 9, ease: "none",
+      }, 0)
+      .to(".section-phone__waving-text-line-back", {
+        keyframes: [{ y: "-6rem" }, { y: 0 }, { y: "-8rem" }, { y: 0 }],
+        duration: 9, ease: "none",
+      }, 0);
   }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // STUDIO ANIMATION
   _studioAnimation() {
-    // let studioTimelineEnd = "+=4000px";
-    let studioTimelineEnd = "+=3000px";
-
-    if (window.outerWidth < 600) {
-      studioTimelineEnd = "+=1800px";
-    }
+    const studioTimelineEnd = () => `+=${this._scrollDistance("studio")}`;
 
     const studioTimeline = gsap.timeline({
-      defaults: { duration: 1.5 },
+      defaults: { duration: 1.5, ease: "none" },
       scrollTrigger: {
         trigger: this.sectionStudio,
         start: "top 0%",
         end: studioTimelineEnd,
-        scrub: 1,
+        scrub: 0.8,
+        invalidateOnRefresh: true,
         pin: this.sectionStudio,
       },
     });
 
     const studioTextLinesTimeline = gsap.timeline({
-      defaults: { duration: 1.5 },
+      defaults: { duration: 1.5, ease: "none" },
       scrollTrigger: {
         trigger: this.sectionStudio,
         start: "top 80%",
         end: studioTimelineEnd,
-        scrub: 1,
+        scrub: 0.8,
+        invalidateOnRefresh: true,
       },
     });
 
@@ -707,7 +456,7 @@ class AppAnimations {
     // let studioContentY = "-27vh";
     let studioContentY = "-31vh";
 
-    if (window.outerWidth < 950 && window.outerHeight < 520) {
+    if (window.innerWidth < 950 && window.innerHeight < 520) {
       studioContentY = "-31vh";
     }
 
@@ -778,4 +527,4 @@ class AppAnimations {
   }
 }
 
-new AppAnimations();
+document.addEventListener("DOMContentLoaded", () => new AppAnimations());

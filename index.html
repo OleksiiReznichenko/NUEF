@@ -4,77 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Unique music label. We will help you to become famous and solve everything related to everyday routine. Join NUEF today!">
-    <title>NUEF</title>
+    <meta name="description" content="Explore the archived NUEF creative music-label concept, featuring immersive animations, interactive scenes, and GSAP scroll effects.">
+    <title>NUEF | Interactive Frontend Demo</title>
 
     <link rel="icon" href="assets/media/favicon.png" />
 
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      as="style"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    />
-
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Pragati+Narrow:wght@400;700&display=swap"
-      as="style"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Pragati+Narrow:wght@400;700&display=swap"
-    />
-
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pragati+Narrow:wght@400;700&display=swap"
-      as="style"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pragati+Narrow:wght@400;700&display=swap"
-    />
-
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Pragati+Narrow:wght@400;700&display=swap"
-      as="style"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Pragati+Narrow:wght@400;700&display=swap"
-    />
-
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
-      as="style"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=Montserrat:wght@300;400;500;600;700;800;900&family=Pragati+Narrow:wght@400;700&display=swap" />
 
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/demo.css" />
 
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js"></script>
     <script defer src="assets/js/script.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/CSSRulePlugin3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js"></script>
-
-    <!-- <style>
-      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Pragati+Narrow:wght@400;700&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pragati+Narrow:wght@400;700&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Pragati+Narrow:wght@400;700&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
-    </style> -->
   </head>
 
   <body>
@@ -89,141 +34,27 @@
       </div>
     </div>
 
-    <div class="registration-form__wrapper trigger-close-button">
-      <div class="registration-form">
-        <svg class="registration-form__close-icon close-icon" viewBox="0 0 20 20">
-          <path
-            class="registration-form__close-icon--path"
-            fill="white"
-            d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z"
-          ></path>
-        </svg>
-        <div class="registration-form__container">
-          <div class="registration-form__heading-container">
-            <h1 class="registration-form__heading">Let's create!</h1>
-            <h5 class="registration-form__small-heading">
-              tell us some words about yourself
-            </h5>
-          </div>
-          <iframe name="votar" style="display:none;"></iframe>
-          <form target="votar" action="data.php" method="post" id="fileInputForm" class="registration-form__form" enctype="multipart/form-data">
-            <div class="registration-form__form__input-group">
-              <label for="emali" class="registration-form__form__label"
-                >E-mail</label
-              >
-              <div class="registration-form__form__input-img-group">
-                <input
-                  name="email"
-                  type="email"
-                  id="emailInput"
-                  class="registration-form__form__input"
-                  placeholder="example@example.com"
-                  required
-                />
-                <img
-                  src="assets/media/email.svg"
-                  alt=""
-                  class="registration-form__form__email-svg"
-                />
-              </div>
-            </div>
-            <div class="registration-form__form__input-group">
-              <label for="social" class="registration-form__form__label"
-                >Social</label
-              >
-              <div class="registration-form__form__input-img-group">
-                <input
-                  name="social"
-                  type="text"
-                  id="socialInput"
-                  class="registration-form__form__input"
-                  placeholder="Link or username"
-                  required
-                />
-                <img
-                  src="assets/media/telegram.svg"
-                  alt=""
-                  class="registration-form__form__telegram-svg"
-                />
-                <img
-                  src="assets/media/facebook.svg"
-                  alt=""
-                  class="registration-form__form__facebook-svg"
-                />
-                <img
-                  src="assets/media/insta.svg"
-                  alt=""
-                  class="registration-form__form__insta-svg"
-                />
-                <img
-                  src="assets/media/whatsapp.svg"
-                  alt=""
-                  class="registration-form__form__whatsapp-svg"
-                />
-              </div>
-            </div>
-            <div class="registration-form__form__input-group">
-              <label for="message" class="registration-form__form__label"
-                >Your message</label
-              >
-              <textarea
-                rows="4"
-                name="message"
-                class="registration-form__form__textarea"
-                placeholder="Introduce yourself"
-                required
-              ></textarea>
-              <div class="registration-form__form__clip-container">
-                <label
-                  for="fileInput"
-                  class="registration-form__form__file-custom"
-                ></label>
-                <input
-                  name="fileInput"
-                  type="file"
-                  id="fileInput"
-                  class="registration-form__form__file"
-                />
-                <img
-                  src="assets/media/clip.svg"
-                  alt=""
-                  class="registration-form__form__clip-svg"
-                />
-              </div>
-            </div>
-            <button
-              type="submit"
-              name="submit"
-              class="registration-form__form__button button-background-animated"
-            >
-              Connect
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-
     <div class="fixed-nav">
-      <a href="#" class="fixed-nav__link about-link">ABOUT</a>
-      <a href="#" class="fixed-nav__link artists-link">ARTISTS</a>
-      <a href="#" class="fixed-nav__link records-link">RECORDS</a>
-      <a href="#" class="fixed-nav__link daily-link">DAILY</a>
+      <a href="#about" class="fixed-nav__link about-link">ABOUT</a>
+      <a href="#artists" class="fixed-nav__link artists-link">ARTISTS</a>
+      <a href="#records" class="fixed-nav__link records-link">RECORDS</a>
+      <a href="#studio" class="fixed-nav__link daily-link">DAILY</a>
     </div>
 
-    <header class="section header">
+    <header class="section header" id="home">
       <div class="header__uix">
         <nav class="header__uix-item header__navigation-top">
           <ul class="header__navigation-top__list">
-            <li class="header__navigation-top__item"><a href="#" class="header__navigation-top__link header__hover-link">Studio</a></li>
-            <li class="header__navigation-top__item"><a href="#" class="header__navigation-top__link header__hover-link">Landing</a></li>
-            <li class="header__navigation-top__item"><a href="#" class="header__navigation-top__link header__hover-link">Collaborations</a></li>
+            <li class="header__navigation-top__item"><a href="#studio" class="header__navigation-top__link header__hover-link">Studio</a></li>
+            <li class="header__navigation-top__item"><a href="#home" class="header__navigation-top__link header__hover-link">Landing</a></li>
+            <li class="header__navigation-top__item"><a href="#artists" class="header__navigation-top__link header__hover-link">Collaborations</a></li>
           </ul>
 
           <div class="header__navigation-top__button-container">
             <a
-              href="#"
-              class="header__navigation-top__button trigger-button"
-              >Contacts</a
+              href="#contact"
+              class="header__navigation-top__button"
+              >Finale</a
             >
           </div>
         </nav>
@@ -233,14 +64,14 @@
         </div>
         <div class="header__uix-item">
           <ul class="header__socials">
-            <li class="header__socials__item"><a href="#" class="header__socials__link header__hover-link">Facebook</a></li>
-            <li class="header__socials__item"><a href="#" class="header__socials__link header__hover-link">Instagram</a></li>
-            <li class="header__socials__item"><a href="#" class="header__socials__link header__hover-link">Linkedin</a></li>
+            <li class="header__socials__item"><span class="header__socials__link header__hover-link" title="Social link unavailable in demo">Facebook</span></li>
+            <li class="header__socials__item"><span class="header__socials__link header__hover-link" title="Social link unavailable in demo">Instagram</span></li>
+            <li class="header__socials__item"><span class="header__socials__link header__hover-link" title="Social link unavailable in demo">Linkedin</span></li>
           </ul>
-          <a href="#" class="header__language header__hover-link">
+          <span class="header__language">
             <img class="header__language-line" src="assets/media/arrowDown.svg" />
             ENG
-          </a>
+          </span>
         </div>
       </div>
       <div class="header__title">
@@ -351,7 +182,7 @@
       <div class="header__smoke"></div>
     </header>
 
-    <section class="section section-equaliser">
+    <section class="section section-equaliser" id="about">
       <div class="section-equaliser__content">
         <h2 class="section-equaliser__title">WELCOME TO <span class="span-gradient">NUEF</span></h2>
         <div class="section-equaliser__equaliser-container div">
@@ -415,7 +246,7 @@
       <img src="assets/media/spotlightTopRight.webp" class="section-equaliser__spotlight" />
     </section>
 
-    <section class="section section-disc">
+    <section class="section section-disc" id="artists">
       <div class="section-disc__content">
         <div class="section-disc__info">
           <h2 class="section-disc__title">
@@ -426,7 +257,7 @@
           <div class="section-disc__desc">
             10 TECHNOLOGIES THAT WILL TRANSFORM<br />THE GLOBAL ECONOMY BY 2025
           </div>
-          <a href="#" class="section-disc__button trigger-button btn btn-hover">
+          <a href="#contact" class="section-disc__button btn btn-hover">
             Connect
             <img class="section-disc__button__arrow" src="assets/media/arrowRight.svg" />
           </a>
@@ -438,7 +269,7 @@
               src="assets/media/musicRecord700.webp"
             />
             <div class="section-disc__circle-block__border"></div>
-            <div class="section-disc__connect-animation-button">CONNECT</div>
+            <a href="#contact" class="section-disc__connect-animation-button" aria-label="Explore the NUEF concept finale">CONNECT</a>
           </div>
         </div>
         <img
@@ -478,7 +309,7 @@
       />
     </section>
 
-    <section class="section section-phone">
+    <section class="section section-phone" id="records">
       <div class="section-phone__content">
         <div class="section-phone__phone-container">
           <div class="section-phone__phone-info">
@@ -511,7 +342,7 @@
           <div class="section-phone__title">
             FORGET ABOUT ROUTINE.<br />LEAVE IT TO <span>NUEF</span>
           </div>
-          <a href="#" class="section-phone__button trigger-button btn btn-hover">
+          <a href="#contact" class="section-phone__button btn btn-hover">
             How it works?
             <img class="section-phone__button__arrow" src="assets/media/arrowRight.svg" />
           </a>
@@ -651,7 +482,7 @@
       </div>
     </section>
 
-    <section class="section section-studio">
+    <section class="section section-studio" id="studio">
       <section class="section section-moving-line">
         <div class="section-moving-line__content">
           <div class="section-moving-line__text-line">
@@ -754,19 +585,19 @@
         of time.
       </div>
 
-      <section class="section section-contacts">
+      <section class="section section-contacts" id="contact">
         <!-- <div class="section-contacts__video-container"> -->
           <video
             autoplay
             loop
             muted
             playsinline
-            preload="yes"
+            preload="none"
             poster="assets/media/VideoPoster.webp"
             class="section-contacts__video"
           >
-            <source src="assets/media/BackgroundWaves.mov" type="video/mp4" />
-            <source src="assets/media/BackgroundWaves.webm" type="video/webm" />
+            <source data-src="assets/media/BackgroundWaves.mp4" type="video/mp4" />
+            <source data-src="assets/media/BackgroundWaves.webm" type="video/webm" />
           </video>
         <!-- </div> -->
         <div class="section-contacts__content">
@@ -781,9 +612,9 @@
             />
           </div>
           <div class="section-contacts__text">
-            <h1 class="section-contacts__heading">Contact Us</h1>
-            <a href="#" class="button-background-animated trigger-button section-contacts__button">
-              Right Now
+            <h1 class="section-contacts__heading">NUEF Concept</h1>
+            <a href="#home" class="button-background-animated section-contacts__button">
+              Back to Start
             </a>
           </div>
         </div>
@@ -795,28 +626,16 @@
         <div class="footer__border-top"></div>
         <h2 class="footer__logo">NUEF</h2>
         <p class="footer__desc">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt.
+          An archived creative frontend concept showcasing the original NUEF landing page and scroll-driven animations. This is a portfolio demo, not an active music-label service.
         </p>
-        <div class="footer__nav">
-          <a href="#" class="footer__nav__link footer__hover-link">Studio</a>
-          <a href="#" class="footer__nav__link footer__hover-link">About</a>
-          <a href="#" class="footer__nav__link footer__hover-link">Collaborations</a>
-          <a href="#" class="footer__nav__link footer__hover-link">Partners</a>
-          <a href="#" class="footer__nav__link footer__hover-link">Social</a>
-          <a href="#" class="footer__nav__link footer__hover-link">FAQs</a>
-        </div>
-        <div class="footer__socials">
-          <a class="footer__socials__link footer__hover-link" href="#">
-            <img class="footer__socials__svg" src="assets/media/facebookFooter.svg" />
-          </a>
-          <a class="footer__socials__link footer__hover-link" href="#">
-            <img class="footer__socials__svg" src="assets/media/twitter.svg" />
-          </a>
-          <a class="footer__socials__link footer__hover-link" href="#">
-            <img class="footer__socials__svg" src="assets/media/InstaFooter.svg" />
-          </a>
-        </div>
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <a href="#home" class="footer__nav__link footer__hover-link">Home</a>
+          <a href="#about" class="footer__nav__link footer__hover-link">About</a>
+          <a href="#artists" class="footer__nav__link footer__hover-link">Artists</a>
+          <a href="#records" class="footer__nav__link footer__hover-link">Records</a>
+          <a href="#studio" class="footer__nav__link footer__hover-link">Studio</a>
+          <a href="#contact" class="footer__nav__link footer__hover-link">Finale</a>
+        </nav>
         <img src="assets/media/sign.webp" class="footer__sign" />
       </div>
     </footer>
